@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package receipt;
+
+option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/receipt;receipt";
+
+//import "google/protobuf/timestamp.proto";
+//import "core/money.proto";
+//
+//service Receipt {
+//    rpc ReceiptByTimeIntervalAndSellerId(ReceiptByTimeIntervalAndSellerIdRequest) returns (ReceiptByTimeIntervalAndSellerIdResponse);
+//}
+//
+//message ReceiptByTimeIntervalAndSellerIdResponse {
+//    int64 id = 1;
+//    trade.core.Money money = 2;
+//    google.protobuf.Timestamp creation_time = 3;
+//}
+//
+//message ReceiptByTimeIntervalAndSellerIdRequest {
+//    int64 seller_id = 1;
+//    google.protobuf.Timestamp from = 2;
+//    google.protobuf.Timestamp to = 3;
+//}

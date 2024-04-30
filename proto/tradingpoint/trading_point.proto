@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package tradingpoint;
+
+option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/tradingpoint;tradingpoint";
+
+import "core/money.proto";
+
+service TradingPoint {
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+}
+
+enum TradingPointType {
+    STORE = 0;
+    DEPARTMENT_STORE = 1;
+    KIOSK = 2;
+    TRAY = 3;
+}
+
+message RegisterRequest {
+    TradingPointType type = 1;
+    double area_plot = 2;
+    core.Money rental_charge = 3;
+    int32 counter_count = 4;
+    string address = 5;
+}
+
+message RegisterResponse {
+    int64 id = 1;
+    TradingPointType type = 2;
+}
