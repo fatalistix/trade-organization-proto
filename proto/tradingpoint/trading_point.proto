@@ -27,5 +27,4 @@ message RegisterRequest {
 
 message RegisterResponse {
     int32 id = 1;
-    TradingPointType type = 2;
 }
