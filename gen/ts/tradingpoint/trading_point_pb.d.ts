@@ -43,9 +43,6 @@ export class RegisterResponse extends jspb.Message {
   getId(): number;
   setId(value: number): RegisterResponse;
 
-  getType(): TradingPointType;
-  setType(value: TradingPointType): RegisterResponse;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RegisterResponse.AsObject;
   static toObject(includeInstance: boolean, msg: RegisterResponse): RegisterResponse.AsObject;
@@ -57,7 +54,6 @@ export class RegisterResponse extends jspb.Message {
 export namespace RegisterResponse {
   export type AsObject = {
     id: number,
-    type: TradingPointType,
   }
 }
 

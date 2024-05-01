@@ -371,8 +371,7 @@ proto.tradingpoint.RegisterResponse.prototype.toObject = function(opt_includeIns
  */
 proto.tradingpoint.RegisterResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    type: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -413,10 +412,6 @@ proto.tradingpoint.RegisterResponse.deserializeBinaryFromReader = function(msg, 
       var value = /** @type {number} */ (reader.readInt32());
       msg.setId(value);
       break;
-    case 2:
-      var value = /** @type {!proto.tradingpoint.TradingPointType} */ (reader.readEnum());
-      msg.setType(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -453,13 +448,6 @@ proto.tradingpoint.RegisterResponse.serializeBinaryToWriter = function(message, 
       f
     );
   }
-  f = message.getType();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      2,
-      f
-    );
-  }
 };
 
 
@@ -478,24 +466,6 @@ proto.tradingpoint.RegisterResponse.prototype.getId = function() {
  */
 proto.tradingpoint.RegisterResponse.prototype.setId = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
-};
-
-
-/**
- * optional TradingPointType type = 2;
- * @return {!proto.tradingpoint.TradingPointType}
- */
-proto.tradingpoint.RegisterResponse.prototype.getType = function() {
-  return /** @type {!proto.tradingpoint.TradingPointType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/**
- * @param {!proto.tradingpoint.TradingPointType} value
- * @return {!proto.tradingpoint.RegisterResponse} returns this
- */
-proto.tradingpoint.RegisterResponse.prototype.setType = function(value) {
-  return jspb.Message.setProto3EnumField(this, 2, value);
 };
 
 
