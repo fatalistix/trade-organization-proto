@@ -26,6 +26,6 @@ message RegisterRequest {
 }
 
 message RegisterResponse {
-    int64 id = 1;
+    int32 id = 1;
     TradingPointType type = 2;
 }
