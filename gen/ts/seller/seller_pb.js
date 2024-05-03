@@ -25,6 +25,10 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var core_money_pb = require('../core/money_pb.js');
 goog.object.extend(proto, core_money_pb);
+var tradingpoint_trading_point_pb = require('../tradingpoint/trading_point_pb.js');
+goog.object.extend(proto, tradingpoint_trading_point_pb);
+var tradingpoint_placeofwork_place_of_work_pb = require('../tradingpoint/placeofwork/place_of_work_pb.js');
+goog.object.extend(proto, tradingpoint_placeofwork_place_of_work_pb);
 goog.exportSymbol('proto.seller.ListByTradingPointRequest', null, global);
 goog.exportSymbol('proto.seller.ListByTradingPointResponse', null, global);
 goog.exportSymbol('proto.seller.RegisterRequest', null, global);
@@ -175,9 +179,9 @@ proto.seller.Seller.toObject = function(includeInstance, msg) {
     salary: (f = msg.getSalary()) && core_money_pb.Money.toObject(includeInstance, f),
     phoneNumber: jspb.Message.getFieldWithDefault(msg, 7, ""),
     placeOfWorkId: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    placeOfWorkType: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    placeOfWorkType: jspb.Message.getFieldWithDefault(msg, 9, 0),
     tradingPointId: jspb.Message.getFieldWithDefault(msg, 10, 0),
-    tradingPointType: jspb.Message.getFieldWithDefault(msg, 11, "")
+    tradingPointType: jspb.Message.getFieldWithDefault(msg, 11, 0)
   };
 
   if (includeInstance) {
@@ -249,7 +253,7 @@ proto.seller.Seller.deserializeBinaryFromReader = function(msg, reader) {
       msg.setPlaceOfWorkId(value);
       break;
     case 9:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {!proto.tradingpoint.placeofwork.PlaceOfWorkType} */ (reader.readEnum());
       msg.setPlaceOfWorkType(value);
       break;
     case 10:
@@ -257,7 +261,7 @@ proto.seller.Seller.deserializeBinaryFromReader = function(msg, reader) {
       msg.setTradingPointId(value);
       break;
     case 11:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {!proto.tradingpoint.TradingPointType} */ (reader.readEnum());
       msg.setTradingPointType(value);
       break;
     default:
@@ -348,8 +352,8 @@ proto.seller.Seller.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getPlaceOfWorkType();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0.0) {
+    writer.writeEnum(
       9,
       f
     );
@@ -362,8 +366,8 @@ proto.seller.Seller.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getTradingPointType();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0.0) {
+    writer.writeEnum(
       11,
       f
     );
@@ -554,20 +558,20 @@ proto.seller.Seller.prototype.setPlaceOfWorkId = function(value) {
 
 
 /**
- * optional string place_of_work_type = 9;
- * @return {string}
+ * optional tradingpoint.placeofwork.PlaceOfWorkType place_of_work_type = 9;
+ * @return {!proto.tradingpoint.placeofwork.PlaceOfWorkType}
  */
 proto.seller.Seller.prototype.getPlaceOfWorkType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+  return /** @type {!proto.tradingpoint.placeofwork.PlaceOfWorkType} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {!proto.tradingpoint.placeofwork.PlaceOfWorkType} value
  * @return {!proto.seller.Seller} returns this
  */
 proto.seller.Seller.prototype.setPlaceOfWorkType = function(value) {
-  return jspb.Message.setProto3StringField(this, 9, value);
+  return jspb.Message.setProto3EnumField(this, 9, value);
 };
 
 
@@ -590,20 +594,20 @@ proto.seller.Seller.prototype.setTradingPointId = function(value) {
 
 
 /**
- * optional string trading_point_type = 11;
- * @return {string}
+ * optional tradingpoint.TradingPointType trading_point_type = 11;
+ * @return {!proto.tradingpoint.TradingPointType}
  */
 proto.seller.Seller.prototype.getTradingPointType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+  return /** @type {!proto.tradingpoint.TradingPointType} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {!proto.tradingpoint.TradingPointType} value
  * @return {!proto.seller.Seller} returns this
  */
 proto.seller.Seller.prototype.setTradingPointType = function(value) {
-  return jspb.Message.setProto3StringField(this, 11, value);
+  return jspb.Message.setProto3EnumField(this, 11, value);
 };
 
 
@@ -646,9 +650,9 @@ proto.seller.RegisterRequest.toObject = function(includeInstance, msg) {
     salary: (f = msg.getSalary()) && core_money_pb.Money.toObject(includeInstance, f),
     phoneNumber: jspb.Message.getFieldWithDefault(msg, 6, ""),
     placeOfWorkId: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    placeOfWorkType: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    placeOfWorkType: jspb.Message.getFieldWithDefault(msg, 8, 0),
     tradingPointId: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    tradingPointType: jspb.Message.getFieldWithDefault(msg, 10, "")
+    tradingPointType: jspb.Message.getFieldWithDefault(msg, 10, 0)
   };
 
   if (includeInstance) {
@@ -716,7 +720,7 @@ proto.seller.RegisterRequest.deserializeBinaryFromReader = function(msg, reader)
       msg.setPlaceOfWorkId(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {!proto.tradingpoint.placeofwork.PlaceOfWorkType} */ (reader.readEnum());
       msg.setPlaceOfWorkType(value);
       break;
     case 9:
@@ -724,7 +728,7 @@ proto.seller.RegisterRequest.deserializeBinaryFromReader = function(msg, reader)
       msg.setTradingPointId(value);
       break;
     case 10:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {!proto.tradingpoint.TradingPointType} */ (reader.readEnum());
       msg.setTradingPointType(value);
       break;
     default:
@@ -808,8 +812,8 @@ proto.seller.RegisterRequest.serializeBinaryToWriter = function(message, writer)
     );
   }
   f = message.getPlaceOfWorkType();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0.0) {
+    writer.writeEnum(
       8,
       f
     );
@@ -822,8 +826,8 @@ proto.seller.RegisterRequest.serializeBinaryToWriter = function(message, writer)
     );
   }
   f = message.getTradingPointType();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0.0) {
+    writer.writeEnum(
       10,
       f
     );
@@ -996,20 +1000,20 @@ proto.seller.RegisterRequest.prototype.setPlaceOfWorkId = function(value) {
 
 
 /**
- * optional string place_of_work_type = 8;
- * @return {string}
+ * optional tradingpoint.placeofwork.PlaceOfWorkType place_of_work_type = 8;
+ * @return {!proto.tradingpoint.placeofwork.PlaceOfWorkType}
  */
 proto.seller.RegisterRequest.prototype.getPlaceOfWorkType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+  return /** @type {!proto.tradingpoint.placeofwork.PlaceOfWorkType} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {!proto.tradingpoint.placeofwork.PlaceOfWorkType} value
  * @return {!proto.seller.RegisterRequest} returns this
  */
 proto.seller.RegisterRequest.prototype.setPlaceOfWorkType = function(value) {
-  return jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setProto3EnumField(this, 8, value);
 };
 
 
@@ -1032,20 +1036,20 @@ proto.seller.RegisterRequest.prototype.setTradingPointId = function(value) {
 
 
 /**
- * optional string trading_point_type = 10;
- * @return {string}
+ * optional tradingpoint.TradingPointType trading_point_type = 10;
+ * @return {!proto.tradingpoint.TradingPointType}
  */
 proto.seller.RegisterRequest.prototype.getTradingPointType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+  return /** @type {!proto.tradingpoint.TradingPointType} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {!proto.tradingpoint.TradingPointType} value
  * @return {!proto.seller.RegisterRequest} returns this
  */
 proto.seller.RegisterRequest.prototype.setTradingPointType = function(value) {
-  return jspb.Message.setProto3StringField(this, 10, value);
+  return jspb.Message.setProto3EnumField(this, 10, value);
 };
 
 
@@ -1212,7 +1216,7 @@ proto.seller.ListByTradingPointRequest.prototype.toObject = function(opt_include
 proto.seller.ListByTradingPointRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     tradingPointId: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    tradingPointType: jspb.Message.getFieldWithDefault(msg, 2, "")
+    tradingPointType: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -1254,7 +1258,7 @@ proto.seller.ListByTradingPointRequest.deserializeBinaryFromReader = function(ms
       msg.setTradingPointId(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {!proto.tradingpoint.TradingPointType} */ (reader.readEnum());
       msg.setTradingPointType(value);
       break;
     default:
@@ -1294,8 +1298,8 @@ proto.seller.ListByTradingPointRequest.serializeBinaryToWriter = function(messag
     );
   }
   f = message.getTradingPointType();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0.0) {
+    writer.writeEnum(
       2,
       f
     );
@@ -1322,20 +1326,20 @@ proto.seller.ListByTradingPointRequest.prototype.setTradingPointId = function(va
 
 
 /**
- * optional string trading_point_type = 2;
- * @return {string}
+ * optional tradingpoint.TradingPointType trading_point_type = 2;
+ * @return {!proto.tradingpoint.TradingPointType}
  */
 proto.seller.ListByTradingPointRequest.prototype.getTradingPointType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {!proto.tradingpoint.TradingPointType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {!proto.tradingpoint.TradingPointType} value
  * @return {!proto.seller.ListByTradingPointRequest} returns this
  */
 proto.seller.ListByTradingPointRequest.prototype.setTradingPointType = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3EnumField(this, 2, value);
 };
 
 
