@@ -50,5 +50,5 @@ message ListByTradingPointRequest {
 }
 
 message ListByTradingPointResponse {
-  repeated Seller seller = 1;
+  repeated Seller sellers = 1;
 }

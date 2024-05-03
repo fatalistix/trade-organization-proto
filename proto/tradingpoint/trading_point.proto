@@ -47,5 +47,5 @@ message RegisterResponse {
 }
 
 message ListResponse {
-    repeated TradingPoint trading_point = 1;
+    repeated TradingPoint trading_points = 1;
 }
