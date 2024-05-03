@@ -4,8 +4,8 @@ package seller;
 
 option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/seller;seller";
 
-import "google/protobuf/timestamp.proto";
 import "core/money.proto";
+import "core/date.proto";
 import "tradingpoint/trading_point.proto";
 
 service SellerService {
@@ -18,7 +18,7 @@ message Seller {
   string first_name = 2;
   string last_name = 3;
   string middle_name = 4;
-  google.protobuf.Timestamp birth_date = 5;
+  core.Date birth_date = 5;
   core.Money salary = 6;
   string phone_number = 7;
   int32 place_of_work_id = 8;
@@ -31,7 +31,7 @@ message RegisterRequest {
   string first_name = 1;
   string last_name = 2;
   string middle_name = 3;
-  google.protobuf.Timestamp birth_date = 4;
+  core.Date birth_date = 4;
   core.Money salary = 5;
   string phone_number = 6;
   int32 place_of_work_id = 7;
