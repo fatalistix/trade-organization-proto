@@ -3,7 +3,6 @@ import * as jspb from 'google-protobuf'
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
 import * as tradingpoint_trading_point_pb from '../tradingpoint/trading_point_pb'; // proto import: "tradingpoint/trading_point.proto"
-import * as tradingpoint_placeofwork_place_of_work_pb from '../tradingpoint/placeofwork/place_of_work_pb'; // proto import: "tradingpoint/placeofwork/place_of_work.proto"
 
 
 export class Seller extends jspb.Message {
@@ -35,8 +34,8 @@ export class Seller extends jspb.Message {
   getPlaceOfWorkId(): number;
   setPlaceOfWorkId(value: number): Seller;
 
-  getPlaceOfWorkType(): tradingpoint_placeofwork_place_of_work_pb.PlaceOfWorkType;
-  setPlaceOfWorkType(value: tradingpoint_placeofwork_place_of_work_pb.PlaceOfWorkType): Seller;
+  getPlaceOfWorkType(): tradingpoint_trading_point_pb.PlaceOfWorkType;
+  setPlaceOfWorkType(value: tradingpoint_trading_point_pb.PlaceOfWorkType): Seller;
 
   getTradingPointId(): number;
   setTradingPointId(value: number): Seller;
@@ -62,7 +61,7 @@ export namespace Seller {
     salary?: core_money_pb.Money.AsObject,
     phoneNumber: string,
     placeOfWorkId: number,
-    placeOfWorkType: tradingpoint_placeofwork_place_of_work_pb.PlaceOfWorkType,
+    placeOfWorkType: tradingpoint_trading_point_pb.PlaceOfWorkType,
     tradingPointId: number,
     tradingPointType: tradingpoint_trading_point_pb.TradingPointType,
   }
@@ -94,8 +93,8 @@ export class RegisterRequest extends jspb.Message {
   getPlaceOfWorkId(): number;
   setPlaceOfWorkId(value: number): RegisterRequest;
 
-  getPlaceOfWorkType(): tradingpoint_placeofwork_place_of_work_pb.PlaceOfWorkType;
-  setPlaceOfWorkType(value: tradingpoint_placeofwork_place_of_work_pb.PlaceOfWorkType): RegisterRequest;
+  getPlaceOfWorkType(): tradingpoint_trading_point_pb.PlaceOfWorkType;
+  setPlaceOfWorkType(value: tradingpoint_trading_point_pb.PlaceOfWorkType): RegisterRequest;
 
   getTradingPointId(): number;
   setTradingPointId(value: number): RegisterRequest;
@@ -120,7 +119,7 @@ export namespace RegisterRequest {
     salary?: core_money_pb.Money.AsObject,
     phoneNumber: string,
     placeOfWorkId: number,
-    placeOfWorkType: tradingpoint_placeofwork_place_of_work_pb.PlaceOfWorkType,
+    placeOfWorkType: tradingpoint_trading_point_pb.PlaceOfWorkType,
     tradingPointId: number,
     tradingPointType: tradingpoint_trading_point_pb.TradingPointType,
   }

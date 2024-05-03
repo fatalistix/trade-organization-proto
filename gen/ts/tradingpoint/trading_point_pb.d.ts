@@ -58,8 +58,13 @@ export namespace RegisterResponse {
 }
 
 export enum TradingPointType { 
-  STORE = 0,
-  DEPARTMENT_STORE = 1,
-  KIOSK = 2,
-  TRAY = 3,
+  TRADING_POINT_STORE = 0,
+  TRADING_POINT_DEPARTMENT_STORE = 1,
+  TRADING_POINT_KIOSK = 2,
+  TRADING_POINT_TRAY = 3,
+}
+export enum PlaceOfWorkType { 
+  PLACE_OF_WORK_HALL = 0,
+  PLACE_OF_WORK_KIOSK = 1,
+  PLACE_OF_WORK_TRAY = 2,
 }

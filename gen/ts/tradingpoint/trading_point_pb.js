@@ -23,6 +23,7 @@ var global =
 
 var core_money_pb = require('../core/money_pb.js');
 goog.object.extend(proto, core_money_pb);
+goog.exportSymbol('proto.tradingpoint.PlaceOfWorkType', null, global);
 goog.exportSymbol('proto.tradingpoint.RegisterRequest', null, global);
 goog.exportSymbol('proto.tradingpoint.RegisterResponse', null, global);
 goog.exportSymbol('proto.tradingpoint.TradingPointType', null, global);
@@ -473,10 +474,19 @@ proto.tradingpoint.RegisterResponse.prototype.setId = function(value) {
  * @enum {number}
  */
 proto.tradingpoint.TradingPointType = {
-  STORE: 0,
-  DEPARTMENT_STORE: 1,
-  KIOSK: 2,
-  TRAY: 3
+  TRADING_POINT_STORE: 0,
+  TRADING_POINT_DEPARTMENT_STORE: 1,
+  TRADING_POINT_KIOSK: 2,
+  TRADING_POINT_TRAY: 3
+};
+
+/**
+ * @enum {number}
+ */
+proto.tradingpoint.PlaceOfWorkType = {
+  PLACE_OF_WORK_HALL: 0,
+  PLACE_OF_WORK_KIOSK: 1,
+  PLACE_OF_WORK_TRAY: 2
 };
 
 goog.object.extend(exports, proto.tradingpoint);

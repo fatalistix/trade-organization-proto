@@ -27,8 +27,6 @@ var core_money_pb = require('../core/money_pb.js');
 goog.object.extend(proto, core_money_pb);
 var tradingpoint_trading_point_pb = require('../tradingpoint/trading_point_pb.js');
 goog.object.extend(proto, tradingpoint_trading_point_pb);
-var tradingpoint_placeofwork_place_of_work_pb = require('../tradingpoint/placeofwork/place_of_work_pb.js');
-goog.object.extend(proto, tradingpoint_placeofwork_place_of_work_pb);
 goog.exportSymbol('proto.seller.ListByTradingPointRequest', null, global);
 goog.exportSymbol('proto.seller.ListByTradingPointResponse', null, global);
 goog.exportSymbol('proto.seller.RegisterRequest', null, global);
@@ -253,7 +251,7 @@ proto.seller.Seller.deserializeBinaryFromReader = function(msg, reader) {
       msg.setPlaceOfWorkId(value);
       break;
     case 9:
-      var value = /** @type {!proto.tradingpoint.placeofwork.PlaceOfWorkType} */ (reader.readEnum());
+      var value = /** @type {!proto.tradingpoint.PlaceOfWorkType} */ (reader.readEnum());
       msg.setPlaceOfWorkType(value);
       break;
     case 10:
@@ -558,16 +556,16 @@ proto.seller.Seller.prototype.setPlaceOfWorkId = function(value) {
 
 
 /**
- * optional tradingpoint.placeofwork.PlaceOfWorkType place_of_work_type = 9;
- * @return {!proto.tradingpoint.placeofwork.PlaceOfWorkType}
+ * optional tradingpoint.PlaceOfWorkType place_of_work_type = 9;
+ * @return {!proto.tradingpoint.PlaceOfWorkType}
  */
 proto.seller.Seller.prototype.getPlaceOfWorkType = function() {
-  return /** @type {!proto.tradingpoint.placeofwork.PlaceOfWorkType} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+  return /** @type {!proto.tradingpoint.PlaceOfWorkType} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
 };
 
 
 /**
- * @param {!proto.tradingpoint.placeofwork.PlaceOfWorkType} value
+ * @param {!proto.tradingpoint.PlaceOfWorkType} value
  * @return {!proto.seller.Seller} returns this
  */
 proto.seller.Seller.prototype.setPlaceOfWorkType = function(value) {
@@ -720,7 +718,7 @@ proto.seller.RegisterRequest.deserializeBinaryFromReader = function(msg, reader)
       msg.setPlaceOfWorkId(value);
       break;
     case 8:
-      var value = /** @type {!proto.tradingpoint.placeofwork.PlaceOfWorkType} */ (reader.readEnum());
+      var value = /** @type {!proto.tradingpoint.PlaceOfWorkType} */ (reader.readEnum());
       msg.setPlaceOfWorkType(value);
       break;
     case 9:
@@ -1000,16 +998,16 @@ proto.seller.RegisterRequest.prototype.setPlaceOfWorkId = function(value) {
 
 
 /**
- * optional tradingpoint.placeofwork.PlaceOfWorkType place_of_work_type = 8;
- * @return {!proto.tradingpoint.placeofwork.PlaceOfWorkType}
+ * optional tradingpoint.PlaceOfWorkType place_of_work_type = 8;
+ * @return {!proto.tradingpoint.PlaceOfWorkType}
  */
 proto.seller.RegisterRequest.prototype.getPlaceOfWorkType = function() {
-  return /** @type {!proto.tradingpoint.placeofwork.PlaceOfWorkType} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+  return /** @type {!proto.tradingpoint.PlaceOfWorkType} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
 };
 
 
 /**
- * @param {!proto.tradingpoint.placeofwork.PlaceOfWorkType} value
+ * @param {!proto.tradingpoint.PlaceOfWorkType} value
  * @return {!proto.seller.RegisterRequest} returns this
  */
 proto.seller.RegisterRequest.prototype.setPlaceOfWorkType = function(value) {
