@@ -5,11 +5,11 @@ package tradingpoint;
 option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/tradingpoint;tradingpoint";
 
 import "core/money.proto";
-import "google/protobuf/empty.proto";
+import "core/empty.proto";
 
 service TradingPointService {
     rpc Register(RegisterRequest) returns (RegisterResponse);
-    rpc List(google.protobuf.Empty) returns (ListResponse);
+    rpc List(core.Empty) returns (ListResponse);
 }
 
 message TradingPoint {
