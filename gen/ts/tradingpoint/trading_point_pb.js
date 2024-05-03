@@ -856,7 +856,7 @@ proto.tradingpoint.ListResponse.prototype.toObject = function(opt_includeInstanc
  */
 proto.tradingpoint.ListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    tradingPointList: jspb.Message.toObjectList(msg.getTradingPointList(),
+    tradingPointsList: jspb.Message.toObjectList(msg.getTradingPointsList(),
     proto.tradingpoint.TradingPoint.toObject, includeInstance)
   };
 
@@ -897,7 +897,7 @@ proto.tradingpoint.ListResponse.deserializeBinaryFromReader = function(msg, read
     case 1:
       var value = new proto.tradingpoint.TradingPoint;
       reader.readMessage(value,proto.tradingpoint.TradingPoint.deserializeBinaryFromReader);
-      msg.addTradingPoint(value);
+      msg.addTradingPoints(value);
       break;
     default:
       reader.skipField();
@@ -928,7 +928,7 @@ proto.tradingpoint.ListResponse.prototype.serializeBinary = function() {
  */
 proto.tradingpoint.ListResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getTradingPointList();
+  f = message.getTradingPointsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
@@ -940,10 +940,10 @@ proto.tradingpoint.ListResponse.serializeBinaryToWriter = function(message, writ
 
 
 /**
- * repeated TradingPoint trading_point = 1;
+ * repeated TradingPoint trading_points = 1;
  * @return {!Array<!proto.tradingpoint.TradingPoint>}
  */
-proto.tradingpoint.ListResponse.prototype.getTradingPointList = function() {
+proto.tradingpoint.ListResponse.prototype.getTradingPointsList = function() {
   return /** @type{!Array<!proto.tradingpoint.TradingPoint>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.tradingpoint.TradingPoint, 1));
 };
@@ -953,7 +953,7 @@ proto.tradingpoint.ListResponse.prototype.getTradingPointList = function() {
  * @param {!Array<!proto.tradingpoint.TradingPoint>} value
  * @return {!proto.tradingpoint.ListResponse} returns this
 */
-proto.tradingpoint.ListResponse.prototype.setTradingPointList = function(value) {
+proto.tradingpoint.ListResponse.prototype.setTradingPointsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -963,7 +963,7 @@ proto.tradingpoint.ListResponse.prototype.setTradingPointList = function(value) 
  * @param {number=} opt_index
  * @return {!proto.tradingpoint.TradingPoint}
  */
-proto.tradingpoint.ListResponse.prototype.addTradingPoint = function(opt_value, opt_index) {
+proto.tradingpoint.ListResponse.prototype.addTradingPoints = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.tradingpoint.TradingPoint, opt_index);
 };
 
@@ -972,8 +972,8 @@ proto.tradingpoint.ListResponse.prototype.addTradingPoint = function(opt_value, 
  * Clears the list making it empty but non-null.
  * @return {!proto.tradingpoint.ListResponse} returns this
  */
-proto.tradingpoint.ListResponse.prototype.clearTradingPointList = function() {
-  return this.setTradingPointList([]);
+proto.tradingpoint.ListResponse.prototype.clearTradingPointsList = function() {
+  return this.setTradingPointsList([]);
 };
 
 

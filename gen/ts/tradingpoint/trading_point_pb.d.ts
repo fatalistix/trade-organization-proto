@@ -99,10 +99,10 @@ export namespace RegisterResponse {
 }
 
 export class ListResponse extends jspb.Message {
-  getTradingPointList(): Array<TradingPoint>;
-  setTradingPointList(value: Array<TradingPoint>): ListResponse;
-  clearTradingPointList(): ListResponse;
-  addTradingPoint(value?: TradingPoint, index?: number): TradingPoint;
+  getTradingPointsList(): Array<TradingPoint>;
+  setTradingPointsList(value: Array<TradingPoint>): ListResponse;
+  clearTradingPointsList(): ListResponse;
+  addTradingPoints(value?: TradingPoint, index?: number): TradingPoint;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListResponse.AsObject;
@@ -114,7 +114,7 @@ export class ListResponse extends jspb.Message {
 
 export namespace ListResponse {
   export type AsObject = {
-    tradingPointList: Array<TradingPoint.AsObject>,
+    tradingPointsList: Array<TradingPoint.AsObject>,
   }
 }
 

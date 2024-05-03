@@ -1380,7 +1380,7 @@ proto.seller.ListByTradingPointResponse.prototype.toObject = function(opt_includ
  */
 proto.seller.ListByTradingPointResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sellerList: jspb.Message.toObjectList(msg.getSellerList(),
+    sellersList: jspb.Message.toObjectList(msg.getSellersList(),
     proto.seller.Seller.toObject, includeInstance)
   };
 
@@ -1421,7 +1421,7 @@ proto.seller.ListByTradingPointResponse.deserializeBinaryFromReader = function(m
     case 1:
       var value = new proto.seller.Seller;
       reader.readMessage(value,proto.seller.Seller.deserializeBinaryFromReader);
-      msg.addSeller(value);
+      msg.addSellers(value);
       break;
     default:
       reader.skipField();
@@ -1452,7 +1452,7 @@ proto.seller.ListByTradingPointResponse.prototype.serializeBinary = function() {
  */
 proto.seller.ListByTradingPointResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSellerList();
+  f = message.getSellersList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       1,
@@ -1464,10 +1464,10 @@ proto.seller.ListByTradingPointResponse.serializeBinaryToWriter = function(messa
 
 
 /**
- * repeated Seller seller = 1;
+ * repeated Seller sellers = 1;
  * @return {!Array<!proto.seller.Seller>}
  */
-proto.seller.ListByTradingPointResponse.prototype.getSellerList = function() {
+proto.seller.ListByTradingPointResponse.prototype.getSellersList = function() {
   return /** @type{!Array<!proto.seller.Seller>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.seller.Seller, 1));
 };
@@ -1477,7 +1477,7 @@ proto.seller.ListByTradingPointResponse.prototype.getSellerList = function() {
  * @param {!Array<!proto.seller.Seller>} value
  * @return {!proto.seller.ListByTradingPointResponse} returns this
 */
-proto.seller.ListByTradingPointResponse.prototype.setSellerList = function(value) {
+proto.seller.ListByTradingPointResponse.prototype.setSellersList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
@@ -1487,7 +1487,7 @@ proto.seller.ListByTradingPointResponse.prototype.setSellerList = function(value
  * @param {number=} opt_index
  * @return {!proto.seller.Seller}
  */
-proto.seller.ListByTradingPointResponse.prototype.addSeller = function(opt_value, opt_index) {
+proto.seller.ListByTradingPointResponse.prototype.addSellers = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.seller.Seller, opt_index);
 };
 
@@ -1496,8 +1496,8 @@ proto.seller.ListByTradingPointResponse.prototype.addSeller = function(opt_value
  * Clears the list making it empty but non-null.
  * @return {!proto.seller.ListByTradingPointResponse} returns this
  */
-proto.seller.ListByTradingPointResponse.prototype.clearSellerList = function() {
-  return this.setSellerList([]);
+proto.seller.ListByTradingPointResponse.prototype.clearSellersList = function() {
+  return this.setSellersList([]);
 };
 
 

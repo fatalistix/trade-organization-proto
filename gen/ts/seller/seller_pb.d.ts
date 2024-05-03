@@ -166,10 +166,10 @@ export namespace ListByTradingPointRequest {
 }
 
 export class ListByTradingPointResponse extends jspb.Message {
-  getSellerList(): Array<Seller>;
-  setSellerList(value: Array<Seller>): ListByTradingPointResponse;
-  clearSellerList(): ListByTradingPointResponse;
-  addSeller(value?: Seller, index?: number): Seller;
+  getSellersList(): Array<Seller>;
+  setSellersList(value: Array<Seller>): ListByTradingPointResponse;
+  clearSellersList(): ListByTradingPointResponse;
+  addSellers(value?: Seller, index?: number): Seller;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListByTradingPointResponse.AsObject;
@@ -181,7 +181,7 @@ export class ListByTradingPointResponse extends jspb.Message {
 
 export namespace ListByTradingPointResponse {
   export type AsObject = {
-    sellerList: Array<Seller.AsObject>,
+    sellersList: Array<Seller.AsObject>,
   }
 }
 
