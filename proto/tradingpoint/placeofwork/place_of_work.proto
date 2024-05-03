@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package tradingpoint.placeofwork;
+
+option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/tradingpoint;tradingpoint";
+
+import "core/money.proto";
+
+enum PlaceOfWorkType {
+  HALL = 0;
+  KIOSK = 1;
+  TRAY = 2;
+}
+
