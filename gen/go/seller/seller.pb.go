@@ -8,7 +8,7 @@ package seller
 
 import (
 	core "github.com/fatalistix/trade-organization-proto/gen/go/core"
-	tradingpoint "github.com/fatalistix/trade-organization-proto/gen/go/tradingpoint/"
+	tradingpoint "github.com/fatalistix/trade-organization-proto/gen/go/tradingpoint"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
