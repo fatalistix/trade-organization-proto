@@ -23,8 +23,8 @@ var global =
 
 var core_money_pb = require('../core/money_pb.js');
 goog.object.extend(proto, core_money_pb);
-var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
-goog.object.extend(proto, google_protobuf_empty_pb);
+var core_empty_pb = require('../core/empty_pb.js');
+goog.object.extend(proto, core_empty_pb);
 goog.exportSymbol('proto.tradingpoint.ListResponse', null, global);
 goog.exportSymbol('proto.tradingpoint.PlaceOfWorkType', null, global);
 goog.exportSymbol('proto.tradingpoint.RegisterRequest', null, global);

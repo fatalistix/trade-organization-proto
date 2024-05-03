@@ -21,10 +21,10 @@ var global =
     (function () { return this; }).call(null) ||
     Function('return this')();
 
-var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
-goog.object.extend(proto, google_protobuf_timestamp_pb);
 var core_money_pb = require('../core/money_pb.js');
 goog.object.extend(proto, core_money_pb);
+var core_date_pb = require('../core/date_pb.js');
+goog.object.extend(proto, core_date_pb);
 var tradingpoint_trading_point_pb = require('../tradingpoint/trading_point_pb.js');
 goog.object.extend(proto, tradingpoint_trading_point_pb);
 goog.exportSymbol('proto.seller.ListByTradingPointRequest', null, global);
@@ -173,7 +173,7 @@ proto.seller.Seller.toObject = function(includeInstance, msg) {
     firstName: jspb.Message.getFieldWithDefault(msg, 2, ""),
     lastName: jspb.Message.getFieldWithDefault(msg, 3, ""),
     middleName: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    birthDate: (f = msg.getBirthDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    birthDate: (f = msg.getBirthDate()) && core_date_pb.Date.toObject(includeInstance, f),
     salary: (f = msg.getSalary()) && core_money_pb.Money.toObject(includeInstance, f),
     phoneNumber: jspb.Message.getFieldWithDefault(msg, 7, ""),
     placeOfWorkId: jspb.Message.getFieldWithDefault(msg, 8, 0),
@@ -233,8 +233,8 @@ proto.seller.Seller.deserializeBinaryFromReader = function(msg, reader) {
       msg.setMiddleName(value);
       break;
     case 5:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = new core_date_pb.Date;
+      reader.readMessage(value,core_date_pb.Date.deserializeBinaryFromReader);
       msg.setBirthDate(value);
       break;
     case 6:
@@ -324,7 +324,7 @@ proto.seller.Seller.serializeBinaryToWriter = function(message, writer) {
     writer.writeMessage(
       5,
       f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      core_date_pb.Date.serializeBinaryToWriter
     );
   }
   f = message.getSalary();
@@ -446,17 +446,17 @@ proto.seller.Seller.prototype.setMiddleName = function(value) {
 
 
 /**
- * optional google.protobuf.Timestamp birth_date = 5;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional core.Date birth_date = 5;
+ * @return {?proto.core.Date}
  */
 proto.seller.Seller.prototype.getBirthDate = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
+  return /** @type{?proto.core.Date} */ (
+    jspb.Message.getWrapperField(this, core_date_pb.Date, 5));
 };
 
 
 /**
- * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @param {?proto.core.Date|undefined} value
  * @return {!proto.seller.Seller} returns this
 */
 proto.seller.Seller.prototype.setBirthDate = function(value) {
@@ -644,7 +644,7 @@ proto.seller.RegisterRequest.toObject = function(includeInstance, msg) {
     firstName: jspb.Message.getFieldWithDefault(msg, 1, ""),
     lastName: jspb.Message.getFieldWithDefault(msg, 2, ""),
     middleName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    birthDate: (f = msg.getBirthDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    birthDate: (f = msg.getBirthDate()) && core_date_pb.Date.toObject(includeInstance, f),
     salary: (f = msg.getSalary()) && core_money_pb.Money.toObject(includeInstance, f),
     phoneNumber: jspb.Message.getFieldWithDefault(msg, 6, ""),
     placeOfWorkId: jspb.Message.getFieldWithDefault(msg, 7, 0),
@@ -700,8 +700,8 @@ proto.seller.RegisterRequest.deserializeBinaryFromReader = function(msg, reader)
       msg.setMiddleName(value);
       break;
     case 4:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = new core_date_pb.Date;
+      reader.readMessage(value,core_date_pb.Date.deserializeBinaryFromReader);
       msg.setBirthDate(value);
       break;
     case 5:
@@ -784,7 +784,7 @@ proto.seller.RegisterRequest.serializeBinaryToWriter = function(message, writer)
     writer.writeMessage(
       4,
       f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      core_date_pb.Date.serializeBinaryToWriter
     );
   }
   f = message.getSalary();
@@ -888,17 +888,17 @@ proto.seller.RegisterRequest.prototype.setMiddleName = function(value) {
 
 
 /**
- * optional google.protobuf.Timestamp birth_date = 4;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional core.Date birth_date = 4;
+ * @return {?proto.core.Date}
  */
 proto.seller.RegisterRequest.prototype.getBirthDate = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 4));
+  return /** @type{?proto.core.Date} */ (
+    jspb.Message.getWrapperField(this, core_date_pb.Date, 4));
 };
 
 
 /**
- * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @param {?proto.core.Date|undefined} value
  * @return {!proto.seller.RegisterRequest} returns this
 */
 proto.seller.RegisterRequest.prototype.setBirthDate = function(value) {

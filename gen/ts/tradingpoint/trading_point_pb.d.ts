@@ -1,7 +1,7 @@
 import * as jspb from 'google-protobuf'
 
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
-import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb'; // proto import: "google/protobuf/empty.proto"
+import * as core_empty_pb from '../core/empty_pb'; // proto import: "core/empty.proto"
 
 
 export class TradingPoint extends jspb.Message {

@@ -1,7 +1,7 @@
 import * as jspb from 'google-protobuf'
 
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
+import * as core_date_pb from '../core/date_pb'; // proto import: "core/date.proto"
 import * as tradingpoint_trading_point_pb from '../tradingpoint/trading_point_pb'; // proto import: "tradingpoint/trading_point.proto"
 
 
@@ -18,8 +18,8 @@ export class Seller extends jspb.Message {
   getMiddleName(): string;
   setMiddleName(value: string): Seller;
 
-  getBirthDate(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setBirthDate(value?: google_protobuf_timestamp_pb.Timestamp): Seller;
+  getBirthDate(): core_date_pb.Date | undefined;
+  setBirthDate(value?: core_date_pb.Date): Seller;
   hasBirthDate(): boolean;
   clearBirthDate(): Seller;
 
@@ -57,7 +57,7 @@ export namespace Seller {
     firstName: string,
     lastName: string,
     middleName: string,
-    birthDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    birthDate?: core_date_pb.Date.AsObject,
     salary?: core_money_pb.Money.AsObject,
     phoneNumber: string,
     placeOfWorkId: number,
@@ -77,8 +77,8 @@ export class RegisterRequest extends jspb.Message {
   getMiddleName(): string;
   setMiddleName(value: string): RegisterRequest;
 
-  getBirthDate(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setBirthDate(value?: google_protobuf_timestamp_pb.Timestamp): RegisterRequest;
+  getBirthDate(): core_date_pb.Date | undefined;
+  setBirthDate(value?: core_date_pb.Date): RegisterRequest;
   hasBirthDate(): boolean;
   clearBirthDate(): RegisterRequest;
 
@@ -115,7 +115,7 @@ export namespace RegisterRequest {
     firstName: string,
     lastName: string,
     middleName: string,
-    birthDate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    birthDate?: core_date_pb.Date.AsObject,
     salary?: core_money_pb.Money.AsObject,
     phoneNumber: string,
     placeOfWorkId: number,
