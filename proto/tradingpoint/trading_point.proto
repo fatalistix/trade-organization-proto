@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package tradingpoint;
 
-option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/tradingpoint/;tradingpoint";
+option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/tradingpoint;tradingpoint";
 
 import "core/money.proto";
 import "google/protobuf/empty.proto";
