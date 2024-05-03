@@ -5,9 +5,20 @@ package tradingpoint;
 option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/tradingpoint/;tradingpoint";
 
 import "core/money.proto";
+import "google/protobuf/empty.proto";
 
 service TradingPointService {
     rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc List(google.protobuf.Empty) returns (ListResponse);
+}
+
+message TradingPoint {
+    int32 id = 1;
+    TradingPointType type = 2;
+    double area_plot = 3;
+    core.Money rental_charge = 4;
+    int32 counter_count = 5;
+    string address = 6;
 }
 
 enum TradingPointType {
@@ -33,4 +44,8 @@ message RegisterRequest {
 
 message RegisterResponse {
     int32 id = 1;
+}
+
+message ListResponse {
+    repeated TradingPoint trading_point = 1;
 }
