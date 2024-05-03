@@ -20,7 +20,7 @@ import * as grpcWeb from 'grpc-web';
 import * as tradingpoint_trading_point_pb from '../tradingpoint/trading_point_pb'; // proto import: "tradingpoint/trading_point.proto"
 
 
-export class TradingPointClient {
+export class TradingPointServiceClient {
   client_: grpcWeb.AbstractClientBase;
   hostname_: string;
   credentials_: null | { [index: string]: string; };
@@ -40,7 +40,7 @@ export class TradingPointClient {
   }
 
   methodDescriptorRegister = new grpcWeb.MethodDescriptor(
-    '/tradingpoint.TradingPoint/Register',
+    '/tradingpoint.TradingPointService/Register',
     grpcWeb.MethodType.UNARY,
     tradingpoint_trading_point_pb.RegisterRequest,
     tradingpoint_trading_point_pb.RegisterResponse,
@@ -68,7 +68,7 @@ export class TradingPointClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/tradingpoint.TradingPoint/Register',
+          '/tradingpoint.TradingPointService/Register',
         request,
         metadata || {},
         this.methodDescriptorRegister,
@@ -76,7 +76,7 @@ export class TradingPointClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/tradingpoint.TradingPoint/Register',
+      '/tradingpoint.TradingPointService/Register',
     request,
     metadata || {},
     this.methodDescriptorRegister);
