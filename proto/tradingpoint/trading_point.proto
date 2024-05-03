@@ -6,7 +6,7 @@ option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/tradi
 
 import "core/money.proto";
 
-service TradingPoint {
+service TradingPointService {
     rpc Register(RegisterRequest) returns (RegisterResponse);
 }
 
