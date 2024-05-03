@@ -17,6 +17,7 @@
 
 import * as grpcWeb from 'grpc-web';
 
+import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb'; // proto import: "google/protobuf/empty.proto"
 import * as tradingpoint_trading_point_pb from '../tradingpoint/trading_point_pb'; // proto import: "tradingpoint/trading_point.proto"
 
 
@@ -80,6 +81,49 @@ export class TradingPointServiceClient {
     request,
     metadata || {},
     this.methodDescriptorRegister);
+  }
+
+  methodDescriptorList = new grpcWeb.MethodDescriptor(
+    '/tradingpoint.TradingPointService/List',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    tradingpoint_trading_point_pb.ListResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    tradingpoint_trading_point_pb.ListResponse.deserializeBinary
+  );
+
+  list(
+    request: google_protobuf_empty_pb.Empty,
+    metadata?: grpcWeb.Metadata | null): Promise<tradingpoint_trading_point_pb.ListResponse>;
+
+  list(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: tradingpoint_trading_point_pb.ListResponse) => void): grpcWeb.ClientReadableStream<tradingpoint_trading_point_pb.ListResponse>;
+
+  list(
+    request: google_protobuf_empty_pb.Empty,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: tradingpoint_trading_point_pb.ListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/tradingpoint.TradingPointService/List',
+        request,
+        metadata || {},
+        this.methodDescriptorList,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/tradingpoint.TradingPointService/List',
+    request,
+    metadata || {},
+    this.methodDescriptorList);
   }
 
 }

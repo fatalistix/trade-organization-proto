@@ -1,7 +1,48 @@
 import * as jspb from 'google-protobuf'
 
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
+import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb'; // proto import: "google/protobuf/empty.proto"
 
+
+export class TradingPoint extends jspb.Message {
+  getId(): number;
+  setId(value: number): TradingPoint;
+
+  getType(): TradingPointType;
+  setType(value: TradingPointType): TradingPoint;
+
+  getAreaPlot(): number;
+  setAreaPlot(value: number): TradingPoint;
+
+  getRentalCharge(): core_money_pb.Money | undefined;
+  setRentalCharge(value?: core_money_pb.Money): TradingPoint;
+  hasRentalCharge(): boolean;
+  clearRentalCharge(): TradingPoint;
+
+  getCounterCount(): number;
+  setCounterCount(value: number): TradingPoint;
+
+  getAddress(): string;
+  setAddress(value: string): TradingPoint;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TradingPoint.AsObject;
+  static toObject(includeInstance: boolean, msg: TradingPoint): TradingPoint.AsObject;
+  static serializeBinaryToWriter(message: TradingPoint, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TradingPoint;
+  static deserializeBinaryFromReader(message: TradingPoint, reader: jspb.BinaryReader): TradingPoint;
+}
+
+export namespace TradingPoint {
+  export type AsObject = {
+    id: number,
+    type: TradingPointType,
+    areaPlot: number,
+    rentalCharge?: core_money_pb.Money.AsObject,
+    counterCount: number,
+    address: string,
+  }
+}
 
 export class RegisterRequest extends jspb.Message {
   getType(): TradingPointType;
@@ -54,6 +95,26 @@ export class RegisterResponse extends jspb.Message {
 export namespace RegisterResponse {
   export type AsObject = {
     id: number,
+  }
+}
+
+export class ListResponse extends jspb.Message {
+  getTradingPointList(): Array<TradingPoint>;
+  setTradingPointList(value: Array<TradingPoint>): ListResponse;
+  clearTradingPointList(): ListResponse;
+  addTradingPoint(value?: TradingPoint, index?: number): TradingPoint;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ListResponse): ListResponse.AsObject;
+  static serializeBinaryToWriter(message: ListResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListResponse;
+  static deserializeBinaryFromReader(message: ListResponse, reader: jspb.BinaryReader): ListResponse;
+}
+
+export namespace ListResponse {
+  export type AsObject = {
+    tradingPointList: Array<TradingPoint.AsObject>,
   }
 }
 
