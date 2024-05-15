@@ -8,10 +8,10 @@ package tradingpoint
 
 import (
 	context "context"
-	core "github.com/fatalistix/trade-organization-proto/gen/go/core"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -24,7 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TradingPointServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
-	List(ctx context.Context, in *core.Empty, opts ...grpc.CallOption) (*ListResponse, error)
+	List(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListResponse, error)
 }
 
 type tradingPointServiceClient struct {
@@ -44,7 +44,7 @@ func (c *tradingPointServiceClient) Register(ctx context.Context, in *RegisterRe
 	return out, nil
 }
 
-func (c *tradingPointServiceClient) List(ctx context.Context, in *core.Empty, opts ...grpc.CallOption) (*ListResponse, error) {
+func (c *tradingPointServiceClient) List(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListResponse, error) {
 	out := new(ListResponse)
 	err := c.cc.Invoke(ctx, "/tradingpoint.TradingPointService/List", in, out, opts...)
 	if err != nil {
@@ -58,7 +58,7 @@ func (c *tradingPointServiceClient) List(ctx context.Context, in *core.Empty, op
 // for forward compatibility
 type TradingPointServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
-	List(context.Context, *core.Empty) (*ListResponse, error)
+	List(context.Context, *emptypb.Empty) (*ListResponse, error)
 	mustEmbedUnimplementedTradingPointServiceServer()
 }
 
@@ -69,7 +69,7 @@ type UnimplementedTradingPointServiceServer struct {
 func (UnimplementedTradingPointServiceServer) Register(context.Context, *RegisterRequest) (*RegisterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
-func (UnimplementedTradingPointServiceServer) List(context.Context, *core.Empty) (*ListResponse, error) {
+func (UnimplementedTradingPointServiceServer) List(context.Context, *emptypb.Empty) (*ListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 func (UnimplementedTradingPointServiceServer) mustEmbedUnimplementedTradingPointServiceServer() {}
@@ -104,7 +104,7 @@ func _TradingPointService_Register_Handler(srv interface{}, ctx context.Context,
 }
 
 func _TradingPointService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(core.Empty)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -116,7 +116,7 @@ func _TradingPointService_List_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/tradingpoint.TradingPointService/List",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TradingPointServiceServer).List(ctx, req.(*core.Empty))
+		return srv.(TradingPointServiceServer).List(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
