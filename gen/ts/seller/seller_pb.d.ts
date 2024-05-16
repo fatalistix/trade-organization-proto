@@ -9,6 +9,9 @@ export class Seller extends jspb.Message {
   getId(): number;
   setId(value: number): Seller;
 
+  getStatus(): SellerStatus;
+  setStatus(value: SellerStatus): Seller;
+
   getFirstName(): string;
   setFirstName(value: string): Seller;
 
@@ -31,17 +34,10 @@ export class Seller extends jspb.Message {
   getPhoneNumber(): string;
   setPhoneNumber(value: string): Seller;
 
-  getPlaceOfWorkId(): number;
-  setPlaceOfWorkId(value: number): Seller;
-
-  getPlaceOfWorkType(): tradingpoint_trading_point_pb.PlaceOfWorkType;
-  setPlaceOfWorkType(value: tradingpoint_trading_point_pb.PlaceOfWorkType): Seller;
-
-  getTradingPointId(): number;
-  setTradingPointId(value: number): Seller;
-
-  getTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): Seller;
+  getPlaceOfWork(): PlaceOfWork | undefined;
+  setPlaceOfWork(value?: PlaceOfWork): Seller;
+  hasPlaceOfWork(): boolean;
+  clearPlaceOfWork(): Seller;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Seller.AsObject;
@@ -54,12 +50,45 @@ export class Seller extends jspb.Message {
 export namespace Seller {
   export type AsObject = {
     id: number,
+    status: SellerStatus,
     firstName: string,
     lastName: string,
     middleName: string,
     birthDate?: core_date_pb.Date.AsObject,
     salary?: core_money_pb.Money.AsObject,
     phoneNumber: string,
+    placeOfWork?: PlaceOfWork.AsObject,
+  }
+
+  export enum PlaceOfWorkCase { 
+    _PLACE_OF_WORK_NOT_SET = 0,
+    PLACE_OF_WORK = 9,
+  }
+}
+
+export class PlaceOfWork extends jspb.Message {
+  getPlaceOfWorkId(): number;
+  setPlaceOfWorkId(value: number): PlaceOfWork;
+
+  getPlaceOfWorkType(): tradingpoint_trading_point_pb.PlaceOfWorkType;
+  setPlaceOfWorkType(value: tradingpoint_trading_point_pb.PlaceOfWorkType): PlaceOfWork;
+
+  getTradingPointId(): number;
+  setTradingPointId(value: number): PlaceOfWork;
+
+  getTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
+  setTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): PlaceOfWork;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PlaceOfWork.AsObject;
+  static toObject(includeInstance: boolean, msg: PlaceOfWork): PlaceOfWork.AsObject;
+  static serializeBinaryToWriter(message: PlaceOfWork, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PlaceOfWork;
+  static deserializeBinaryFromReader(message: PlaceOfWork, reader: jspb.BinaryReader): PlaceOfWork;
+}
+
+export namespace PlaceOfWork {
+  export type AsObject = {
     placeOfWorkId: number,
     placeOfWorkType: tradingpoint_trading_point_pb.PlaceOfWorkType,
     tradingPointId: number,
@@ -90,18 +119,6 @@ export class RegisterRequest extends jspb.Message {
   getPhoneNumber(): string;
   setPhoneNumber(value: string): RegisterRequest;
 
-  getPlaceOfWorkId(): number;
-  setPlaceOfWorkId(value: number): RegisterRequest;
-
-  getPlaceOfWorkType(): tradingpoint_trading_point_pb.PlaceOfWorkType;
-  setPlaceOfWorkType(value: tradingpoint_trading_point_pb.PlaceOfWorkType): RegisterRequest;
-
-  getTradingPointId(): number;
-  setTradingPointId(value: number): RegisterRequest;
-
-  getTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): RegisterRequest;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RegisterRequest.AsObject;
   static toObject(includeInstance: boolean, msg: RegisterRequest): RegisterRequest.AsObject;
@@ -118,10 +135,6 @@ export namespace RegisterRequest {
     birthDate?: core_date_pb.Date.AsObject,
     salary?: core_money_pb.Money.AsObject,
     phoneNumber: string,
-    placeOfWorkId: number,
-    placeOfWorkType: tradingpoint_trading_point_pb.PlaceOfWorkType,
-    tradingPointId: number,
-    tradingPointType: tradingpoint_trading_point_pb.TradingPointType,
   }
 }
 
@@ -185,3 +198,7 @@ export namespace ListByTradingPointResponse {
   }
 }
 
+export enum SellerStatus { 
+  SELLER_STATUS_WORKING = 0,
+  SELLER_STATUS_NOT_WORKING = 1,
+}
