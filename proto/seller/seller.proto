@@ -13,18 +13,28 @@ service SellerService {
   rpc ListByTradingPoint(ListByTradingPointRequest) returns (ListByTradingPointResponse);
 }
 
+enum SellerStatus {
+  SELLER_STATUS_WORKING = 0;
+  SELLER_STATUS_NOT_WORKING = 1;
+}
+
 message Seller {
   int32 id = 1;
-  string first_name = 2;
-  string last_name = 3;
-  string middle_name = 4;
-  core.Date birth_date = 5;
-  core.Money salary = 6;
-  string phone_number = 7;
-  int32 place_of_work_id = 8;
-  tradingpoint.PlaceOfWorkType place_of_work_type = 9;
-  int32 trading_point_id = 10;
-  tradingpoint.TradingPointType trading_point_type = 11;
+  SellerStatus status = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string middle_name = 5;
+  core.Date birth_date = 6;
+  core.Money salary = 7;
+  string phone_number = 8;
+  optional PlaceOfWork place_of_work = 9;
+}
+
+message PlaceOfWork {
+  int32 place_of_work_id = 1;
+  tradingpoint.PlaceOfWorkType place_of_work_type = 2;
+  int32 trading_point_id = 3;
+  tradingpoint.TradingPointType trading_point_type = 4;
 }
 
 message RegisterRequest {
@@ -34,10 +44,6 @@ message RegisterRequest {
   core.Date birth_date = 4;
   core.Money salary = 5;
   string phone_number = 6;
-  int32 place_of_work_id = 7;
-  tradingpoint.PlaceOfWorkType place_of_work_type = 8;
-  int32 trading_point_id = 9;
-  tradingpoint.TradingPointType trading_point_type = 10;
 }
 
 message RegisterResponse {
