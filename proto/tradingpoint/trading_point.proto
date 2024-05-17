@@ -8,11 +8,6 @@ import "core/money.proto";
 
 import "google/protobuf/empty.proto";
 
-service TradingPointService {
-    rpc Register(RegisterRequest) returns (RegisterResponse);
-    rpc List(google.protobuf.Empty) returns (ListResponse);
-}
-
 message TradingPoint {
     int32 id = 1;
     TradingPointType type = 2;
@@ -35,6 +30,11 @@ enum PlaceOfWorkType {
     PLACE_OF_WORK_TRAY = 2;
 }
 
+service TradingPointService {
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc List(ListRequest) returns (ListResponse);
+}
+
 message RegisterRequest {
     TradingPointType type = 1;
     double area_plot = 2;
@@ -45,6 +45,10 @@ message RegisterRequest {
 
 message RegisterResponse {
     int32 id = 1;
+}
+
+message ListRequest {
+
 }
 
 message ListResponse {
