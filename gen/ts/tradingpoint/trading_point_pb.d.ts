@@ -98,6 +98,20 @@ export namespace RegisterResponse {
   }
 }
 
+export class ListRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ListRequest): ListRequest.AsObject;
+  static serializeBinaryToWriter(message: ListRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListRequest;
+  static deserializeBinaryFromReader(message: ListRequest, reader: jspb.BinaryReader): ListRequest;
+}
+
+export namespace ListRequest {
+  export type AsObject = {
+  }
+}
+
 export class ListResponse extends jspb.Message {
   getTradingPointsList(): Array<TradingPoint>;
   setTradingPointsList(value: Array<TradingPoint>): ListResponse;

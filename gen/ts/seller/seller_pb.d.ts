@@ -120,6 +120,11 @@ export class RegisterRequest extends jspb.Message {
   getPhoneNumber(): string;
   setPhoneNumber(value: string): RegisterRequest;
 
+  getPlaceOfWork(): PlaceOfWork | undefined;
+  setPlaceOfWork(value?: PlaceOfWork): RegisterRequest;
+  hasPlaceOfWork(): boolean;
+  clearPlaceOfWork(): RegisterRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RegisterRequest.AsObject;
   static toObject(includeInstance: boolean, msg: RegisterRequest): RegisterRequest.AsObject;
@@ -136,6 +141,12 @@ export namespace RegisterRequest {
     birthDate?: core_date_pb.Date.AsObject,
     salary?: core_money_pb.Money.AsObject,
     phoneNumber: string,
+    placeOfWork?: PlaceOfWork.AsObject,
+  }
+
+  export enum PlaceOfWorkCase { 
+    _PLACE_OF_WORK_NOT_SET = 0,
+    PLACE_OF_WORK = 7,
   }
 }
 
@@ -157,45 +168,17 @@ export namespace RegisterResponse {
   }
 }
 
-export class ListByTradingPointRequest extends jspb.Message {
-  getTradingPointId(): number;
-  setTradingPointId(value: number): ListByTradingPointRequest;
-
-  getTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): ListByTradingPointRequest;
-
+export class ListRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ListByTradingPointRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ListByTradingPointRequest): ListByTradingPointRequest.AsObject;
-  static serializeBinaryToWriter(message: ListByTradingPointRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ListByTradingPointRequest;
-  static deserializeBinaryFromReader(message: ListByTradingPointRequest, reader: jspb.BinaryReader): ListByTradingPointRequest;
+  toObject(includeInstance?: boolean): ListRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ListRequest): ListRequest.AsObject;
+  static serializeBinaryToWriter(message: ListRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListRequest;
+  static deserializeBinaryFromReader(message: ListRequest, reader: jspb.BinaryReader): ListRequest;
 }
 
-export namespace ListByTradingPointRequest {
+export namespace ListRequest {
   export type AsObject = {
-    tradingPointId: number,
-    tradingPointType: tradingpoint_trading_point_pb.TradingPointType,
-  }
-}
-
-export class ListByTradingPointResponse extends jspb.Message {
-  getSellersList(): Array<Seller>;
-  setSellersList(value: Array<Seller>): ListByTradingPointResponse;
-  clearSellersList(): ListByTradingPointResponse;
-  addSellers(value?: Seller, index?: number): Seller;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ListByTradingPointResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: ListByTradingPointResponse): ListByTradingPointResponse.AsObject;
-  static serializeBinaryToWriter(message: ListByTradingPointResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ListByTradingPointResponse;
-  static deserializeBinaryFromReader(message: ListByTradingPointResponse, reader: jspb.BinaryReader): ListByTradingPointResponse;
-}
-
-export namespace ListByTradingPointResponse {
-  export type AsObject = {
-    sellersList: Array<Seller.AsObject>,
   }
 }
 
@@ -219,45 +202,98 @@ export namespace ListResponse {
   }
 }
 
-export class SetPlaceOfWorkRequest extends jspb.Message {
+export class UpdateRequest extends jspb.Message {
   getId(): number;
-  setId(value: number): SetPlaceOfWorkRequest;
+  setId(value: number): UpdateRequest;
+
+  getFirstName(): string;
+  setFirstName(value: string): UpdateRequest;
+  hasFirstName(): boolean;
+  clearFirstName(): UpdateRequest;
+
+  getLastName(): string;
+  setLastName(value: string): UpdateRequest;
+  hasLastName(): boolean;
+  clearLastName(): UpdateRequest;
+
+  getMiddleName(): string;
+  setMiddleName(value: string): UpdateRequest;
+  hasMiddleName(): boolean;
+  clearMiddleName(): UpdateRequest;
+
+  getBirthDate(): core_date_pb.Date | undefined;
+  setBirthDate(value?: core_date_pb.Date): UpdateRequest;
+  hasBirthDate(): boolean;
+  clearBirthDate(): UpdateRequest;
+
+  getSalary(): core_money_pb.Money | undefined;
+  setSalary(value?: core_money_pb.Money): UpdateRequest;
+  hasSalary(): boolean;
+  clearSalary(): UpdateRequest;
+
+  getPhoneNumber(): string;
+  setPhoneNumber(value: string): UpdateRequest;
+  hasPhoneNumber(): boolean;
+  clearPhoneNumber(): UpdateRequest;
 
   getPlaceOfWork(): PlaceOfWork | undefined;
-  setPlaceOfWork(value?: PlaceOfWork): SetPlaceOfWorkRequest;
+  setPlaceOfWork(value?: PlaceOfWork): UpdateRequest;
   hasPlaceOfWork(): boolean;
-  clearPlaceOfWork(): SetPlaceOfWorkRequest;
+  clearPlaceOfWork(): UpdateRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SetPlaceOfWorkRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SetPlaceOfWorkRequest): SetPlaceOfWorkRequest.AsObject;
-  static serializeBinaryToWriter(message: SetPlaceOfWorkRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SetPlaceOfWorkRequest;
-  static deserializeBinaryFromReader(message: SetPlaceOfWorkRequest, reader: jspb.BinaryReader): SetPlaceOfWorkRequest;
+  toObject(includeInstance?: boolean): UpdateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateRequest): UpdateRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateRequest;
+  static deserializeBinaryFromReader(message: UpdateRequest, reader: jspb.BinaryReader): UpdateRequest;
 }
 
-export namespace SetPlaceOfWorkRequest {
+export namespace UpdateRequest {
   export type AsObject = {
     id: number,
+    firstName?: string,
+    lastName?: string,
+    middleName?: string,
+    birthDate?: core_date_pb.Date.AsObject,
+    salary?: core_money_pb.Money.AsObject,
+    phoneNumber?: string,
     placeOfWork?: PlaceOfWork.AsObject,
   }
-}
 
-export class SetPlaceOfWorkResponse extends jspb.Message {
-  getId(): number;
-  setId(value: number): SetPlaceOfWorkResponse;
+  export enum FirstNameCase { 
+    _FIRST_NAME_NOT_SET = 0,
+    FIRST_NAME = 2,
+  }
 
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SetPlaceOfWorkResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: SetPlaceOfWorkResponse): SetPlaceOfWorkResponse.AsObject;
-  static serializeBinaryToWriter(message: SetPlaceOfWorkResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SetPlaceOfWorkResponse;
-  static deserializeBinaryFromReader(message: SetPlaceOfWorkResponse, reader: jspb.BinaryReader): SetPlaceOfWorkResponse;
-}
+  export enum LastNameCase { 
+    _LAST_NAME_NOT_SET = 0,
+    LAST_NAME = 3,
+  }
 
-export namespace SetPlaceOfWorkResponse {
-  export type AsObject = {
-    id: number,
+  export enum MiddleNameCase { 
+    _MIDDLE_NAME_NOT_SET = 0,
+    MIDDLE_NAME = 4,
+  }
+
+  export enum BirthDateCase { 
+    _BIRTH_DATE_NOT_SET = 0,
+    BIRTH_DATE = 5,
+  }
+
+  export enum SalaryCase { 
+    _SALARY_NOT_SET = 0,
+    SALARY = 6,
+  }
+
+  export enum PhoneNumberCase { 
+    _PHONE_NUMBER_NOT_SET = 0,
+    PHONE_NUMBER = 7,
+  }
+
+  export enum PlaceOfWorkCase { 
+    _PLACE_OF_WORK_NOT_SET = 0,
+    PLACE_OF_WORK = 8,
   }
 }
 

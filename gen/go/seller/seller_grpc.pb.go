@@ -24,9 +24,8 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SellerServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
-	ListByTradingPoint(ctx context.Context, in *ListByTradingPointRequest, opts ...grpc.CallOption) (*ListByTradingPointResponse, error)
-	List(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListResponse, error)
-	SetPlaceOfWork(ctx context.Context, in *SetPlaceOfWorkRequest, opts ...grpc.CallOption) (*SetPlaceOfWorkResponse, error)
+	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
+	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type sellerServiceClient struct {
@@ -46,16 +45,7 @@ func (c *sellerServiceClient) Register(ctx context.Context, in *RegisterRequest,
 	return out, nil
 }
 
-func (c *sellerServiceClient) ListByTradingPoint(ctx context.Context, in *ListByTradingPointRequest, opts ...grpc.CallOption) (*ListByTradingPointResponse, error) {
-	out := new(ListByTradingPointResponse)
-	err := c.cc.Invoke(ctx, "/seller.SellerService/ListByTradingPoint", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *sellerServiceClient) List(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListResponse, error) {
+func (c *sellerServiceClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error) {
 	out := new(ListResponse)
 	err := c.cc.Invoke(ctx, "/seller.SellerService/List", in, out, opts...)
 	if err != nil {
@@ -64,9 +54,9 @@ func (c *sellerServiceClient) List(ctx context.Context, in *emptypb.Empty, opts 
 	return out, nil
 }
 
-func (c *sellerServiceClient) SetPlaceOfWork(ctx context.Context, in *SetPlaceOfWorkRequest, opts ...grpc.CallOption) (*SetPlaceOfWorkResponse, error) {
-	out := new(SetPlaceOfWorkResponse)
-	err := c.cc.Invoke(ctx, "/seller.SellerService/SetPlaceOfWork", in, out, opts...)
+func (c *sellerServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/seller.SellerService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -78,9 +68,8 @@ func (c *sellerServiceClient) SetPlaceOfWork(ctx context.Context, in *SetPlaceOf
 // for forward compatibility
 type SellerServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
-	ListByTradingPoint(context.Context, *ListByTradingPointRequest) (*ListByTradingPointResponse, error)
-	List(context.Context, *emptypb.Empty) (*ListResponse, error)
-	SetPlaceOfWork(context.Context, *SetPlaceOfWorkRequest) (*SetPlaceOfWorkResponse, error)
+	List(context.Context, *ListRequest) (*ListResponse, error)
+	Update(context.Context, *UpdateRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedSellerServiceServer()
 }
 
@@ -91,14 +80,11 @@ type UnimplementedSellerServiceServer struct {
 func (UnimplementedSellerServiceServer) Register(context.Context, *RegisterRequest) (*RegisterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
-func (UnimplementedSellerServiceServer) ListByTradingPoint(context.Context, *ListByTradingPointRequest) (*ListByTradingPointResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListByTradingPoint not implemented")
-}
-func (UnimplementedSellerServiceServer) List(context.Context, *emptypb.Empty) (*ListResponse, error) {
+func (UnimplementedSellerServiceServer) List(context.Context, *ListRequest) (*ListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (UnimplementedSellerServiceServer) SetPlaceOfWork(context.Context, *SetPlaceOfWorkRequest) (*SetPlaceOfWorkResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetPlaceOfWork not implemented")
+func (UnimplementedSellerServiceServer) Update(context.Context, *UpdateRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
 func (UnimplementedSellerServiceServer) mustEmbedUnimplementedSellerServiceServer() {}
 
@@ -131,26 +117,8 @@ func _SellerService_Register_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SellerService_ListByTradingPoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListByTradingPointRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SellerServiceServer).ListByTradingPoint(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/seller.SellerService/ListByTradingPoint",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SellerServiceServer).ListByTradingPoint(ctx, req.(*ListByTradingPointRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _SellerService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
+	in := new(ListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -162,25 +130,25 @@ func _SellerService_List_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: "/seller.SellerService/List",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SellerServiceServer).List(ctx, req.(*emptypb.Empty))
+		return srv.(SellerServiceServer).List(ctx, req.(*ListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SellerService_SetPlaceOfWork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetPlaceOfWorkRequest)
+func _SellerService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SellerServiceServer).SetPlaceOfWork(ctx, in)
+		return srv.(SellerServiceServer).Update(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/seller.SellerService/SetPlaceOfWork",
+		FullMethod: "/seller.SellerService/Update",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SellerServiceServer).SetPlaceOfWork(ctx, req.(*SetPlaceOfWorkRequest))
+		return srv.(SellerServiceServer).Update(ctx, req.(*UpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -197,16 +165,12 @@ var SellerService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _SellerService_Register_Handler,
 		},
 		{
-			MethodName: "ListByTradingPoint",
-			Handler:    _SellerService_ListByTradingPoint_Handler,
-		},
-		{
 			MethodName: "List",
 			Handler:    _SellerService_List_Handler,
 		},
 		{
-			MethodName: "SetPlaceOfWork",
-			Handler:    _SellerService_SetPlaceOfWork_Handler,
+			MethodName: "Update",
+			Handler:    _SellerService_Update_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

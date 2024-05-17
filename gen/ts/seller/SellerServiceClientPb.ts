@@ -83,72 +83,29 @@ export class SellerServiceClient {
     this.methodDescriptorRegister);
   }
 
-  methodDescriptorListByTradingPoint = new grpcWeb.MethodDescriptor(
-    '/seller.SellerService/ListByTradingPoint',
-    grpcWeb.MethodType.UNARY,
-    seller_seller_pb.ListByTradingPointRequest,
-    seller_seller_pb.ListByTradingPointResponse,
-    (request: seller_seller_pb.ListByTradingPointRequest) => {
-      return request.serializeBinary();
-    },
-    seller_seller_pb.ListByTradingPointResponse.deserializeBinary
-  );
-
-  listByTradingPoint(
-    request: seller_seller_pb.ListByTradingPointRequest,
-    metadata?: grpcWeb.Metadata | null): Promise<seller_seller_pb.ListByTradingPointResponse>;
-
-  listByTradingPoint(
-    request: seller_seller_pb.ListByTradingPointRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: seller_seller_pb.ListByTradingPointResponse) => void): grpcWeb.ClientReadableStream<seller_seller_pb.ListByTradingPointResponse>;
-
-  listByTradingPoint(
-    request: seller_seller_pb.ListByTradingPointRequest,
-    metadata?: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: seller_seller_pb.ListByTradingPointResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/seller.SellerService/ListByTradingPoint',
-        request,
-        metadata || {},
-        this.methodDescriptorListByTradingPoint,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/seller.SellerService/ListByTradingPoint',
-    request,
-    metadata || {},
-    this.methodDescriptorListByTradingPoint);
-  }
-
   methodDescriptorList = new grpcWeb.MethodDescriptor(
     '/seller.SellerService/List',
     grpcWeb.MethodType.UNARY,
-    google_protobuf_empty_pb.Empty,
+    seller_seller_pb.ListRequest,
     seller_seller_pb.ListResponse,
-    (request: google_protobuf_empty_pb.Empty) => {
+    (request: seller_seller_pb.ListRequest) => {
       return request.serializeBinary();
     },
     seller_seller_pb.ListResponse.deserializeBinary
   );
 
   list(
-    request: google_protobuf_empty_pb.Empty,
+    request: seller_seller_pb.ListRequest,
     metadata?: grpcWeb.Metadata | null): Promise<seller_seller_pb.ListResponse>;
 
   list(
-    request: google_protobuf_empty_pb.Empty,
+    request: seller_seller_pb.ListRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: seller_seller_pb.ListResponse) => void): grpcWeb.ClientReadableStream<seller_seller_pb.ListResponse>;
 
   list(
-    request: google_protobuf_empty_pb.Empty,
+    request: seller_seller_pb.ListRequest,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: seller_seller_pb.ListResponse) => void) {
@@ -169,47 +126,47 @@ export class SellerServiceClient {
     this.methodDescriptorList);
   }
 
-  methodDescriptorSetPlaceOfWork = new grpcWeb.MethodDescriptor(
-    '/seller.SellerService/SetPlaceOfWork',
+  methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
+    '/seller.SellerService/Update',
     grpcWeb.MethodType.UNARY,
-    seller_seller_pb.SetPlaceOfWorkRequest,
-    seller_seller_pb.SetPlaceOfWorkResponse,
-    (request: seller_seller_pb.SetPlaceOfWorkRequest) => {
+    seller_seller_pb.UpdateRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: seller_seller_pb.UpdateRequest) => {
       return request.serializeBinary();
     },
-    seller_seller_pb.SetPlaceOfWorkResponse.deserializeBinary
+    google_protobuf_empty_pb.Empty.deserializeBinary
   );
 
-  setPlaceOfWork(
-    request: seller_seller_pb.SetPlaceOfWorkRequest,
-    metadata?: grpcWeb.Metadata | null): Promise<seller_seller_pb.SetPlaceOfWorkResponse>;
+  update(
+    request: seller_seller_pb.UpdateRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
 
-  setPlaceOfWork(
-    request: seller_seller_pb.SetPlaceOfWorkRequest,
+  update(
+    request: seller_seller_pb.UpdateRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: seller_seller_pb.SetPlaceOfWorkResponse) => void): grpcWeb.ClientReadableStream<seller_seller_pb.SetPlaceOfWorkResponse>;
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
-  setPlaceOfWork(
-    request: seller_seller_pb.SetPlaceOfWorkRequest,
+  update(
+    request: seller_seller_pb.UpdateRequest,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: seller_seller_pb.SetPlaceOfWorkResponse) => void) {
+               response: google_protobuf_empty_pb.Empty) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/seller.SellerService/SetPlaceOfWork',
+          '/seller.SellerService/Update',
         request,
         metadata || {},
-        this.methodDescriptorSetPlaceOfWork,
+        this.methodDescriptorUpdate,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/seller.SellerService/SetPlaceOfWork',
+      '/seller.SellerService/Update',
     request,
     metadata || {},
-    this.methodDescriptorSetPlaceOfWork);
+    this.methodDescriptorUpdate);
   }
 
 }
