@@ -17,6 +17,7 @@
 
 import * as grpcWeb from 'grpc-web';
 
+import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb'; // proto import: "google/protobuf/empty.proto"
 import * as seller_seller_pb from '../seller/seller_pb'; // proto import: "seller/seller.proto"
 
 
@@ -123,6 +124,92 @@ export class SellerServiceClient {
     request,
     metadata || {},
     this.methodDescriptorListByTradingPoint);
+  }
+
+  methodDescriptorList = new grpcWeb.MethodDescriptor(
+    '/seller.SellerService/List',
+    grpcWeb.MethodType.UNARY,
+    google_protobuf_empty_pb.Empty,
+    seller_seller_pb.ListResponse,
+    (request: google_protobuf_empty_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    seller_seller_pb.ListResponse.deserializeBinary
+  );
+
+  list(
+    request: google_protobuf_empty_pb.Empty,
+    metadata?: grpcWeb.Metadata | null): Promise<seller_seller_pb.ListResponse>;
+
+  list(
+    request: google_protobuf_empty_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: seller_seller_pb.ListResponse) => void): grpcWeb.ClientReadableStream<seller_seller_pb.ListResponse>;
+
+  list(
+    request: google_protobuf_empty_pb.Empty,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: seller_seller_pb.ListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/seller.SellerService/List',
+        request,
+        metadata || {},
+        this.methodDescriptorList,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/seller.SellerService/List',
+    request,
+    metadata || {},
+    this.methodDescriptorList);
+  }
+
+  methodDescriptorSetPlaceOfWork = new grpcWeb.MethodDescriptor(
+    '/seller.SellerService/SetPlaceOfWork',
+    grpcWeb.MethodType.UNARY,
+    seller_seller_pb.SetPlaceOfWorkRequest,
+    seller_seller_pb.SetPlaceOfWorkResponse,
+    (request: seller_seller_pb.SetPlaceOfWorkRequest) => {
+      return request.serializeBinary();
+    },
+    seller_seller_pb.SetPlaceOfWorkResponse.deserializeBinary
+  );
+
+  setPlaceOfWork(
+    request: seller_seller_pb.SetPlaceOfWorkRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<seller_seller_pb.SetPlaceOfWorkResponse>;
+
+  setPlaceOfWork(
+    request: seller_seller_pb.SetPlaceOfWorkRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: seller_seller_pb.SetPlaceOfWorkResponse) => void): grpcWeb.ClientReadableStream<seller_seller_pb.SetPlaceOfWorkResponse>;
+
+  setPlaceOfWork(
+    request: seller_seller_pb.SetPlaceOfWorkRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: seller_seller_pb.SetPlaceOfWorkResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/seller.SellerService/SetPlaceOfWork',
+        request,
+        metadata || {},
+        this.methodDescriptorSetPlaceOfWork,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/seller.SellerService/SetPlaceOfWork',
+    request,
+    metadata || {},
+    this.methodDescriptorSetPlaceOfWork);
   }
 
 }

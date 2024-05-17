@@ -3,6 +3,7 @@ import * as jspb from 'google-protobuf'
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
 import * as core_date_pb from '../core/date_pb'; // proto import: "core/date.proto"
 import * as tradingpoint_trading_point_pb from '../tradingpoint/trading_point_pb'; // proto import: "tradingpoint/trading_point.proto"
+import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb'; // proto import: "google/protobuf/empty.proto"
 
 
 export class Seller extends jspb.Message {
@@ -195,6 +196,68 @@ export class ListByTradingPointResponse extends jspb.Message {
 export namespace ListByTradingPointResponse {
   export type AsObject = {
     sellersList: Array<Seller.AsObject>,
+  }
+}
+
+export class ListResponse extends jspb.Message {
+  getSellersList(): Array<Seller>;
+  setSellersList(value: Array<Seller>): ListResponse;
+  clearSellersList(): ListResponse;
+  addSellers(value?: Seller, index?: number): Seller;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ListResponse): ListResponse.AsObject;
+  static serializeBinaryToWriter(message: ListResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListResponse;
+  static deserializeBinaryFromReader(message: ListResponse, reader: jspb.BinaryReader): ListResponse;
+}
+
+export namespace ListResponse {
+  export type AsObject = {
+    sellersList: Array<Seller.AsObject>,
+  }
+}
+
+export class SetPlaceOfWorkRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): SetPlaceOfWorkRequest;
+
+  getPlaceOfWork(): PlaceOfWork | undefined;
+  setPlaceOfWork(value?: PlaceOfWork): SetPlaceOfWorkRequest;
+  hasPlaceOfWork(): boolean;
+  clearPlaceOfWork(): SetPlaceOfWorkRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SetPlaceOfWorkRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SetPlaceOfWorkRequest): SetPlaceOfWorkRequest.AsObject;
+  static serializeBinaryToWriter(message: SetPlaceOfWorkRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SetPlaceOfWorkRequest;
+  static deserializeBinaryFromReader(message: SetPlaceOfWorkRequest, reader: jspb.BinaryReader): SetPlaceOfWorkRequest;
+}
+
+export namespace SetPlaceOfWorkRequest {
+  export type AsObject = {
+    id: number,
+    placeOfWork?: PlaceOfWork.AsObject,
+  }
+}
+
+export class SetPlaceOfWorkResponse extends jspb.Message {
+  getId(): number;
+  setId(value: number): SetPlaceOfWorkResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SetPlaceOfWorkResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: SetPlaceOfWorkResponse): SetPlaceOfWorkResponse.AsObject;
+  static serializeBinaryToWriter(message: SetPlaceOfWorkResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SetPlaceOfWorkResponse;
+  static deserializeBinaryFromReader(message: SetPlaceOfWorkResponse, reader: jspb.BinaryReader): SetPlaceOfWorkResponse;
+}
+
+export namespace SetPlaceOfWorkResponse {
+  export type AsObject = {
+    id: number,
   }
 }
 
