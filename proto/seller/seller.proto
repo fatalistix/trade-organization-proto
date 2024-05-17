@@ -7,10 +7,13 @@ option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/selle
 import "core/money.proto";
 import "core/date.proto";
 import "tradingpoint/trading_point.proto";
+import "google/protobuf/empty.proto";
 
 service SellerService {
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc ListByTradingPoint(ListByTradingPointRequest) returns (ListByTradingPointResponse);
+  rpc List(google.protobuf.Empty) returns (ListResponse);
+  rpc SetPlaceOfWork(SetPlaceOfWorkRequest) returns (SetPlaceOfWorkResponse);
 }
 
 enum SellerStatus {
@@ -57,4 +60,17 @@ message ListByTradingPointRequest {
 
 message ListByTradingPointResponse {
   repeated Seller sellers = 1;
+}
+
+message ListResponse {
+  repeated Seller sellers = 1;
+}
+
+message SetPlaceOfWorkRequest {
+  int32 id = 1;
+  PlaceOfWork place_of_work = 2;
+}
+
+message SetPlaceOfWorkResponse {
+  int32 id = 1;
 }
