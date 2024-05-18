@@ -35,10 +35,10 @@ export class Seller extends jspb.Message {
   getPhoneNumber(): string;
   setPhoneNumber(value: string): Seller;
 
-  getPlaceOfWork(): PlaceOfWork | undefined;
-  setPlaceOfWork(value?: PlaceOfWork): Seller;
-  hasPlaceOfWork(): boolean;
-  clearPlaceOfWork(): Seller;
+  getWorksAt(): WorksAt | undefined;
+  setWorksAt(value?: WorksAt): Seller;
+  hasWorksAt(): boolean;
+  clearWorksAt(): Seller;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Seller.AsObject;
@@ -58,27 +58,47 @@ export namespace Seller {
     birthDate?: core_date_pb.Date.AsObject,
     salary?: core_money_pb.Money.AsObject,
     phoneNumber: string,
-    placeOfWork?: PlaceOfWork.AsObject,
+    worksAt?: WorksAt.AsObject,
   }
 
-  export enum PlaceOfWorkCase { 
-    _PLACE_OF_WORK_NOT_SET = 0,
-    PLACE_OF_WORK = 9,
+  export enum WorksAtCase { 
+    _WORKS_AT_NOT_SET = 0,
+    WORKS_AT = 9,
+  }
+}
+
+export class WorksAt extends jspb.Message {
+  getPlaceOfWork(): PlaceOfWork | undefined;
+  setPlaceOfWork(value?: PlaceOfWork): WorksAt;
+  hasPlaceOfWork(): boolean;
+  clearPlaceOfWork(): WorksAt;
+
+  getTradingPoint(): TradingPoint | undefined;
+  setTradingPoint(value?: TradingPoint): WorksAt;
+  hasTradingPoint(): boolean;
+  clearTradingPoint(): WorksAt;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WorksAt.AsObject;
+  static toObject(includeInstance: boolean, msg: WorksAt): WorksAt.AsObject;
+  static serializeBinaryToWriter(message: WorksAt, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WorksAt;
+  static deserializeBinaryFromReader(message: WorksAt, reader: jspb.BinaryReader): WorksAt;
+}
+
+export namespace WorksAt {
+  export type AsObject = {
+    placeOfWork?: PlaceOfWork.AsObject,
+    tradingPoint?: TradingPoint.AsObject,
   }
 }
 
 export class PlaceOfWork extends jspb.Message {
-  getPlaceOfWorkId(): number;
-  setPlaceOfWorkId(value: number): PlaceOfWork;
+  getId(): number;
+  setId(value: number): PlaceOfWork;
 
-  getPlaceOfWorkType(): tradingpoint_trading_point_pb.PlaceOfWorkType;
-  setPlaceOfWorkType(value: tradingpoint_trading_point_pb.PlaceOfWorkType): PlaceOfWork;
-
-  getTradingPointId(): number;
-  setTradingPointId(value: number): PlaceOfWork;
-
-  getTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): PlaceOfWork;
+  getType(): tradingpoint_trading_point_pb.PlaceOfWorkType;
+  setType(value: tradingpoint_trading_point_pb.PlaceOfWorkType): PlaceOfWork;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PlaceOfWork.AsObject;
@@ -90,10 +110,30 @@ export class PlaceOfWork extends jspb.Message {
 
 export namespace PlaceOfWork {
   export type AsObject = {
-    placeOfWorkId: number,
-    placeOfWorkType: tradingpoint_trading_point_pb.PlaceOfWorkType,
-    tradingPointId: number,
-    tradingPointType: tradingpoint_trading_point_pb.TradingPointType,
+    id: number,
+    type: tradingpoint_trading_point_pb.PlaceOfWorkType,
+  }
+}
+
+export class TradingPoint extends jspb.Message {
+  getId(): number;
+  setId(value: number): TradingPoint;
+
+  getType(): tradingpoint_trading_point_pb.TradingPointType;
+  setType(value: tradingpoint_trading_point_pb.TradingPointType): TradingPoint;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TradingPoint.AsObject;
+  static toObject(includeInstance: boolean, msg: TradingPoint): TradingPoint.AsObject;
+  static serializeBinaryToWriter(message: TradingPoint, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TradingPoint;
+  static deserializeBinaryFromReader(message: TradingPoint, reader: jspb.BinaryReader): TradingPoint;
+}
+
+export namespace TradingPoint {
+  export type AsObject = {
+    id: number,
+    type: tradingpoint_trading_point_pb.TradingPointType,
   }
 }
 
@@ -169,6 +209,24 @@ export namespace RegisterResponse {
 }
 
 export class ListRequest extends jspb.Message {
+  getWorksAtFilter(): WorksAtFilterType;
+  setWorksAtFilter(value: WorksAtFilterType): ListRequest;
+
+  getTradingPoint(): TradingPoint | undefined;
+  setTradingPoint(value?: TradingPoint): ListRequest;
+  hasTradingPoint(): boolean;
+  clearTradingPoint(): ListRequest;
+
+  getPlaceOfWork(): PlaceOfWork | undefined;
+  setPlaceOfWork(value?: PlaceOfWork): ListRequest;
+  hasPlaceOfWork(): boolean;
+  clearPlaceOfWork(): ListRequest;
+
+  getSearch(): string;
+  setSearch(value: string): ListRequest;
+  hasSearch(): boolean;
+  clearSearch(): ListRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListRequest.AsObject;
   static toObject(includeInstance: boolean, msg: ListRequest): ListRequest.AsObject;
@@ -179,6 +237,25 @@ export class ListRequest extends jspb.Message {
 
 export namespace ListRequest {
   export type AsObject = {
+    worksAtFilter: WorksAtFilterType,
+    tradingPoint?: TradingPoint.AsObject,
+    placeOfWork?: PlaceOfWork.AsObject,
+    search?: string,
+  }
+
+  export enum TradingPointCase { 
+    _TRADING_POINT_NOT_SET = 0,
+    TRADING_POINT = 2,
+  }
+
+  export enum PlaceOfWorkCase { 
+    _PLACE_OF_WORK_NOT_SET = 0,
+    PLACE_OF_WORK = 3,
+  }
+
+  export enum SearchCase { 
+    _SEARCH_NOT_SET = 0,
+    SEARCH = 4,
   }
 }
 
@@ -300,4 +377,9 @@ export namespace UpdateRequest {
 export enum SellerStatus { 
   SELLER_STATUS_WORKING = 0,
   SELLER_STATUS_NOT_WORKING = 1,
+}
+export enum WorksAtFilterType { 
+  WORKS_AT_FILTER_TYPE_ALL = 0,
+  WORKS_AT_FILTER_TYPE_ONLY_NULL = 1,
+  WORKS_AT_FILTER_TYPE_ONLY_NOT_NULL = 2,
 }
