@@ -18,14 +18,22 @@ message Seller {
   core.Date birth_date = 6;
   core.Money salary = 7;
   string phone_number = 8;
-  optional PlaceOfWork place_of_work = 9;
+  optional WorksAt works_at = 9;
+}
+
+message WorksAt {
+  PlaceOfWork place_of_work = 1;
+  TradingPoint trading_point = 2;
 }
 
 message PlaceOfWork {
-  int32 place_of_work_id = 1;
-  tradingpoint.PlaceOfWorkType place_of_work_type = 2;
-  int32 trading_point_id = 3;
-  tradingpoint.TradingPointType trading_point_type = 4;
+  int32 id = 1;
+  tradingpoint.PlaceOfWorkType type = 2;
+}
+
+message TradingPoint {
+  int32 id = 1;
+  tradingpoint.TradingPointType type = 2;
 }
 
 enum SellerStatus {
@@ -53,7 +61,17 @@ message RegisterResponse {
   int32 id = 1;
 }
 
+enum WorksAtFilterType {
+  WORKS_AT_FILTER_TYPE_ALL = 0;
+  WORKS_AT_FILTER_TYPE_ONLY_NULL = 1;
+  WORKS_AT_FILTER_TYPE_ONLY_NOT_NULL = 2;
+}
+
 message ListRequest {
+  WorksAtFilterType works_at_filter = 1;
+  optional TradingPoint trading_point = 2;
+  optional PlaceOfWork place_of_work = 3;
+  optional string search = 4;
 }
 
 message ListResponse {
