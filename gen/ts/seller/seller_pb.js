@@ -1222,7 +1222,7 @@ proto.seller.RegisterRequest.toObject = function(includeInstance, msg) {
     birthDate: (f = msg.getBirthDate()) && core_date_pb.Date.toObject(includeInstance, f),
     salary: (f = msg.getSalary()) && core_money_pb.Money.toObject(includeInstance, f),
     phoneNumber: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    placeOfWork: (f = msg.getPlaceOfWork()) && proto.seller.PlaceOfWork.toObject(includeInstance, f)
+    worksAt: (f = msg.getWorksAt()) && proto.seller.WorksAt.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1286,9 +1286,9 @@ proto.seller.RegisterRequest.deserializeBinaryFromReader = function(msg, reader)
       msg.setPhoneNumber(value);
       break;
     case 7:
-      var value = new proto.seller.PlaceOfWork;
-      reader.readMessage(value,proto.seller.PlaceOfWork.deserializeBinaryFromReader);
-      msg.setPlaceOfWork(value);
+      var value = new proto.seller.WorksAt;
+      reader.readMessage(value,proto.seller.WorksAt.deserializeBinaryFromReader);
+      msg.setWorksAt(value);
       break;
     default:
       reader.skipField();
@@ -1363,12 +1363,12 @@ proto.seller.RegisterRequest.serializeBinaryToWriter = function(message, writer)
       f
     );
   }
-  f = message.getPlaceOfWork();
+  f = message.getWorksAt();
   if (f != null) {
     writer.writeMessage(
       7,
       f,
-      proto.seller.PlaceOfWork.serializeBinaryToWriter
+      proto.seller.WorksAt.serializeBinaryToWriter
     );
   }
 };
@@ -1521,20 +1521,20 @@ proto.seller.RegisterRequest.prototype.setPhoneNumber = function(value) {
 
 
 /**
- * optional PlaceOfWork place_of_work = 7;
- * @return {?proto.seller.PlaceOfWork}
+ * optional WorksAt works_at = 7;
+ * @return {?proto.seller.WorksAt}
  */
-proto.seller.RegisterRequest.prototype.getPlaceOfWork = function() {
-  return /** @type{?proto.seller.PlaceOfWork} */ (
-    jspb.Message.getWrapperField(this, proto.seller.PlaceOfWork, 7));
+proto.seller.RegisterRequest.prototype.getWorksAt = function() {
+  return /** @type{?proto.seller.WorksAt} */ (
+    jspb.Message.getWrapperField(this, proto.seller.WorksAt, 7));
 };
 
 
 /**
- * @param {?proto.seller.PlaceOfWork|undefined} value
+ * @param {?proto.seller.WorksAt|undefined} value
  * @return {!proto.seller.RegisterRequest} returns this
 */
-proto.seller.RegisterRequest.prototype.setPlaceOfWork = function(value) {
+proto.seller.RegisterRequest.prototype.setWorksAt = function(value) {
   return jspb.Message.setWrapperField(this, 7, value);
 };
 
@@ -1543,8 +1543,8 @@ proto.seller.RegisterRequest.prototype.setPlaceOfWork = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.seller.RegisterRequest} returns this
  */
-proto.seller.RegisterRequest.prototype.clearPlaceOfWork = function() {
-  return this.setPlaceOfWork(undefined);
+proto.seller.RegisterRequest.prototype.clearWorksAt = function() {
+  return this.setWorksAt(undefined);
 };
 
 
@@ -1552,7 +1552,7 @@ proto.seller.RegisterRequest.prototype.clearPlaceOfWork = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.seller.RegisterRequest.prototype.hasPlaceOfWork = function() {
+proto.seller.RegisterRequest.prototype.hasWorksAt = function() {
   return jspb.Message.getField(this, 7) != null;
 };
 
@@ -2166,7 +2166,7 @@ proto.seller.UpdateRequest.toObject = function(includeInstance, msg) {
     birthDate: (f = msg.getBirthDate()) && core_date_pb.Date.toObject(includeInstance, f),
     salary: (f = msg.getSalary()) && core_money_pb.Money.toObject(includeInstance, f),
     phoneNumber: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    placeOfWork: (f = msg.getPlaceOfWork()) && proto.seller.PlaceOfWork.toObject(includeInstance, f)
+    worksAt: (f = msg.getWorksAt()) && proto.seller.WorksAt.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2234,9 +2234,9 @@ proto.seller.UpdateRequest.deserializeBinaryFromReader = function(msg, reader) {
       msg.setPhoneNumber(value);
       break;
     case 8:
-      var value = new proto.seller.PlaceOfWork;
-      reader.readMessage(value,proto.seller.PlaceOfWork.deserializeBinaryFromReader);
-      msg.setPlaceOfWork(value);
+      var value = new proto.seller.WorksAt;
+      reader.readMessage(value,proto.seller.WorksAt.deserializeBinaryFromReader);
+      msg.setWorksAt(value);
       break;
     default:
       reader.skipField();
@@ -2318,12 +2318,12 @@ proto.seller.UpdateRequest.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getPlaceOfWork();
+  f = message.getWorksAt();
   if (f != null) {
     writer.writeMessage(
       8,
       f,
-      proto.seller.PlaceOfWork.serializeBinaryToWriter
+      proto.seller.WorksAt.serializeBinaryToWriter
     );
   }
 };
@@ -2566,20 +2566,20 @@ proto.seller.UpdateRequest.prototype.hasPhoneNumber = function() {
 
 
 /**
- * optional PlaceOfWork place_of_work = 8;
- * @return {?proto.seller.PlaceOfWork}
+ * optional WorksAt works_at = 8;
+ * @return {?proto.seller.WorksAt}
  */
-proto.seller.UpdateRequest.prototype.getPlaceOfWork = function() {
-  return /** @type{?proto.seller.PlaceOfWork} */ (
-    jspb.Message.getWrapperField(this, proto.seller.PlaceOfWork, 8));
+proto.seller.UpdateRequest.prototype.getWorksAt = function() {
+  return /** @type{?proto.seller.WorksAt} */ (
+    jspb.Message.getWrapperField(this, proto.seller.WorksAt, 8));
 };
 
 
 /**
- * @param {?proto.seller.PlaceOfWork|undefined} value
+ * @param {?proto.seller.WorksAt|undefined} value
  * @return {!proto.seller.UpdateRequest} returns this
 */
-proto.seller.UpdateRequest.prototype.setPlaceOfWork = function(value) {
+proto.seller.UpdateRequest.prototype.setWorksAt = function(value) {
   return jspb.Message.setWrapperField(this, 8, value);
 };
 
@@ -2588,8 +2588,8 @@ proto.seller.UpdateRequest.prototype.setPlaceOfWork = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.seller.UpdateRequest} returns this
  */
-proto.seller.UpdateRequest.prototype.clearPlaceOfWork = function() {
-  return this.setPlaceOfWork(undefined);
+proto.seller.UpdateRequest.prototype.clearWorksAt = function() {
+  return this.setWorksAt(undefined);
 };
 
 
@@ -2597,7 +2597,7 @@ proto.seller.UpdateRequest.prototype.clearPlaceOfWork = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.seller.UpdateRequest.prototype.hasPlaceOfWork = function() {
+proto.seller.UpdateRequest.prototype.hasWorksAt = function() {
   return jspb.Message.getField(this, 8) != null;
 };
 

@@ -160,10 +160,10 @@ export class RegisterRequest extends jspb.Message {
   getPhoneNumber(): string;
   setPhoneNumber(value: string): RegisterRequest;
 
-  getPlaceOfWork(): PlaceOfWork | undefined;
-  setPlaceOfWork(value?: PlaceOfWork): RegisterRequest;
-  hasPlaceOfWork(): boolean;
-  clearPlaceOfWork(): RegisterRequest;
+  getWorksAt(): WorksAt | undefined;
+  setWorksAt(value?: WorksAt): RegisterRequest;
+  hasWorksAt(): boolean;
+  clearWorksAt(): RegisterRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RegisterRequest.AsObject;
@@ -181,12 +181,12 @@ export namespace RegisterRequest {
     birthDate?: core_date_pb.Date.AsObject,
     salary?: core_money_pb.Money.AsObject,
     phoneNumber: string,
-    placeOfWork?: PlaceOfWork.AsObject,
+    worksAt?: WorksAt.AsObject,
   }
 
-  export enum PlaceOfWorkCase { 
-    _PLACE_OF_WORK_NOT_SET = 0,
-    PLACE_OF_WORK = 7,
+  export enum WorksAtCase { 
+    _WORKS_AT_NOT_SET = 0,
+    WORKS_AT = 7,
   }
 }
 
@@ -313,10 +313,10 @@ export class UpdateRequest extends jspb.Message {
   hasPhoneNumber(): boolean;
   clearPhoneNumber(): UpdateRequest;
 
-  getPlaceOfWork(): PlaceOfWork | undefined;
-  setPlaceOfWork(value?: PlaceOfWork): UpdateRequest;
-  hasPlaceOfWork(): boolean;
-  clearPlaceOfWork(): UpdateRequest;
+  getWorksAt(): WorksAt | undefined;
+  setWorksAt(value?: WorksAt): UpdateRequest;
+  hasWorksAt(): boolean;
+  clearWorksAt(): UpdateRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateRequest.AsObject;
@@ -335,7 +335,7 @@ export namespace UpdateRequest {
     birthDate?: core_date_pb.Date.AsObject,
     salary?: core_money_pb.Money.AsObject,
     phoneNumber?: string,
-    placeOfWork?: PlaceOfWork.AsObject,
+    worksAt?: WorksAt.AsObject,
   }
 
   export enum FirstNameCase { 
@@ -368,9 +368,9 @@ export namespace UpdateRequest {
     PHONE_NUMBER = 7,
   }
 
-  export enum PlaceOfWorkCase { 
-    _PLACE_OF_WORK_NOT_SET = 0,
-    PLACE_OF_WORK = 8,
+  export enum WorksAtCase { 
+    _WORKS_AT_NOT_SET = 0,
+    WORKS_AT = 8,
   }
 }
 
