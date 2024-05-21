@@ -54,7 +54,7 @@ message RegisterRequest {
   core.Date birth_date = 4;
   core.Money salary = 5;
   string phone_number = 6;
-  optional PlaceOfWork place_of_work = 7;
+  optional WorksAt works_at = 7;
 }
 
 message RegisterResponse {
@@ -86,5 +86,5 @@ message UpdateRequest {
   optional core.Date birth_date = 5;
   optional core.Money salary = 6;
   optional string phone_number = 7;
-  optional PlaceOfWork place_of_work = 8;
+  optional WorksAt works_at = 8;
 }
