@@ -516,6 +516,158 @@ export namespace AddHallResponse {
   }
 }
 
+export class DepartmentStoreRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): DepartmentStoreRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DepartmentStoreRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DepartmentStoreRequest): DepartmentStoreRequest.AsObject;
+  static serializeBinaryToWriter(message: DepartmentStoreRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DepartmentStoreRequest;
+  static deserializeBinaryFromReader(message: DepartmentStoreRequest, reader: jspb.BinaryReader): DepartmentStoreRequest;
+}
+
+export namespace DepartmentStoreRequest {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class DepartmentStoreResponse extends jspb.Message {
+  getDepartmentStore(): DepartmentStore | undefined;
+  setDepartmentStore(value?: DepartmentStore): DepartmentStoreResponse;
+  hasDepartmentStore(): boolean;
+  clearDepartmentStore(): DepartmentStoreResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DepartmentStoreResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: DepartmentStoreResponse): DepartmentStoreResponse.AsObject;
+  static serializeBinaryToWriter(message: DepartmentStoreResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DepartmentStoreResponse;
+  static deserializeBinaryFromReader(message: DepartmentStoreResponse, reader: jspb.BinaryReader): DepartmentStoreResponse;
+}
+
+export namespace DepartmentStoreResponse {
+  export type AsObject = {
+    departmentStore?: DepartmentStore.AsObject,
+  }
+}
+
+export class StoreRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): StoreRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): StoreRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: StoreRequest): StoreRequest.AsObject;
+  static serializeBinaryToWriter(message: StoreRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): StoreRequest;
+  static deserializeBinaryFromReader(message: StoreRequest, reader: jspb.BinaryReader): StoreRequest;
+}
+
+export namespace StoreRequest {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class StoreResponse extends jspb.Message {
+  getStore(): Store | undefined;
+  setStore(value?: Store): StoreResponse;
+  hasStore(): boolean;
+  clearStore(): StoreResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): StoreResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: StoreResponse): StoreResponse.AsObject;
+  static serializeBinaryToWriter(message: StoreResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): StoreResponse;
+  static deserializeBinaryFromReader(message: StoreResponse, reader: jspb.BinaryReader): StoreResponse;
+}
+
+export namespace StoreResponse {
+  export type AsObject = {
+    store?: Store.AsObject,
+  }
+}
+
+export class KioskRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): KioskRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): KioskRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: KioskRequest): KioskRequest.AsObject;
+  static serializeBinaryToWriter(message: KioskRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): KioskRequest;
+  static deserializeBinaryFromReader(message: KioskRequest, reader: jspb.BinaryReader): KioskRequest;
+}
+
+export namespace KioskRequest {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class KioskResponse extends jspb.Message {
+  getKiosk(): Kiosk | undefined;
+  setKiosk(value?: Kiosk): KioskResponse;
+  hasKiosk(): boolean;
+  clearKiosk(): KioskResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): KioskResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: KioskResponse): KioskResponse.AsObject;
+  static serializeBinaryToWriter(message: KioskResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): KioskResponse;
+  static deserializeBinaryFromReader(message: KioskResponse, reader: jspb.BinaryReader): KioskResponse;
+}
+
+export namespace KioskResponse {
+  export type AsObject = {
+    kiosk?: Kiosk.AsObject,
+  }
+}
+
+export class TrayRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): TrayRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TrayRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: TrayRequest): TrayRequest.AsObject;
+  static serializeBinaryToWriter(message: TrayRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TrayRequest;
+  static deserializeBinaryFromReader(message: TrayRequest, reader: jspb.BinaryReader): TrayRequest;
+}
+
+export namespace TrayRequest {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class TrayResponse extends jspb.Message {
+  getTray(): Tray | undefined;
+  setTray(value?: Tray): TrayResponse;
+  hasTray(): boolean;
+  clearTray(): TrayResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TrayResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: TrayResponse): TrayResponse.AsObject;
+  static serializeBinaryToWriter(message: TrayResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TrayResponse;
+  static deserializeBinaryFromReader(message: TrayResponse, reader: jspb.BinaryReader): TrayResponse;
+}
+
+export namespace TrayResponse {
+  export type AsObject = {
+    tray?: Tray.AsObject,
+  }
+}
+
 export enum TradingPointType { 
   TRADING_POINT_STORE = 0,
   TRADING_POINT_DEPARTMENT_STORE = 1,
