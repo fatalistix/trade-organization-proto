@@ -69,9 +69,11 @@ enum WorksAtFilterType {
 
 message ListRequest {
   WorksAtFilterType works_at_filter = 1;
-  optional TradingPoint trading_point = 2;
-  optional PlaceOfWork place_of_work = 3;
-  optional string search = 4;
+  optional int32 trading_point_id = 2;
+  optional tradingpoint.TradingPointType trading_point_type = 3;
+  optional int32 place_of_work_id = 4;
+  optional tradingpoint.PlaceOfWorkType place_of_work_type = 5;
+  optional string search = 6;
 }
 
 message ListResponse {
