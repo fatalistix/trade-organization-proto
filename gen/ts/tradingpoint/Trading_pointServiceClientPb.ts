@@ -125,5 +125,91 @@ export class TradingPointServiceClient {
     this.methodDescriptorList);
   }
 
+  methodDescriptorAddSection = new grpcWeb.MethodDescriptor(
+    '/tradingpoint.TradingPointService/AddSection',
+    grpcWeb.MethodType.UNARY,
+    tradingpoint_trading_point_pb.AddSectionRequest,
+    tradingpoint_trading_point_pb.AddSectionResponse,
+    (request: tradingpoint_trading_point_pb.AddSectionRequest) => {
+      return request.serializeBinary();
+    },
+    tradingpoint_trading_point_pb.AddSectionResponse.deserializeBinary
+  );
+
+  addSection(
+    request: tradingpoint_trading_point_pb.AddSectionRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<tradingpoint_trading_point_pb.AddSectionResponse>;
+
+  addSection(
+    request: tradingpoint_trading_point_pb.AddSectionRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: tradingpoint_trading_point_pb.AddSectionResponse) => void): grpcWeb.ClientReadableStream<tradingpoint_trading_point_pb.AddSectionResponse>;
+
+  addSection(
+    request: tradingpoint_trading_point_pb.AddSectionRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: tradingpoint_trading_point_pb.AddSectionResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/tradingpoint.TradingPointService/AddSection',
+        request,
+        metadata || {},
+        this.methodDescriptorAddSection,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/tradingpoint.TradingPointService/AddSection',
+    request,
+    metadata || {},
+    this.methodDescriptorAddSection);
+  }
+
+  methodDescriptorAddHall = new grpcWeb.MethodDescriptor(
+    '/tradingpoint.TradingPointService/AddHall',
+    grpcWeb.MethodType.UNARY,
+    tradingpoint_trading_point_pb.AddHallRequest,
+    tradingpoint_trading_point_pb.AddHallResponse,
+    (request: tradingpoint_trading_point_pb.AddHallRequest) => {
+      return request.serializeBinary();
+    },
+    tradingpoint_trading_point_pb.AddHallResponse.deserializeBinary
+  );
+
+  addHall(
+    request: tradingpoint_trading_point_pb.AddHallRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<tradingpoint_trading_point_pb.AddHallResponse>;
+
+  addHall(
+    request: tradingpoint_trading_point_pb.AddHallRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: tradingpoint_trading_point_pb.AddHallResponse) => void): grpcWeb.ClientReadableStream<tradingpoint_trading_point_pb.AddHallResponse>;
+
+  addHall(
+    request: tradingpoint_trading_point_pb.AddHallRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: tradingpoint_trading_point_pb.AddHallResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/tradingpoint.TradingPointService/AddHall',
+        request,
+        metadata || {},
+        this.methodDescriptorAddHall,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/tradingpoint.TradingPointService/AddHall',
+    request,
+    metadata || {},
+    this.methodDescriptorAddHall);
+  }
+
 }
 

@@ -24,6 +24,8 @@ const _ = grpc.SupportPackageIsVersion7
 type TradingPointServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
+	AddSection(ctx context.Context, in *AddSectionRequest, opts ...grpc.CallOption) (*AddSectionResponse, error)
+	AddHall(ctx context.Context, in *AddHallRequest, opts ...grpc.CallOption) (*AddHallResponse, error)
 }
 
 type tradingPointServiceClient struct {
@@ -52,12 +54,32 @@ func (c *tradingPointServiceClient) List(ctx context.Context, in *ListRequest, o
 	return out, nil
 }
 
+func (c *tradingPointServiceClient) AddSection(ctx context.Context, in *AddSectionRequest, opts ...grpc.CallOption) (*AddSectionResponse, error) {
+	out := new(AddSectionResponse)
+	err := c.cc.Invoke(ctx, "/tradingpoint.TradingPointService/AddSection", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tradingPointServiceClient) AddHall(ctx context.Context, in *AddHallRequest, opts ...grpc.CallOption) (*AddHallResponse, error) {
+	out := new(AddHallResponse)
+	err := c.cc.Invoke(ctx, "/tradingpoint.TradingPointService/AddHall", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TradingPointServiceServer is the server API for TradingPointService service.
 // All implementations must embed UnimplementedTradingPointServiceServer
 // for forward compatibility
 type TradingPointServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	List(context.Context, *ListRequest) (*ListResponse, error)
+	AddSection(context.Context, *AddSectionRequest) (*AddSectionResponse, error)
+	AddHall(context.Context, *AddHallRequest) (*AddHallResponse, error)
 	mustEmbedUnimplementedTradingPointServiceServer()
 }
 
@@ -70,6 +92,12 @@ func (UnimplementedTradingPointServiceServer) Register(context.Context, *Registe
 }
 func (UnimplementedTradingPointServiceServer) List(context.Context, *ListRequest) (*ListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+}
+func (UnimplementedTradingPointServiceServer) AddSection(context.Context, *AddSectionRequest) (*AddSectionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddSection not implemented")
+}
+func (UnimplementedTradingPointServiceServer) AddHall(context.Context, *AddHallRequest) (*AddHallResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddHall not implemented")
 }
 func (UnimplementedTradingPointServiceServer) mustEmbedUnimplementedTradingPointServiceServer() {}
 
@@ -120,6 +148,42 @@ func _TradingPointService_List_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TradingPointService_AddSection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddSectionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TradingPointServiceServer).AddSection(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tradingpoint.TradingPointService/AddSection",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TradingPointServiceServer).AddSection(ctx, req.(*AddSectionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TradingPointService_AddHall_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddHallRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TradingPointServiceServer).AddHall(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tradingpoint.TradingPointService/AddHall",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TradingPointServiceServer).AddHall(ctx, req.(*AddHallRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // TradingPointService_ServiceDesc is the grpc.ServiceDesc for TradingPointService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -134,6 +198,14 @@ var TradingPointService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "List",
 			Handler:    _TradingPointService_List_Handler,
+		},
+		{
+			MethodName: "AddSection",
+			Handler:    _TradingPointService_AddSection_Handler,
+		},
+		{
+			MethodName: "AddHall",
+			Handler:    _TradingPointService_AddHall_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
