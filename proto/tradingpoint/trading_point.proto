@@ -113,6 +113,10 @@ service TradingPointService {
     rpc List(ListRequest) returns (ListResponse);
     rpc AddSection(AddSectionRequest) returns (AddSectionResponse);
     rpc AddHall(AddHallRequest) returns (AddHallResponse);
+    rpc DepartmentStore(DepartmentStoreRequest) returns (DepartmentStoreResponse);
+    rpc Store(StoreRequest) returns (StoreResponse);
+    rpc Kiosk(KioskRequest) returns (KioskResponse);
+    rpc Tray(TrayRequest) returns (TrayResponse);
 }
 
 message RegisterRequest {
@@ -152,4 +156,36 @@ message AddHallRequest {
 
 message AddHallResponse {
     int32 id = 1;
+}
+
+message DepartmentStoreRequest {
+    int32 id = 1;
+}
+
+message DepartmentStoreResponse {
+    DepartmentStore department_store = 1;
+}
+
+message StoreRequest {
+    int32 id = 1;
+}
+
+message StoreResponse {
+    Store store = 1;
+}
+
+message KioskRequest {
+    int32 id = 1;
+}
+
+message KioskResponse {
+    Kiosk kiosk = 1;
+}
+
+message TrayRequest {
+    int32 id = 1;
+}
+
+message TrayResponse {
+    Tray tray = 1;
 }
