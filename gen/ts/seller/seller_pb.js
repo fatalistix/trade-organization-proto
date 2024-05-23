@@ -1720,9 +1720,11 @@ proto.seller.ListRequest.prototype.toObject = function(opt_includeInstance) {
 proto.seller.ListRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     worksAtFilter: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    tradingPoint: (f = msg.getTradingPoint()) && proto.seller.TradingPoint.toObject(includeInstance, f),
-    placeOfWork: (f = msg.getPlaceOfWork()) && proto.seller.PlaceOfWork.toObject(includeInstance, f),
-    search: jspb.Message.getFieldWithDefault(msg, 4, "")
+    tradingPointId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    tradingPointType: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    placeOfWorkId: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    placeOfWorkType: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    search: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -1764,16 +1766,22 @@ proto.seller.ListRequest.deserializeBinaryFromReader = function(msg, reader) {
       msg.setWorksAtFilter(value);
       break;
     case 2:
-      var value = new proto.seller.TradingPoint;
-      reader.readMessage(value,proto.seller.TradingPoint.deserializeBinaryFromReader);
-      msg.setTradingPoint(value);
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTradingPointId(value);
       break;
     case 3:
-      var value = new proto.seller.PlaceOfWork;
-      reader.readMessage(value,proto.seller.PlaceOfWork.deserializeBinaryFromReader);
-      msg.setPlaceOfWork(value);
+      var value = /** @type {!proto.tradingpoint.TradingPointType} */ (reader.readEnum());
+      msg.setTradingPointType(value);
       break;
     case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setPlaceOfWorkId(value);
+      break;
+    case 5:
+      var value = /** @type {!proto.tradingpoint.PlaceOfWorkType} */ (reader.readEnum());
+      msg.setPlaceOfWorkType(value);
+      break;
+    case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setSearch(value);
       break;
@@ -1813,26 +1821,38 @@ proto.seller.ListRequest.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getTradingPoint();
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeInt32(
       2,
-      f,
-      proto.seller.TradingPoint.serializeBinaryToWriter
+      f
     );
   }
-  f = message.getPlaceOfWork();
+  f = /** @type {!proto.tradingpoint.TradingPointType} */ (jspb.Message.getField(message, 3));
   if (f != null) {
-    writer.writeMessage(
+    writer.writeEnum(
       3,
-      f,
-      proto.seller.PlaceOfWork.serializeBinaryToWriter
+      f
     );
   }
-  f = /** @type {string} */ (jspb.Message.getField(message, 4));
+  f = /** @type {number} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
+  f = /** @type {!proto.tradingpoint.PlaceOfWorkType} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeEnum(
+      5,
+      f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 6));
   if (f != null) {
     writer.writeString(
-      4,
+      6,
       f
     );
   }
@@ -1858,30 +1878,29 @@ proto.seller.ListRequest.prototype.setWorksAtFilter = function(value) {
 
 
 /**
- * optional TradingPoint trading_point = 2;
- * @return {?proto.seller.TradingPoint}
+ * optional int32 trading_point_id = 2;
+ * @return {number}
  */
-proto.seller.ListRequest.prototype.getTradingPoint = function() {
-  return /** @type{?proto.seller.TradingPoint} */ (
-    jspb.Message.getWrapperField(this, proto.seller.TradingPoint, 2));
+proto.seller.ListRequest.prototype.getTradingPointId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {?proto.seller.TradingPoint|undefined} value
+ * @param {number} value
  * @return {!proto.seller.ListRequest} returns this
-*/
-proto.seller.ListRequest.prototype.setTradingPoint = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+ */
+proto.seller.ListRequest.prototype.setTradingPointId = function(value) {
+  return jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.seller.ListRequest} returns this
  */
-proto.seller.ListRequest.prototype.clearTradingPoint = function() {
-  return this.setTradingPoint(undefined);
+proto.seller.ListRequest.prototype.clearTradingPointId = function() {
+  return jspb.Message.setField(this, 2, undefined);
 };
 
 
@@ -1889,36 +1908,35 @@ proto.seller.ListRequest.prototype.clearTradingPoint = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.seller.ListRequest.prototype.hasTradingPoint = function() {
+proto.seller.ListRequest.prototype.hasTradingPointId = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 
 
 /**
- * optional PlaceOfWork place_of_work = 3;
- * @return {?proto.seller.PlaceOfWork}
+ * optional tradingpoint.TradingPointType trading_point_type = 3;
+ * @return {!proto.tradingpoint.TradingPointType}
  */
-proto.seller.ListRequest.prototype.getPlaceOfWork = function() {
-  return /** @type{?proto.seller.PlaceOfWork} */ (
-    jspb.Message.getWrapperField(this, proto.seller.PlaceOfWork, 3));
+proto.seller.ListRequest.prototype.getTradingPointType = function() {
+  return /** @type {!proto.tradingpoint.TradingPointType} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {?proto.seller.PlaceOfWork|undefined} value
+ * @param {!proto.tradingpoint.TradingPointType} value
  * @return {!proto.seller.ListRequest} returns this
-*/
-proto.seller.ListRequest.prototype.setPlaceOfWork = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
+ */
+proto.seller.ListRequest.prototype.setTradingPointType = function(value) {
+  return jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * Clears the field making it undefined.
  * @return {!proto.seller.ListRequest} returns this
  */
-proto.seller.ListRequest.prototype.clearPlaceOfWork = function() {
-  return this.setPlaceOfWork(undefined);
+proto.seller.ListRequest.prototype.clearTradingPointType = function() {
+  return jspb.Message.setField(this, 3, undefined);
 };
 
 
@@ -1926,25 +1944,25 @@ proto.seller.ListRequest.prototype.clearPlaceOfWork = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.seller.ListRequest.prototype.hasPlaceOfWork = function() {
+proto.seller.ListRequest.prototype.hasTradingPointType = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 
 
 /**
- * optional string search = 4;
- * @return {string}
+ * optional int32 place_of_work_id = 4;
+ * @return {number}
  */
-proto.seller.ListRequest.prototype.getSearch = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+proto.seller.ListRequest.prototype.getPlaceOfWorkId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.seller.ListRequest} returns this
  */
-proto.seller.ListRequest.prototype.setSearch = function(value) {
+proto.seller.ListRequest.prototype.setPlaceOfWorkId = function(value) {
   return jspb.Message.setField(this, 4, value);
 };
 
@@ -1953,7 +1971,7 @@ proto.seller.ListRequest.prototype.setSearch = function(value) {
  * Clears the field making it undefined.
  * @return {!proto.seller.ListRequest} returns this
  */
-proto.seller.ListRequest.prototype.clearSearch = function() {
+proto.seller.ListRequest.prototype.clearPlaceOfWorkId = function() {
   return jspb.Message.setField(this, 4, undefined);
 };
 
@@ -1962,8 +1980,80 @@ proto.seller.ListRequest.prototype.clearSearch = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.seller.ListRequest.prototype.hasSearch = function() {
+proto.seller.ListRequest.prototype.hasPlaceOfWorkId = function() {
   return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional tradingpoint.PlaceOfWorkType place_of_work_type = 5;
+ * @return {!proto.tradingpoint.PlaceOfWorkType}
+ */
+proto.seller.ListRequest.prototype.getPlaceOfWorkType = function() {
+  return /** @type {!proto.tradingpoint.PlaceOfWorkType} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {!proto.tradingpoint.PlaceOfWorkType} value
+ * @return {!proto.seller.ListRequest} returns this
+ */
+proto.seller.ListRequest.prototype.setPlaceOfWorkType = function(value) {
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.seller.ListRequest} returns this
+ */
+proto.seller.ListRequest.prototype.clearPlaceOfWorkType = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.seller.ListRequest.prototype.hasPlaceOfWorkType = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional string search = 6;
+ * @return {string}
+ */
+proto.seller.ListRequest.prototype.getSearch = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.seller.ListRequest} returns this
+ */
+proto.seller.ListRequest.prototype.setSearch = function(value) {
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.seller.ListRequest} returns this
+ */
+proto.seller.ListRequest.prototype.clearSearch = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.seller.ListRequest.prototype.hasSearch = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 

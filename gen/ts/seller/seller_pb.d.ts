@@ -212,15 +212,25 @@ export class ListRequest extends jspb.Message {
   getWorksAtFilter(): WorksAtFilterType;
   setWorksAtFilter(value: WorksAtFilterType): ListRequest;
 
-  getTradingPoint(): TradingPoint | undefined;
-  setTradingPoint(value?: TradingPoint): ListRequest;
-  hasTradingPoint(): boolean;
-  clearTradingPoint(): ListRequest;
+  getTradingPointId(): number;
+  setTradingPointId(value: number): ListRequest;
+  hasTradingPointId(): boolean;
+  clearTradingPointId(): ListRequest;
 
-  getPlaceOfWork(): PlaceOfWork | undefined;
-  setPlaceOfWork(value?: PlaceOfWork): ListRequest;
-  hasPlaceOfWork(): boolean;
-  clearPlaceOfWork(): ListRequest;
+  getTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
+  setTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): ListRequest;
+  hasTradingPointType(): boolean;
+  clearTradingPointType(): ListRequest;
+
+  getPlaceOfWorkId(): number;
+  setPlaceOfWorkId(value: number): ListRequest;
+  hasPlaceOfWorkId(): boolean;
+  clearPlaceOfWorkId(): ListRequest;
+
+  getPlaceOfWorkType(): tradingpoint_trading_point_pb.PlaceOfWorkType;
+  setPlaceOfWorkType(value: tradingpoint_trading_point_pb.PlaceOfWorkType): ListRequest;
+  hasPlaceOfWorkType(): boolean;
+  clearPlaceOfWorkType(): ListRequest;
 
   getSearch(): string;
   setSearch(value: string): ListRequest;
@@ -238,24 +248,36 @@ export class ListRequest extends jspb.Message {
 export namespace ListRequest {
   export type AsObject = {
     worksAtFilter: WorksAtFilterType,
-    tradingPoint?: TradingPoint.AsObject,
-    placeOfWork?: PlaceOfWork.AsObject,
+    tradingPointId?: number,
+    tradingPointType?: tradingpoint_trading_point_pb.TradingPointType,
+    placeOfWorkId?: number,
+    placeOfWorkType?: tradingpoint_trading_point_pb.PlaceOfWorkType,
     search?: string,
   }
 
-  export enum TradingPointCase { 
-    _TRADING_POINT_NOT_SET = 0,
-    TRADING_POINT = 2,
+  export enum TradingPointIdCase { 
+    _TRADING_POINT_ID_NOT_SET = 0,
+    TRADING_POINT_ID = 2,
   }
 
-  export enum PlaceOfWorkCase { 
-    _PLACE_OF_WORK_NOT_SET = 0,
-    PLACE_OF_WORK = 3,
+  export enum TradingPointTypeCase { 
+    _TRADING_POINT_TYPE_NOT_SET = 0,
+    TRADING_POINT_TYPE = 3,
+  }
+
+  export enum PlaceOfWorkIdCase { 
+    _PLACE_OF_WORK_ID_NOT_SET = 0,
+    PLACE_OF_WORK_ID = 4,
+  }
+
+  export enum PlaceOfWorkTypeCase { 
+    _PLACE_OF_WORK_TYPE_NOT_SET = 0,
+    PLACE_OF_WORK_TYPE = 5,
   }
 
   export enum SearchCase { 
     _SEARCH_NOT_SET = 0,
-    SEARCH = 4,
+    SEARCH = 6,
   }
 }
 
