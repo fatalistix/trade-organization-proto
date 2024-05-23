@@ -24,15 +24,95 @@ enum TradingPointType {
     TRADING_POINT_TRAY = 3;
 }
 
+message PlaceOfWork {
+    int32 id = 1;
+    PlaceOfWorkType type = 2;
+}
+
 enum PlaceOfWorkType {
     PLACE_OF_WORK_HALL = 0;
     PLACE_OF_WORK_KIOSK = 1;
     PLACE_OF_WORK_TRAY = 2;
 }
 
+message HallContainer {
+    int32 id = 1;
+    HallContainerType type = 2;
+}
+
+enum HallContainerType {
+    HALL_CONTAINER_SECTION = 0;
+    HALL_CONTAINER_STORE = 1;
+}
+
+message ReceiptingPointWithAccounting {
+    int32 id = 1;
+    ReceiptingPointWithAccountingType type = 2;
+}
+
+enum ReceiptingPointWithAccountingType {
+    RECEIPTING_POINT_WITH_ACCOUNTING_DEPARTMENT_STORE = 0;
+    RECEIPTING_POINT_WITH_ACCOUNTING_STORE = 1;
+}
+
+message ReceiptingPointWithoutAccounting {
+    int32 id = 1;
+    ReceiptingPointWithoutAccountingType type = 2;
+}
+
+enum ReceiptingPointWithoutAccountingType {
+    RECEIPTING_POINT_WITHOUT_ACCOUNTING_KIOSK = 0;
+    RECEIPTING_POINT_WITHOUT_ACCOUNTING_TRAY = 1;
+}
+
+message Hall {
+    int32 id = 1;
+    int32 hall_container_id = 2;
+    HallContainerType hall_container_type = 3;
+    int32 trading_point_id = 4;
+    TradingPointType trading_point_type = 5;
+}
+
+message Section {
+    int32 id = 1;
+    int32 department_store_id = 2;
+}
+
+message DepartmentStore {
+    int32 id = 1;
+    TradingPoint trading_point = 2;
+    ReceiptingPointWithAccounting receipting_point_with_accounting = 3;
+    repeated Section sections = 4;
+    repeated Hall halls = 5;
+}
+
+message Store {
+    int32 id = 1;
+    TradingPoint trading_point = 2;
+    ReceiptingPointWithAccounting receipting_point_with_accounting = 3;
+    HallContainer hall_container = 4;
+    repeated Hall halls = 5;
+}
+
+message Kiosk {
+    int32 id = 1;
+    TradingPoint trading_point = 2;
+    ReceiptingPointWithoutAccounting receipting_point_without_accounting = 3;
+    PlaceOfWork place_of_work = 4;
+}
+
+message Tray {
+    int32 id = 1;
+    TradingPoint trading_point = 2;
+    ReceiptingPointWithoutAccounting receipting_point_without_accounting = 3;
+    PlaceOfWork place_of_work = 4;
+}
+
 service TradingPointService {
     rpc Register(RegisterRequest) returns (RegisterResponse);
     rpc List(ListRequest) returns (ListResponse);
+    rpc AddSection(AddSectionRequest) returns (AddSectionResponse);
+    rpc AddHall(AddHallRequest) returns (AddHallResponse);
 }
 
 message RegisterRequest {
@@ -53,4 +133,23 @@ message ListRequest {
 
 message ListResponse {
     repeated TradingPoint trading_points = 1;
+}
+
+message AddSectionRequest {
+    int32 department_store_id = 1;
+}
+
+message AddSectionResponse {
+    int32 id = 1;
+}
+
+message AddHallRequest {
+    int32 hall_container_id = 1;
+    HallContainerType hall_container_type = 2;
+    int32 trading_point_id = 3;
+    TradingPointType trading_point_type = 4;
+}
+
+message AddHallResponse {
+    int32 id = 1;
 }
