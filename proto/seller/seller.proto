@@ -88,5 +88,9 @@ message UpdateRequest {
   optional core.Date birth_date = 5;
   optional core.Money salary = 6;
   optional string phone_number = 7;
-  optional WorksAt works_at = 8;
+  optional NewWorksAt works_at = 8;
+}
+
+message NewWorksAt {
+  optional WorksAt works_at = 1;
 }
