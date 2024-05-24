@@ -335,8 +335,8 @@ export class UpdateRequest extends jspb.Message {
   hasPhoneNumber(): boolean;
   clearPhoneNumber(): UpdateRequest;
 
-  getWorksAt(): WorksAt | undefined;
-  setWorksAt(value?: WorksAt): UpdateRequest;
+  getWorksAt(): NewWorksAt | undefined;
+  setWorksAt(value?: NewWorksAt): UpdateRequest;
   hasWorksAt(): boolean;
   clearWorksAt(): UpdateRequest;
 
@@ -357,7 +357,7 @@ export namespace UpdateRequest {
     birthDate?: core_date_pb.Date.AsObject,
     salary?: core_money_pb.Money.AsObject,
     phoneNumber?: string,
-    worksAt?: WorksAt.AsObject,
+    worksAt?: NewWorksAt.AsObject,
   }
 
   export enum FirstNameCase { 
@@ -393,6 +393,31 @@ export namespace UpdateRequest {
   export enum WorksAtCase { 
     _WORKS_AT_NOT_SET = 0,
     WORKS_AT = 8,
+  }
+}
+
+export class NewWorksAt extends jspb.Message {
+  getWorksAt(): WorksAt | undefined;
+  setWorksAt(value?: WorksAt): NewWorksAt;
+  hasWorksAt(): boolean;
+  clearWorksAt(): NewWorksAt;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): NewWorksAt.AsObject;
+  static toObject(includeInstance: boolean, msg: NewWorksAt): NewWorksAt.AsObject;
+  static serializeBinaryToWriter(message: NewWorksAt, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): NewWorksAt;
+  static deserializeBinaryFromReader(message: NewWorksAt, reader: jspb.BinaryReader): NewWorksAt;
+}
+
+export namespace NewWorksAt {
+  export type AsObject = {
+    worksAt?: WorksAt.AsObject,
+  }
+
+  export enum WorksAtCase { 
+    _WORKS_AT_NOT_SET = 0,
+    WORKS_AT = 1,
   }
 }
 
