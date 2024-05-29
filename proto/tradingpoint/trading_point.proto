@@ -5,8 +5,7 @@ package tradingpoint;
 option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/tradingpoint;tradingpoint";
 
 import "core/money.proto";
-
-import "google/protobuf/empty.proto";
+import "product/product.proto";
 
 message TradingPoint {
     int32 id = 1;
@@ -22,6 +21,12 @@ enum TradingPointType {
     TRADING_POINT_DEPARTMENT_STORE = 1;
     TRADING_POINT_KIOSK = 2;
     TRADING_POINT_TRAY = 3;
+}
+
+message ProductTradingPoint {
+    int32 quantity = 1;
+    core.Money price = 2;
+    product.Product product = 3;
 }
 
 message PlaceOfWork {
@@ -117,6 +122,8 @@ service TradingPointService {
     rpc Store(StoreRequest) returns (StoreResponse);
     rpc Kiosk(KioskRequest) returns (KioskResponse);
     rpc Tray(TrayRequest) returns (TrayResponse);
+//    rpc PayUtilityService(PayUtilityServiceRequest) returns (PayUtilityServiceResponse);
+//    rpc PayRentalCharge(PayRentalChargeRequest) returns (PayRentalChargeResponse);
 }
 
 message RegisterRequest {
