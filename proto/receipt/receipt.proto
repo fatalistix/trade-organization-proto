@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package receipt;
+
+option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/receipt;receipt";
+
+import "google/protobuf/timestamp.proto";
+
+import "core/money.proto";
+import "product/product.proto";
+import "tradingpoint/trading_point.proto";
+
+message Receipt {
+  int32 id = 1;
+  ReceiptType type = 2;
+  google.protobuf.Timestamp created_at = 3;
+  int32 seller_id = 4;
+  repeated ReceiptProduct products = 5;
+}
+
+enum ReceiptType {
+  RECEIPT_TYPE_RECEIPT_WITH_ACCOUNTING = 0;
+  RECEIPT_TYPE_RECEIPT_WITHOUT_ACCOUNTING = 1;
+}
+
+message ReceiptProduct {
+  int32 quantity = 2;
+  core.Money price = 3;
+  product.Product product = 4;
+}
+
+message ReceiptWithAccounting {
+  int32 id = 1;
+  int32 customer_id = 2;
+  int32 receipting_point_with_accounting_id = 3;
+  tradingpoint.ReceiptingPointWithAccountingType receipting_point_with_accounting_type = 4;
+}
+
+message ReceiptWithoutAccounting {
+  int32 id = 1;
+  int32 receipting_point_without_accounting_id = 2;
+  tradingpoint.ReceiptingPointWithoutAccountingType receipting_point_without_accounting_type = 3;
+}
+
+service ReceiptService {
+  rpc CreateWithAccounting(CreateWithAccountingRequest) returns (CreateWithAccountingResponse);
+  rpc CreateWithoutAccounting(CreateWithoutAccountingRequest) returns (CreateWithoutAccountingResponse);
+}
+
+message CreateWithAccountingRequest {
+  int32 seller_id = 1;
+  repeated ReceiptProduct products = 2;
+  int32 customer_id = 3;
+  int32 receipting_point_with_accounting_id = 4;
+  tradingpoint.ReceiptingPointWithAccountingType receipting_point_with_accounting_type = 5;
+}
+
+message CreateWithAccountingResponse {
+  int32 id = 1;
+}
+
+message CreateWithoutAccountingRequest {
+  int32 seller_id = 1;
+  repeated ReceiptProduct products = 2;
+  int32 receipting_point_without_accounting_id = 3;
+  tradingpoint.ReceiptingPointWithoutAccountingType receipting_point_without_accounting_type = 4;
+}
+
+message CreateWithoutAccountingResponse {
+  int32 id = 1;
+}
