@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package supplier;
+
+option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/application;application";
+
+import "google/protobuf/timestamp.proto";
+
+import "product/product.proto";
+import "tradingpoint/trading_point.proto";
+
+message Application {
+  int32 id = 1;
+  int32 trading_point_id = 2;
+  tradingpoint.TradingPointType trading_point_type = 3;
+  google.protobuf.Timestamp created_at = 4;
+  repeated ProductApplication products = 5;
+}
+
+message ProductApplication {
+  int32 quantity = 1;
+  product.Product product = 2;
+}
+
+service ApplicationService {
+  rpc Create(CreateRequest) returns (CreateResponse);
+//  rpc List(ListRequest) returns (ListResponse);
+}
+
+message CreateRequest {
+  int32 trading_point_id = 1;
+  tradingpoint.TradingPointType trading_point_type = 2;
+  repeated ProductApplication products = 3;
+}
+
+message CreateResponse {
+  int32 id = 1;
+}
