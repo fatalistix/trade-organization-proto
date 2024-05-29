@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/product;product";
+
+message Product {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+service ProductService {
+  rpc Create(CreateRequest) returns (CreateResponse);
+//  rpc Update(UpdateRequest) returns (UpdateResponse);
+}
+
+message CreateRequest {
+  string name = 1;
+  string description = 2;
+}
+
+message CreateResponse {
+  int32 id = 1;
+}
