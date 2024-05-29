@@ -17,7 +17,6 @@
 
 import * as grpcWeb from 'grpc-web';
 
-import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb'; // proto import: "google/protobuf/empty.proto"
 import * as seller_seller_pb from '../seller/seller_pb'; // proto import: "seller/seller.proto"
 
 
@@ -130,28 +129,28 @@ export class SellerServiceClient {
     '/seller.SellerService/Update',
     grpcWeb.MethodType.UNARY,
     seller_seller_pb.UpdateRequest,
-    google_protobuf_empty_pb.Empty,
+    seller_seller_pb.UpdateResponse,
     (request: seller_seller_pb.UpdateRequest) => {
       return request.serializeBinary();
     },
-    google_protobuf_empty_pb.Empty.deserializeBinary
+    seller_seller_pb.UpdateResponse.deserializeBinary
   );
 
   update(
     request: seller_seller_pb.UpdateRequest,
-    metadata?: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+    metadata?: grpcWeb.Metadata | null): Promise<seller_seller_pb.UpdateResponse>;
 
   update(
     request: seller_seller_pb.UpdateRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+               response: seller_seller_pb.UpdateResponse) => void): grpcWeb.ClientReadableStream<seller_seller_pb.UpdateResponse>;
 
   update(
     request: seller_seller_pb.UpdateRequest,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: google_protobuf_empty_pb.Empty) => void) {
+               response: seller_seller_pb.UpdateResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +

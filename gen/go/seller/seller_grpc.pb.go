@@ -11,7 +11,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -25,7 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 type SellerServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
-	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 }
 
 type sellerServiceClient struct {
@@ -54,8 +53,8 @@ func (c *sellerServiceClient) List(ctx context.Context, in *ListRequest, opts ..
 	return out, nil
 }
 
-func (c *sellerServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
+func (c *sellerServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
+	out := new(UpdateResponse)
 	err := c.cc.Invoke(ctx, "/seller.SellerService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -69,7 +68,7 @@ func (c *sellerServiceClient) Update(ctx context.Context, in *UpdateRequest, opt
 type SellerServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	List(context.Context, *ListRequest) (*ListResponse, error)
-	Update(context.Context, *UpdateRequest) (*emptypb.Empty, error)
+	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
 	mustEmbedUnimplementedSellerServiceServer()
 }
 
@@ -83,7 +82,7 @@ func (UnimplementedSellerServiceServer) Register(context.Context, *RegisterReque
 func (UnimplementedSellerServiceServer) List(context.Context, *ListRequest) (*ListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (UnimplementedSellerServiceServer) Update(context.Context, *UpdateRequest) (*emptypb.Empty, error) {
+func (UnimplementedSellerServiceServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
 func (UnimplementedSellerServiceServer) mustEmbedUnimplementedSellerServiceServer() {}

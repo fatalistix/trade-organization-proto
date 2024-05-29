@@ -1,7 +1,7 @@
 import * as jspb from 'google-protobuf'
 
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
-import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb'; // proto import: "google/protobuf/empty.proto"
+import * as product_product_pb from '../product/product_pb'; // proto import: "product/product.proto"
 
 
 export class TradingPoint extends jspb.Message {
@@ -41,6 +41,36 @@ export namespace TradingPoint {
     rentalCharge?: core_money_pb.Money.AsObject,
     counterCount: number,
     address: string,
+  }
+}
+
+export class ProductTradingPoint extends jspb.Message {
+  getQuantity(): number;
+  setQuantity(value: number): ProductTradingPoint;
+
+  getPrice(): core_money_pb.Money | undefined;
+  setPrice(value?: core_money_pb.Money): ProductTradingPoint;
+  hasPrice(): boolean;
+  clearPrice(): ProductTradingPoint;
+
+  getProduct(): product_product_pb.Product | undefined;
+  setProduct(value?: product_product_pb.Product): ProductTradingPoint;
+  hasProduct(): boolean;
+  clearProduct(): ProductTradingPoint;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ProductTradingPoint.AsObject;
+  static toObject(includeInstance: boolean, msg: ProductTradingPoint): ProductTradingPoint.AsObject;
+  static serializeBinaryToWriter(message: ProductTradingPoint, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ProductTradingPoint;
+  static deserializeBinaryFromReader(message: ProductTradingPoint, reader: jspb.BinaryReader): ProductTradingPoint;
+}
+
+export namespace ProductTradingPoint {
+  export type AsObject = {
+    quantity: number,
+    price?: core_money_pb.Money.AsObject,
+    product?: product_product_pb.Product.AsObject,
   }
 }
 

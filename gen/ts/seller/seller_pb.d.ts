@@ -421,6 +421,24 @@ export namespace NewWorksAt {
   }
 }
 
+export class UpdateResponse extends jspb.Message {
+  getId(): number;
+  setId(value: number): UpdateResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateResponse): UpdateResponse.AsObject;
+  static serializeBinaryToWriter(message: UpdateResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateResponse;
+  static deserializeBinaryFromReader(message: UpdateResponse, reader: jspb.BinaryReader): UpdateResponse;
+}
+
+export namespace UpdateResponse {
+  export type AsObject = {
+    id: number,
+  }
+}
+
 export enum SellerStatus { 
   SELLER_STATUS_WORKING = 0,
   SELLER_STATUS_NOT_WORKING = 1,
