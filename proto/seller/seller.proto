@@ -21,6 +21,11 @@ message Seller {
   optional WorksAt works_at = 9;
 }
 
+enum SellerStatus {
+  SELLER_STATUS_WORKING = 0;
+  SELLER_STATUS_NOT_WORKING = 1;
+}
+
 message WorksAt {
   PlaceOfWork place_of_work = 1;
   TradingPoint trading_point = 2;
@@ -36,15 +41,10 @@ message TradingPoint {
   tradingpoint.TradingPointType type = 2;
 }
 
-enum SellerStatus {
-  SELLER_STATUS_WORKING = 0;
-  SELLER_STATUS_NOT_WORKING = 1;
-}
-
 service SellerService {
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc List(ListRequest) returns (ListResponse);
-  rpc Update(UpdateRequest) returns (google.protobuf.Empty);
+  rpc Update(UpdateRequest) returns (UpdateResponse);
 }
 
 message RegisterRequest {
@@ -93,4 +93,8 @@ message UpdateRequest {
 
 message NewWorksAt {
   optional WorksAt works_at = 1;
+}
+
+message UpdateResponse {
+  int32 id = 1;
 }
