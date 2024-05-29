@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package supplier;
+
+option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/supplier;supplier";
+
+import "core/money.proto";
+import "product/product.proto";
+
+message Supplier {
+  int32 id = 1;
+  string name = 2;
+  SupplierType type = 3;
+}
+
+enum SupplierType {
+  SUPPLIER_TYPE_AVAILABLE = 0;
+  SUPPLIER_TYPE_NOT_AVAILABLE = 1;
+}
+
+message ProductSupplier {
+  int32 id = 1;
+  core.Money price = 2;
+  product.Product product = 3;
+}
+
+service SupplierService {
+  rpc Create(CreateRequest) returns (CreateResponse);
+//  rpc List(ListRequest) returns (ListResponse);
+//  rpc Update(UpdateRequest) returns (UpdateResponse);
+}
+
+message CreateRequest {
+  string name = 1;
+}
+
+message CreateResponse {
+  int32 id = 1;
+}
