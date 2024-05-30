@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";
 
 import "core/money.proto";
 import "product/product.proto";
-import "tradingpoint/trading_point.proto";
+import "tradingpoint/tradingpoint.proto";
 
 message Receipt {
   int32 id = 1;

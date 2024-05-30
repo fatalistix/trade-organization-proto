@@ -7,7 +7,7 @@ option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/appli
 import "google/protobuf/timestamp.proto";
 
 import "product/product.proto";
-import "tradingpoint/trading_point.proto";
+import "tradingpoint/tradingpoint.proto";
 
 message Application {
   int32 id = 1;

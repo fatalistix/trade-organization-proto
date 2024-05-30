@@ -6,7 +6,7 @@ option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/selle
 
 import "core/money.proto";
 import "core/date.proto";
-import "tradingpoint/trading_point.proto";
+import "tradingpoint/tradingpoint.proto";
 import "google/protobuf/empty.proto";
 
 message Seller {

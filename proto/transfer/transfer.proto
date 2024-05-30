@@ -5,7 +5,7 @@ package tradingpoint;
 option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/transfer;transfer";
 
 import "product/product.proto";
-import "tradingpoint/trading_point.proto";
+import "tradingpoint/tradingpoint.proto";
 
 message Transfer {
   int32 id = 1;

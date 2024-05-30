@@ -6,7 +6,7 @@ option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/distr
 
 import "core/money.proto";
 import "product/product.proto";
-import "tradingpoint/trading_point.proto";
+import "tradingpoint/tradingpoint.proto";
 
 message Distribution {
   int32 id = 1;
