@@ -19,7 +19,6 @@ enum SupplierType {
 }
 
 message ProductSupplier {
-  int32 id = 1;
   core.Money price = 2;
   product.Product product = 3;
 }
