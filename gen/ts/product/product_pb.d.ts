@@ -68,3 +68,37 @@ export namespace CreateResponse {
   }
 }
 
+export class ListRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ListRequest): ListRequest.AsObject;
+  static serializeBinaryToWriter(message: ListRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListRequest;
+  static deserializeBinaryFromReader(message: ListRequest, reader: jspb.BinaryReader): ListRequest;
+}
+
+export namespace ListRequest {
+  export type AsObject = {
+  }
+}
+
+export class ListResponse extends jspb.Message {
+  getProductsList(): Array<Product>;
+  setProductsList(value: Array<Product>): ListResponse;
+  clearProductsList(): ListResponse;
+  addProducts(value?: Product, index?: number): Product;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ListResponse): ListResponse.AsObject;
+  static serializeBinaryToWriter(message: ListResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListResponse;
+  static deserializeBinaryFromReader(message: ListResponse, reader: jspb.BinaryReader): ListResponse;
+}
+
+export namespace ListResponse {
+  export type AsObject = {
+    productsList: Array<Product.AsObject>,
+  }
+}
+

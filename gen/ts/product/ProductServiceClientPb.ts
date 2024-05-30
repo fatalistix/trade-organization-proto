@@ -82,5 +82,48 @@ export class ProductServiceClient {
     this.methodDescriptorCreate);
   }
 
+  methodDescriptorList = new grpcWeb.MethodDescriptor(
+    '/product.ProductService/List',
+    grpcWeb.MethodType.UNARY,
+    product_product_pb.ListRequest,
+    product_product_pb.ListResponse,
+    (request: product_product_pb.ListRequest) => {
+      return request.serializeBinary();
+    },
+    product_product_pb.ListResponse.deserializeBinary
+  );
+
+  list(
+    request: product_product_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<product_product_pb.ListResponse>;
+
+  list(
+    request: product_product_pb.ListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: product_product_pb.ListResponse) => void): grpcWeb.ClientReadableStream<product_product_pb.ListResponse>;
+
+  list(
+    request: product_product_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: product_product_pb.ListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/product.ProductService/List',
+        request,
+        metadata || {},
+        this.methodDescriptorList,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/product.ProductService/List',
+    request,
+    metadata || {},
+    this.methodDescriptorList);
+  }
+
 }
 
