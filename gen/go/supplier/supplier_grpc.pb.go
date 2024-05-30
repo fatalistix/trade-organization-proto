@@ -23,6 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SupplierServiceClient interface {
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
+	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
 }
 
 type supplierServiceClient struct {
@@ -42,11 +43,21 @@ func (c *supplierServiceClient) Create(ctx context.Context, in *CreateRequest, o
 	return out, nil
 }
 
+func (c *supplierServiceClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error) {
+	out := new(ListResponse)
+	err := c.cc.Invoke(ctx, "/supplier.SupplierService/List", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SupplierServiceServer is the server API for SupplierService service.
 // All implementations must embed UnimplementedSupplierServiceServer
 // for forward compatibility
 type SupplierServiceServer interface {
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
+	List(context.Context, *ListRequest) (*ListResponse, error)
 	mustEmbedUnimplementedSupplierServiceServer()
 }
 
@@ -56,6 +67,9 @@ type UnimplementedSupplierServiceServer struct {
 
 func (UnimplementedSupplierServiceServer) Create(context.Context, *CreateRequest) (*CreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+}
+func (UnimplementedSupplierServiceServer) List(context.Context, *ListRequest) (*ListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 func (UnimplementedSupplierServiceServer) mustEmbedUnimplementedSupplierServiceServer() {}
 
@@ -88,6 +102,24 @@ func _SupplierService_Create_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SupplierService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SupplierServiceServer).List(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/supplier.SupplierService/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SupplierServiceServer).List(ctx, req.(*ListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SupplierService_ServiceDesc is the grpc.ServiceDesc for SupplierService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -98,6 +130,10 @@ var SupplierService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Create",
 			Handler:    _SupplierService_Create_Handler,
+		},
+		{
+			MethodName: "List",
+			Handler:    _SupplierService_List_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

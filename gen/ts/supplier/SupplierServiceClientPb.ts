@@ -82,5 +82,48 @@ export class SupplierServiceClient {
     this.methodDescriptorCreate);
   }
 
+  methodDescriptorList = new grpcWeb.MethodDescriptor(
+    '/supplier.SupplierService/List',
+    grpcWeb.MethodType.UNARY,
+    supplier_supplier_pb.ListRequest,
+    supplier_supplier_pb.ListResponse,
+    (request: supplier_supplier_pb.ListRequest) => {
+      return request.serializeBinary();
+    },
+    supplier_supplier_pb.ListResponse.deserializeBinary
+  );
+
+  list(
+    request: supplier_supplier_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<supplier_supplier_pb.ListResponse>;
+
+  list(
+    request: supplier_supplier_pb.ListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: supplier_supplier_pb.ListResponse) => void): grpcWeb.ClientReadableStream<supplier_supplier_pb.ListResponse>;
+
+  list(
+    request: supplier_supplier_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: supplier_supplier_pb.ListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/supplier.SupplierService/List',
+        request,
+        metadata || {},
+        this.methodDescriptorList,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/supplier.SupplierService/List',
+    request,
+    metadata || {},
+    this.methodDescriptorList);
+  }
+
 }
 
