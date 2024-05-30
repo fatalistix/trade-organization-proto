@@ -14,6 +14,7 @@ message TradingPoint {
     core.Money rental_charge = 4;
     int32 counter_count = 5;
     string address = 6;
+    repeated ProductTradingPoint product_trading_point = 7;
 }
 
 enum TradingPointType {
