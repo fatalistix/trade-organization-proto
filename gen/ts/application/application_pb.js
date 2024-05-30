@@ -25,8 +25,8 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var product_product_pb = require('../product/product_pb.js');
 goog.object.extend(proto, product_product_pb);
-var tradingpoint_trading_point_pb = require('../tradingpoint/trading_point_pb.js');
-goog.object.extend(proto, tradingpoint_trading_point_pb);
+var tradingpoint_tradingpoint_pb = require('../tradingpoint/tradingpoint_pb.js');
+goog.object.extend(proto, tradingpoint_tradingpoint_pb);
 goog.exportSymbol('proto.supplier.Application', null, global);
 goog.exportSymbol('proto.supplier.CreateRequest', null, global);
 goog.exportSymbol('proto.supplier.CreateResponse', null, global);

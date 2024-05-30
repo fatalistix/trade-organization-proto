@@ -23,8 +23,8 @@ var global =
 
 var product_product_pb = require('../product/product_pb.js');
 goog.object.extend(proto, product_product_pb);
-var tradingpoint_trading_point_pb = require('../tradingpoint/trading_point_pb.js');
-goog.object.extend(proto, tradingpoint_trading_point_pb);
+var tradingpoint_tradingpoint_pb = require('../tradingpoint/tradingpoint_pb.js');
+goog.object.extend(proto, tradingpoint_tradingpoint_pb);
 goog.exportSymbol('proto.tradingpoint.CreateRequest', null, global);
 goog.exportSymbol('proto.tradingpoint.CreateResponse', null, global);
 goog.exportSymbol('proto.tradingpoint.ProductTransfer', null, global);

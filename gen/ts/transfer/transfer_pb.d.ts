@@ -1,7 +1,7 @@
 import * as jspb from 'google-protobuf'
 
 import * as product_product_pb from '../product/product_pb'; // proto import: "product/product.proto"
-import * as tradingpoint_trading_point_pb from '../tradingpoint/trading_point_pb'; // proto import: "tradingpoint/trading_point.proto"
+import * as tradingpoint_tradingpoint_pb from '../tradingpoint/tradingpoint_pb'; // proto import: "tradingpoint/tradingpoint.proto"
 
 
 export class Transfer extends jspb.Message {
@@ -11,14 +11,14 @@ export class Transfer extends jspb.Message {
   getFromTradingPointId(): number;
   setFromTradingPointId(value: number): Transfer;
 
-  getFromTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setFromTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): Transfer;
+  getFromTradingPointType(): tradingpoint_tradingpoint_pb.TradingPointType;
+  setFromTradingPointType(value: tradingpoint_tradingpoint_pb.TradingPointType): Transfer;
 
   getToTradingPointId(): number;
   setToTradingPointId(value: number): Transfer;
 
-  getToTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setToTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): Transfer;
+  getToTradingPointType(): tradingpoint_tradingpoint_pb.TradingPointType;
+  setToTradingPointType(value: tradingpoint_tradingpoint_pb.TradingPointType): Transfer;
 
   getProductsList(): Array<ProductTransfer>;
   setProductsList(value: Array<ProductTransfer>): Transfer;
@@ -37,9 +37,9 @@ export namespace Transfer {
   export type AsObject = {
     id: number,
     fromTradingPointId: number,
-    fromTradingPointType: tradingpoint_trading_point_pb.TradingPointType,
+    fromTradingPointType: tradingpoint_tradingpoint_pb.TradingPointType,
     toTradingPointId: number,
-    toTradingPointType: tradingpoint_trading_point_pb.TradingPointType,
+    toTradingPointType: tradingpoint_tradingpoint_pb.TradingPointType,
     productsList: Array<ProductTransfer.AsObject>,
   }
 }
@@ -76,14 +76,14 @@ export class CreateRequest extends jspb.Message {
   getFromTradingPointId(): number;
   setFromTradingPointId(value: number): CreateRequest;
 
-  getFromTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setFromTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): CreateRequest;
+  getFromTradingPointType(): tradingpoint_tradingpoint_pb.TradingPointType;
+  setFromTradingPointType(value: tradingpoint_tradingpoint_pb.TradingPointType): CreateRequest;
 
   getToTradingPointId(): number;
   setToTradingPointId(value: number): CreateRequest;
 
-  getToTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setToTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): CreateRequest;
+  getToTradingPointType(): tradingpoint_tradingpoint_pb.TradingPointType;
+  setToTradingPointType(value: tradingpoint_tradingpoint_pb.TradingPointType): CreateRequest;
 
   getProductsList(): Array<ProductTransfer>;
   setProductsList(value: Array<ProductTransfer>): CreateRequest;
@@ -101,9 +101,9 @@ export class CreateRequest extends jspb.Message {
 export namespace CreateRequest {
   export type AsObject = {
     fromTradingPointId: number,
-    fromTradingPointType: tradingpoint_trading_point_pb.TradingPointType,
+    fromTradingPointType: tradingpoint_tradingpoint_pb.TradingPointType,
     toTradingPointId: number,
-    toTradingPointType: tradingpoint_trading_point_pb.TradingPointType,
+    toTradingPointType: tradingpoint_tradingpoint_pb.TradingPointType,
     productsList: Array<ProductTransfer.AsObject>,
   }
 }

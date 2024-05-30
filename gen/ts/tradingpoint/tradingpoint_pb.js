@@ -1,4 +1,4 @@
-// source: tradingpoint/trading_point.proto
+// source: tradingpoint/tradingpoint.proto
 /**
  * @fileoverview
  * @enhanceable

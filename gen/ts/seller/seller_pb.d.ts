@@ -2,7 +2,7 @@ import * as jspb from 'google-protobuf'
 
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
 import * as core_date_pb from '../core/date_pb'; // proto import: "core/date.proto"
-import * as tradingpoint_trading_point_pb from '../tradingpoint/trading_point_pb'; // proto import: "tradingpoint/trading_point.proto"
+import * as tradingpoint_tradingpoint_pb from '../tradingpoint/tradingpoint_pb'; // proto import: "tradingpoint/tradingpoint.proto"
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb'; // proto import: "google/protobuf/empty.proto"
 
 
@@ -97,8 +97,8 @@ export class PlaceOfWork extends jspb.Message {
   getId(): number;
   setId(value: number): PlaceOfWork;
 
-  getType(): tradingpoint_trading_point_pb.PlaceOfWorkType;
-  setType(value: tradingpoint_trading_point_pb.PlaceOfWorkType): PlaceOfWork;
+  getType(): tradingpoint_tradingpoint_pb.PlaceOfWorkType;
+  setType(value: tradingpoint_tradingpoint_pb.PlaceOfWorkType): PlaceOfWork;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PlaceOfWork.AsObject;
@@ -111,7 +111,7 @@ export class PlaceOfWork extends jspb.Message {
 export namespace PlaceOfWork {
   export type AsObject = {
     id: number,
-    type: tradingpoint_trading_point_pb.PlaceOfWorkType,
+    type: tradingpoint_tradingpoint_pb.PlaceOfWorkType,
   }
 }
 
@@ -119,8 +119,8 @@ export class TradingPoint extends jspb.Message {
   getId(): number;
   setId(value: number): TradingPoint;
 
-  getType(): tradingpoint_trading_point_pb.TradingPointType;
-  setType(value: tradingpoint_trading_point_pb.TradingPointType): TradingPoint;
+  getType(): tradingpoint_tradingpoint_pb.TradingPointType;
+  setType(value: tradingpoint_tradingpoint_pb.TradingPointType): TradingPoint;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TradingPoint.AsObject;
@@ -133,7 +133,7 @@ export class TradingPoint extends jspb.Message {
 export namespace TradingPoint {
   export type AsObject = {
     id: number,
-    type: tradingpoint_trading_point_pb.TradingPointType,
+    type: tradingpoint_tradingpoint_pb.TradingPointType,
   }
 }
 
@@ -217,8 +217,8 @@ export class ListRequest extends jspb.Message {
   hasTradingPointId(): boolean;
   clearTradingPointId(): ListRequest;
 
-  getTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): ListRequest;
+  getTradingPointType(): tradingpoint_tradingpoint_pb.TradingPointType;
+  setTradingPointType(value: tradingpoint_tradingpoint_pb.TradingPointType): ListRequest;
   hasTradingPointType(): boolean;
   clearTradingPointType(): ListRequest;
 
@@ -227,8 +227,8 @@ export class ListRequest extends jspb.Message {
   hasPlaceOfWorkId(): boolean;
   clearPlaceOfWorkId(): ListRequest;
 
-  getPlaceOfWorkType(): tradingpoint_trading_point_pb.PlaceOfWorkType;
-  setPlaceOfWorkType(value: tradingpoint_trading_point_pb.PlaceOfWorkType): ListRequest;
+  getPlaceOfWorkType(): tradingpoint_tradingpoint_pb.PlaceOfWorkType;
+  setPlaceOfWorkType(value: tradingpoint_tradingpoint_pb.PlaceOfWorkType): ListRequest;
   hasPlaceOfWorkType(): boolean;
   clearPlaceOfWorkType(): ListRequest;
 
@@ -249,9 +249,9 @@ export namespace ListRequest {
   export type AsObject = {
     worksAtFilter: WorksAtFilterType,
     tradingPointId?: number,
-    tradingPointType?: tradingpoint_trading_point_pb.TradingPointType,
+    tradingPointType?: tradingpoint_tradingpoint_pb.TradingPointType,
     placeOfWorkId?: number,
-    placeOfWorkType?: tradingpoint_trading_point_pb.PlaceOfWorkType,
+    placeOfWorkType?: tradingpoint_tradingpoint_pb.PlaceOfWorkType,
     search?: string,
   }
 

@@ -2,7 +2,7 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
 import * as product_product_pb from '../product/product_pb'; // proto import: "product/product.proto"
-import * as tradingpoint_trading_point_pb from '../tradingpoint/trading_point_pb'; // proto import: "tradingpoint/trading_point.proto"
+import * as tradingpoint_tradingpoint_pb from '../tradingpoint/tradingpoint_pb'; // proto import: "tradingpoint/tradingpoint.proto"
 
 
 export class Application extends jspb.Message {
@@ -12,8 +12,8 @@ export class Application extends jspb.Message {
   getTradingPointId(): number;
   setTradingPointId(value: number): Application;
 
-  getTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): Application;
+  getTradingPointType(): tradingpoint_tradingpoint_pb.TradingPointType;
+  setTradingPointType(value: tradingpoint_tradingpoint_pb.TradingPointType): Application;
 
   getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Application;
@@ -37,7 +37,7 @@ export namespace Application {
   export type AsObject = {
     id: number,
     tradingPointId: number,
-    tradingPointType: tradingpoint_trading_point_pb.TradingPointType,
+    tradingPointType: tradingpoint_tradingpoint_pb.TradingPointType,
     createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     productsList: Array<ProductApplication.AsObject>,
   }
@@ -71,8 +71,8 @@ export class CreateRequest extends jspb.Message {
   getTradingPointId(): number;
   setTradingPointId(value: number): CreateRequest;
 
-  getTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): CreateRequest;
+  getTradingPointType(): tradingpoint_tradingpoint_pb.TradingPointType;
+  setTradingPointType(value: tradingpoint_tradingpoint_pb.TradingPointType): CreateRequest;
 
   getProductsList(): Array<ProductApplication>;
   setProductsList(value: Array<ProductApplication>): CreateRequest;
@@ -90,7 +90,7 @@ export class CreateRequest extends jspb.Message {
 export namespace CreateRequest {
   export type AsObject = {
     tradingPointId: number,
-    tradingPointType: tradingpoint_trading_point_pb.TradingPointType,
+    tradingPointType: tradingpoint_tradingpoint_pb.TradingPointType,
     productsList: Array<ProductApplication.AsObject>,
   }
 }

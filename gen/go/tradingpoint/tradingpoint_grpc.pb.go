@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v4.25.3
-// source: tradingpoint/trading_point.proto
+// source: tradingpoint/tradingpoint.proto
 
 package tradingpoint
 
@@ -353,5 +353,5 @@ var TradingPointService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "tradingpoint/trading_point.proto",
+	Metadata: "tradingpoint/tradingpoint.proto",
 }

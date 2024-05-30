@@ -3,7 +3,7 @@ import * as jspb from 'google-protobuf'
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
 import * as product_product_pb from '../product/product_pb'; // proto import: "product/product.proto"
-import * as tradingpoint_trading_point_pb from '../tradingpoint/trading_point_pb'; // proto import: "tradingpoint/trading_point.proto"
+import * as tradingpoint_tradingpoint_pb from '../tradingpoint/tradingpoint_pb'; // proto import: "tradingpoint/tradingpoint.proto"
 
 
 export class Receipt extends jspb.Message {
@@ -84,8 +84,8 @@ export class ReceiptWithAccounting extends jspb.Message {
   getReceiptingPointWithAccountingId(): number;
   setReceiptingPointWithAccountingId(value: number): ReceiptWithAccounting;
 
-  getReceiptingPointWithAccountingType(): tradingpoint_trading_point_pb.ReceiptingPointWithAccountingType;
-  setReceiptingPointWithAccountingType(value: tradingpoint_trading_point_pb.ReceiptingPointWithAccountingType): ReceiptWithAccounting;
+  getReceiptingPointWithAccountingType(): tradingpoint_tradingpoint_pb.ReceiptingPointWithAccountingType;
+  setReceiptingPointWithAccountingType(value: tradingpoint_tradingpoint_pb.ReceiptingPointWithAccountingType): ReceiptWithAccounting;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ReceiptWithAccounting.AsObject;
@@ -100,7 +100,7 @@ export namespace ReceiptWithAccounting {
     id: number,
     customerId: number,
     receiptingPointWithAccountingId: number,
-    receiptingPointWithAccountingType: tradingpoint_trading_point_pb.ReceiptingPointWithAccountingType,
+    receiptingPointWithAccountingType: tradingpoint_tradingpoint_pb.ReceiptingPointWithAccountingType,
   }
 }
 
@@ -111,8 +111,8 @@ export class ReceiptWithoutAccounting extends jspb.Message {
   getReceiptingPointWithoutAccountingId(): number;
   setReceiptingPointWithoutAccountingId(value: number): ReceiptWithoutAccounting;
 
-  getReceiptingPointWithoutAccountingType(): tradingpoint_trading_point_pb.ReceiptingPointWithoutAccountingType;
-  setReceiptingPointWithoutAccountingType(value: tradingpoint_trading_point_pb.ReceiptingPointWithoutAccountingType): ReceiptWithoutAccounting;
+  getReceiptingPointWithoutAccountingType(): tradingpoint_tradingpoint_pb.ReceiptingPointWithoutAccountingType;
+  setReceiptingPointWithoutAccountingType(value: tradingpoint_tradingpoint_pb.ReceiptingPointWithoutAccountingType): ReceiptWithoutAccounting;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ReceiptWithoutAccounting.AsObject;
@@ -126,7 +126,7 @@ export namespace ReceiptWithoutAccounting {
   export type AsObject = {
     id: number,
     receiptingPointWithoutAccountingId: number,
-    receiptingPointWithoutAccountingType: tradingpoint_trading_point_pb.ReceiptingPointWithoutAccountingType,
+    receiptingPointWithoutAccountingType: tradingpoint_tradingpoint_pb.ReceiptingPointWithoutAccountingType,
   }
 }
 
@@ -145,8 +145,8 @@ export class CreateWithAccountingRequest extends jspb.Message {
   getReceiptingPointWithAccountingId(): number;
   setReceiptingPointWithAccountingId(value: number): CreateWithAccountingRequest;
 
-  getReceiptingPointWithAccountingType(): tradingpoint_trading_point_pb.ReceiptingPointWithAccountingType;
-  setReceiptingPointWithAccountingType(value: tradingpoint_trading_point_pb.ReceiptingPointWithAccountingType): CreateWithAccountingRequest;
+  getReceiptingPointWithAccountingType(): tradingpoint_tradingpoint_pb.ReceiptingPointWithAccountingType;
+  setReceiptingPointWithAccountingType(value: tradingpoint_tradingpoint_pb.ReceiptingPointWithAccountingType): CreateWithAccountingRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreateWithAccountingRequest.AsObject;
@@ -162,7 +162,7 @@ export namespace CreateWithAccountingRequest {
     productsList: Array<ReceiptProduct.AsObject>,
     customerId: number,
     receiptingPointWithAccountingId: number,
-    receiptingPointWithAccountingType: tradingpoint_trading_point_pb.ReceiptingPointWithAccountingType,
+    receiptingPointWithAccountingType: tradingpoint_tradingpoint_pb.ReceiptingPointWithAccountingType,
   }
 }
 
@@ -196,8 +196,8 @@ export class CreateWithoutAccountingRequest extends jspb.Message {
   getReceiptingPointWithoutAccountingId(): number;
   setReceiptingPointWithoutAccountingId(value: number): CreateWithoutAccountingRequest;
 
-  getReceiptingPointWithoutAccountingType(): tradingpoint_trading_point_pb.ReceiptingPointWithoutAccountingType;
-  setReceiptingPointWithoutAccountingType(value: tradingpoint_trading_point_pb.ReceiptingPointWithoutAccountingType): CreateWithoutAccountingRequest;
+  getReceiptingPointWithoutAccountingType(): tradingpoint_tradingpoint_pb.ReceiptingPointWithoutAccountingType;
+  setReceiptingPointWithoutAccountingType(value: tradingpoint_tradingpoint_pb.ReceiptingPointWithoutAccountingType): CreateWithoutAccountingRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreateWithoutAccountingRequest.AsObject;
@@ -212,7 +212,7 @@ export namespace CreateWithoutAccountingRequest {
     sellerId: number,
     productsList: Array<ReceiptProduct.AsObject>,
     receiptingPointWithoutAccountingId: number,
-    receiptingPointWithoutAccountingType: tradingpoint_trading_point_pb.ReceiptingPointWithoutAccountingType,
+    receiptingPointWithoutAccountingType: tradingpoint_tradingpoint_pb.ReceiptingPointWithoutAccountingType,
   }
 }
 

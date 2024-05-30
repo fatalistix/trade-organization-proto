@@ -2,7 +2,7 @@ import * as jspb from 'google-protobuf'
 
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
 import * as product_product_pb from '../product/product_pb'; // proto import: "product/product.proto"
-import * as tradingpoint_trading_point_pb from '../tradingpoint/trading_point_pb'; // proto import: "tradingpoint/trading_point.proto"
+import * as tradingpoint_tradingpoint_pb from '../tradingpoint/tradingpoint_pb'; // proto import: "tradingpoint/tradingpoint.proto"
 
 
 export class Distribution extends jspb.Message {
@@ -12,8 +12,8 @@ export class Distribution extends jspb.Message {
   getTradingPointId(): number;
   setTradingPointId(value: number): Distribution;
 
-  getTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): Distribution;
+  getTradingPointType(): tradingpoint_tradingpoint_pb.TradingPointType;
+  setTradingPointType(value: tradingpoint_tradingpoint_pb.TradingPointType): Distribution;
 
   getProductsList(): Array<ProductDistribution>;
   setProductsList(value: Array<ProductDistribution>): Distribution;
@@ -32,7 +32,7 @@ export namespace Distribution {
   export type AsObject = {
     id: number,
     tradingPointId: number,
-    tradingPointType: tradingpoint_trading_point_pb.TradingPointType,
+    tradingPointType: tradingpoint_tradingpoint_pb.TradingPointType,
     productsList: Array<ProductDistribution.AsObject>,
   }
 }
@@ -71,8 +71,8 @@ export class CreateRequest extends jspb.Message {
   getTradingPointId(): number;
   setTradingPointId(value: number): CreateRequest;
 
-  getTradingPointType(): tradingpoint_trading_point_pb.TradingPointType;
-  setTradingPointType(value: tradingpoint_trading_point_pb.TradingPointType): CreateRequest;
+  getTradingPointType(): tradingpoint_tradingpoint_pb.TradingPointType;
+  setTradingPointType(value: tradingpoint_tradingpoint_pb.TradingPointType): CreateRequest;
 
   getProductsList(): Array<ProductDistribution>;
   setProductsList(value: Array<ProductDistribution>): CreateRequest;
@@ -90,7 +90,7 @@ export class CreateRequest extends jspb.Message {
 export namespace CreateRequest {
   export type AsObject = {
     tradingPointId: number,
-    tradingPointType: tradingpoint_trading_point_pb.TradingPointType,
+    tradingPointType: tradingpoint_tradingpoint_pb.TradingPointType,
     productsList: Array<ProductDistribution.AsObject>,
   }
 }
