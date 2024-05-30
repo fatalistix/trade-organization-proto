@@ -43,7 +43,7 @@ goog.exportSymbol('proto.supplier.SupplierType', null, global);
  * @constructor
  */
 proto.supplier.Supplier = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.supplier.Supplier.repeatedFields_, null);
 };
 goog.inherits(proto.supplier.Supplier, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -159,6 +159,13 @@ if (goog.DEBUG && !COMPILED) {
   proto.supplier.ListResponse.displayName = 'proto.supplier.ListResponse';
 }
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.supplier.Supplier.repeatedFields_ = [4];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -192,7 +199,9 @@ proto.supplier.Supplier.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    type: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    productsList: jspb.Message.toObjectList(msg.getProductsList(),
+    proto.supplier.ProductSupplier.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -240,6 +249,11 @@ proto.supplier.Supplier.deserializeBinaryFromReader = function(msg, reader) {
     case 3:
       var value = /** @type {!proto.supplier.SupplierType} */ (reader.readEnum());
       msg.setType(value);
+      break;
+    case 4:
+      var value = new proto.supplier.ProductSupplier;
+      reader.readMessage(value,proto.supplier.ProductSupplier.deserializeBinaryFromReader);
+      msg.addProducts(value);
       break;
     default:
       reader.skipField();
@@ -289,6 +303,14 @@ proto.supplier.Supplier.serializeBinaryToWriter = function(message, writer) {
     writer.writeEnum(
       3,
       f
+    );
+  }
+  f = message.getProductsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      4,
+      f,
+      proto.supplier.ProductSupplier.serializeBinaryToWriter
     );
   }
 };
@@ -345,6 +367,44 @@ proto.supplier.Supplier.prototype.getType = function() {
  */
 proto.supplier.Supplier.prototype.setType = function(value) {
   return jspb.Message.setProto3EnumField(this, 3, value);
+};
+
+
+/**
+ * repeated ProductSupplier products = 4;
+ * @return {!Array<!proto.supplier.ProductSupplier>}
+ */
+proto.supplier.Supplier.prototype.getProductsList = function() {
+  return /** @type{!Array<!proto.supplier.ProductSupplier>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.supplier.ProductSupplier, 4));
+};
+
+
+/**
+ * @param {!Array<!proto.supplier.ProductSupplier>} value
+ * @return {!proto.supplier.Supplier} returns this
+*/
+proto.supplier.Supplier.prototype.setProductsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 4, value);
+};
+
+
+/**
+ * @param {!proto.supplier.ProductSupplier=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.supplier.ProductSupplier}
+ */
+proto.supplier.Supplier.prototype.addProducts = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.supplier.ProductSupplier, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.supplier.Supplier} returns this
+ */
+proto.supplier.Supplier.prototype.clearProductsList = function() {
+  return this.setProductsList([]);
 };
 
 

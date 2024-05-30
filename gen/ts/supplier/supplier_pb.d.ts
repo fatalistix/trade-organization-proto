@@ -14,6 +14,11 @@ export class Supplier extends jspb.Message {
   getType(): SupplierType;
   setType(value: SupplierType): Supplier;
 
+  getProductsList(): Array<ProductSupplier>;
+  setProductsList(value: Array<ProductSupplier>): Supplier;
+  clearProductsList(): Supplier;
+  addProducts(value?: ProductSupplier, index?: number): ProductSupplier;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Supplier.AsObject;
   static toObject(includeInstance: boolean, msg: Supplier): Supplier.AsObject;
@@ -27,6 +32,7 @@ export namespace Supplier {
     id: number,
     name: string,
     type: SupplierType,
+    productsList: Array<ProductSupplier.AsObject>,
   }
 }
 
