@@ -31,9 +31,6 @@ export namespace Supplier {
 }
 
 export class ProductSupplier extends jspb.Message {
-  getId(): number;
-  setId(value: number): ProductSupplier;
-
   getPrice(): core_money_pb.Money | undefined;
   setPrice(value?: core_money_pb.Money): ProductSupplier;
   hasPrice(): boolean;
@@ -54,7 +51,6 @@ export class ProductSupplier extends jspb.Message {
 
 export namespace ProductSupplier {
   export type AsObject = {
-    id: number,
     price?: core_money_pb.Money.AsObject,
     product?: product_product_pb.Product.AsObject,
   }

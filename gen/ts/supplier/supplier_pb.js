@@ -336,7 +336,6 @@ proto.supplier.ProductSupplier.prototype.toObject = function(opt_includeInstance
  */
 proto.supplier.ProductSupplier.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     price: (f = msg.getPrice()) && core_money_pb.Money.toObject(includeInstance, f),
     product: (f = msg.getProduct()) && product_product_pb.Product.toObject(includeInstance, f)
   };
@@ -375,10 +374,6 @@ proto.supplier.ProductSupplier.deserializeBinaryFromReader = function(msg, reade
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setId(value);
-      break;
     case 2:
       var value = new core_money_pb.Money;
       reader.readMessage(value,core_money_pb.Money.deserializeBinaryFromReader);
@@ -418,13 +413,6 @@ proto.supplier.ProductSupplier.prototype.serializeBinary = function() {
  */
 proto.supplier.ProductSupplier.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getId();
-  if (f !== 0) {
-    writer.writeInt32(
-      1,
-      f
-    );
-  }
   f = message.getPrice();
   if (f != null) {
     writer.writeMessage(
@@ -441,24 +429,6 @@ proto.supplier.ProductSupplier.serializeBinaryToWriter = function(message, write
       product_product_pb.Product.serializeBinaryToWriter
     );
   }
-};
-
-
-/**
- * optional int32 id = 1;
- * @return {number}
- */
-proto.supplier.ProductSupplier.prototype.getId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.supplier.ProductSupplier} returns this
- */
-proto.supplier.ProductSupplier.prototype.setId = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
