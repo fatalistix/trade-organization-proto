@@ -25,6 +25,11 @@ export class TradingPoint extends jspb.Message {
   getAddress(): string;
   setAddress(value: string): TradingPoint;
 
+  getProductTradingPointList(): Array<ProductTradingPoint>;
+  setProductTradingPointList(value: Array<ProductTradingPoint>): TradingPoint;
+  clearProductTradingPointList(): TradingPoint;
+  addProductTradingPoint(value?: ProductTradingPoint, index?: number): ProductTradingPoint;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TradingPoint.AsObject;
   static toObject(includeInstance: boolean, msg: TradingPoint): TradingPoint.AsObject;
@@ -41,6 +46,7 @@ export namespace TradingPoint {
     rentalCharge?: core_money_pb.Money.AsObject,
     counterCount: number,
     address: string,
+    productTradingPointList: Array<ProductTradingPoint.AsObject>,
   }
 }
 

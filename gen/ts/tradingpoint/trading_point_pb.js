@@ -69,7 +69,7 @@ goog.exportSymbol('proto.tradingpoint.TrayResponse', null, global);
  * @constructor
  */
 proto.tradingpoint.TradingPoint = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.tradingpoint.TradingPoint.repeatedFields_, null);
 };
 goog.inherits(proto.tradingpoint.TradingPoint, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -647,6 +647,13 @@ if (goog.DEBUG && !COMPILED) {
   proto.tradingpoint.TrayResponse.displayName = 'proto.tradingpoint.TrayResponse';
 }
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.tradingpoint.TradingPoint.repeatedFields_ = [7];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -683,7 +690,9 @@ proto.tradingpoint.TradingPoint.toObject = function(includeInstance, msg) {
     areaPlot: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
     rentalCharge: (f = msg.getRentalCharge()) && core_money_pb.Money.toObject(includeInstance, f),
     counterCount: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    address: jspb.Message.getFieldWithDefault(msg, 6, "")
+    address: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    productTradingPointList: jspb.Message.toObjectList(msg.getProductTradingPointList(),
+    proto.tradingpoint.ProductTradingPoint.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -744,6 +753,11 @@ proto.tradingpoint.TradingPoint.deserializeBinaryFromReader = function(msg, read
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setAddress(value);
+      break;
+    case 7:
+      var value = new proto.tradingpoint.ProductTradingPoint;
+      reader.readMessage(value,proto.tradingpoint.ProductTradingPoint.deserializeBinaryFromReader);
+      msg.addProductTradingPoint(value);
       break;
     default:
       reader.skipField();
@@ -815,6 +829,14 @@ proto.tradingpoint.TradingPoint.serializeBinaryToWriter = function(message, writ
     writer.writeString(
       6,
       f
+    );
+  }
+  f = message.getProductTradingPointList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      7,
+      f,
+      proto.tradingpoint.ProductTradingPoint.serializeBinaryToWriter
     );
   }
 };
@@ -944,6 +966,44 @@ proto.tradingpoint.TradingPoint.prototype.getAddress = function() {
  */
 proto.tradingpoint.TradingPoint.prototype.setAddress = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * repeated ProductTradingPoint product_trading_point = 7;
+ * @return {!Array<!proto.tradingpoint.ProductTradingPoint>}
+ */
+proto.tradingpoint.TradingPoint.prototype.getProductTradingPointList = function() {
+  return /** @type{!Array<!proto.tradingpoint.ProductTradingPoint>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.tradingpoint.ProductTradingPoint, 7));
+};
+
+
+/**
+ * @param {!Array<!proto.tradingpoint.ProductTradingPoint>} value
+ * @return {!proto.tradingpoint.TradingPoint} returns this
+*/
+proto.tradingpoint.TradingPoint.prototype.setProductTradingPointList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 7, value);
+};
+
+
+/**
+ * @param {!proto.tradingpoint.ProductTradingPoint=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.tradingpoint.ProductTradingPoint}
+ */
+proto.tradingpoint.TradingPoint.prototype.addProductTradingPoint = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 7, opt_value, proto.tradingpoint.ProductTradingPoint, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.tradingpoint.TradingPoint} returns this
+ */
+proto.tradingpoint.TradingPoint.prototype.clearProductTradingPointList = function() {
+  return this.setProductTradingPointList([]);
 };
 
 
