@@ -171,19 +171,10 @@ export namespace SupplierResponse {
 }
 
 export class UpdateRequest extends jspb.Message {
-  getId(): number;
-  setId(value: number): UpdateRequest;
-
-  getName(): string;
-  setName(value: string): UpdateRequest;
-
-  getType(): SupplierType;
-  setType(value: SupplierType): UpdateRequest;
-
-  getProductsList(): Array<ProductSupplier>;
-  setProductsList(value: Array<ProductSupplier>): UpdateRequest;
-  clearProductsList(): UpdateRequest;
-  addProducts(value?: ProductSupplier, index?: number): ProductSupplier;
+  getSupplier(): Supplier | undefined;
+  setSupplier(value?: Supplier): UpdateRequest;
+  hasSupplier(): boolean;
+  clearSupplier(): UpdateRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateRequest.AsObject;
@@ -195,10 +186,7 @@ export class UpdateRequest extends jspb.Message {
 
 export namespace UpdateRequest {
   export type AsObject = {
-    id: number,
-    name: string,
-    type: SupplierType,
-    productsList: Array<ProductSupplier.AsObject>,
+    supplier?: Supplier.AsObject,
   }
 }
 

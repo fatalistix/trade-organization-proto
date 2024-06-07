@@ -215,7 +215,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.supplier.UpdateRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.supplier.UpdateRequest.repeatedFields_, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.supplier.UpdateRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -1501,13 +1501,6 @@ proto.supplier.SupplierResponse.prototype.hasSupplier = function() {
 
 
 
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.supplier.UpdateRequest.repeatedFields_ = [4];
-
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1539,11 +1532,7 @@ proto.supplier.UpdateRequest.prototype.toObject = function(opt_includeInstance) 
  */
 proto.supplier.UpdateRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    productsList: jspb.Message.toObjectList(msg.getProductsList(),
-    proto.supplier.ProductSupplier.toObject, includeInstance)
+    supplier: (f = msg.getSupplier()) && proto.supplier.Supplier.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1581,21 +1570,9 @@ proto.supplier.UpdateRequest.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setId(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    case 3:
-      var value = /** @type {!proto.supplier.SupplierType} */ (reader.readEnum());
-      msg.setType(value);
-      break;
-    case 4:
-      var value = new proto.supplier.ProductSupplier;
-      reader.readMessage(value,proto.supplier.ProductSupplier.deserializeBinaryFromReader);
-      msg.addProducts(value);
+      var value = new proto.supplier.Supplier;
+      reader.readMessage(value,proto.supplier.Supplier.deserializeBinaryFromReader);
+      msg.setSupplier(value);
       break;
     default:
       reader.skipField();
@@ -1626,127 +1603,51 @@ proto.supplier.UpdateRequest.prototype.serializeBinary = function() {
  */
 proto.supplier.UpdateRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getId();
-  if (f !== 0) {
-    writer.writeInt32(
+  f = message.getSupplier();
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
-    );
-  }
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-  f = message.getType();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      3,
-      f
-    );
-  }
-  f = message.getProductsList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      4,
       f,
-      proto.supplier.ProductSupplier.serializeBinaryToWriter
+      proto.supplier.Supplier.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional int32 id = 1;
- * @return {number}
+ * optional Supplier supplier = 1;
+ * @return {?proto.supplier.Supplier}
  */
-proto.supplier.UpdateRequest.prototype.getId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.supplier.UpdateRequest.prototype.getSupplier = function() {
+  return /** @type{?proto.supplier.Supplier} */ (
+    jspb.Message.getWrapperField(this, proto.supplier.Supplier, 1));
 };
 
 
 /**
- * @param {number} value
- * @return {!proto.supplier.UpdateRequest} returns this
- */
-proto.supplier.UpdateRequest.prototype.setId = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
-};
-
-
-/**
- * optional string name = 2;
- * @return {string}
- */
-proto.supplier.UpdateRequest.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.supplier.UpdateRequest} returns this
- */
-proto.supplier.UpdateRequest.prototype.setName = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * optional SupplierType type = 3;
- * @return {!proto.supplier.SupplierType}
- */
-proto.supplier.UpdateRequest.prototype.getType = function() {
-  return /** @type {!proto.supplier.SupplierType} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/**
- * @param {!proto.supplier.SupplierType} value
- * @return {!proto.supplier.UpdateRequest} returns this
- */
-proto.supplier.UpdateRequest.prototype.setType = function(value) {
-  return jspb.Message.setProto3EnumField(this, 3, value);
-};
-
-
-/**
- * repeated ProductSupplier products = 4;
- * @return {!Array<!proto.supplier.ProductSupplier>}
- */
-proto.supplier.UpdateRequest.prototype.getProductsList = function() {
-  return /** @type{!Array<!proto.supplier.ProductSupplier>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.supplier.ProductSupplier, 4));
-};
-
-
-/**
- * @param {!Array<!proto.supplier.ProductSupplier>} value
+ * @param {?proto.supplier.Supplier|undefined} value
  * @return {!proto.supplier.UpdateRequest} returns this
 */
-proto.supplier.UpdateRequest.prototype.setProductsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 4, value);
+proto.supplier.UpdateRequest.prototype.setSupplier = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
- * @param {!proto.supplier.ProductSupplier=} opt_value
- * @param {number=} opt_index
- * @return {!proto.supplier.ProductSupplier}
- */
-proto.supplier.UpdateRequest.prototype.addProducts = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.supplier.ProductSupplier, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
+ * Clears the message field making it undefined.
  * @return {!proto.supplier.UpdateRequest} returns this
  */
-proto.supplier.UpdateRequest.prototype.clearProductsList = function() {
-  return this.setProductsList([]);
+proto.supplier.UpdateRequest.prototype.clearSupplier = function() {
+  return this.setSupplier(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.supplier.UpdateRequest.prototype.hasSupplier = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
