@@ -13,7 +13,7 @@ message Product {
 service ProductService {
   rpc Create(CreateRequest) returns (CreateResponse);
   rpc List(ListRequest) returns (ListResponse);
-//  rpc Update(UpdateRequest) returns (UpdateResponse);
+  rpc Update(UpdateRequest) returns (UpdateResponse);
 }
 
 message CreateRequest {
@@ -31,4 +31,14 @@ message ListRequest {
 
 message ListResponse {
   repeated Product products = 1;
+}
+
+message UpdateRequest {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message UpdateResponse {
+  int32 id = 1;
 }
