@@ -23,8 +23,6 @@ var global =
 
 var core_money_pb = require('../core/money_pb.js');
 goog.object.extend(proto, core_money_pb);
-var product_product_pb = require('../product/product_pb.js');
-goog.object.extend(proto, product_product_pb);
 goog.exportSymbol('proto.supplier.CreateRequest', null, global);
 goog.exportSymbol('proto.supplier.CreateResponse', null, global);
 goog.exportSymbol('proto.supplier.ListRequest', null, global);
@@ -529,7 +527,7 @@ proto.supplier.ProductSupplier.prototype.toObject = function(opt_includeInstance
 proto.supplier.ProductSupplier.toObject = function(includeInstance, msg) {
   var f, obj = {
     price: (f = msg.getPrice()) && core_money_pb.Money.toObject(includeInstance, f),
-    product: (f = msg.getProduct()) && product_product_pb.Product.toObject(includeInstance, f)
+    productId: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -572,9 +570,8 @@ proto.supplier.ProductSupplier.deserializeBinaryFromReader = function(msg, reade
       msg.setPrice(value);
       break;
     case 3:
-      var value = new product_product_pb.Product;
-      reader.readMessage(value,product_product_pb.Product.deserializeBinaryFromReader);
-      msg.setProduct(value);
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setProductId(value);
       break;
     default:
       reader.skipField();
@@ -613,12 +610,11 @@ proto.supplier.ProductSupplier.serializeBinaryToWriter = function(message, write
       core_money_pb.Money.serializeBinaryToWriter
     );
   }
-  f = message.getProduct();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getProductId();
+  if (f !== 0) {
+    writer.writeInt32(
       3,
-      f,
-      product_product_pb.Product.serializeBinaryToWriter
+      f
     );
   }
 };
@@ -662,39 +658,20 @@ proto.supplier.ProductSupplier.prototype.hasPrice = function() {
 
 
 /**
- * optional product.Product product = 3;
- * @return {?proto.product.Product}
+ * optional int32 product_id = 3;
+ * @return {number}
  */
-proto.supplier.ProductSupplier.prototype.getProduct = function() {
-  return /** @type{?proto.product.Product} */ (
-    jspb.Message.getWrapperField(this, product_product_pb.Product, 3));
+proto.supplier.ProductSupplier.prototype.getProductId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {?proto.product.Product|undefined} value
- * @return {!proto.supplier.ProductSupplier} returns this
-*/
-proto.supplier.ProductSupplier.prototype.setProduct = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
+ * @param {number} value
  * @return {!proto.supplier.ProductSupplier} returns this
  */
-proto.supplier.ProductSupplier.prototype.clearProduct = function() {
-  return this.setProduct(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.supplier.ProductSupplier.prototype.hasProduct = function() {
-  return jspb.Message.getField(this, 3) != null;
+proto.supplier.ProductSupplier.prototype.setProductId = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 

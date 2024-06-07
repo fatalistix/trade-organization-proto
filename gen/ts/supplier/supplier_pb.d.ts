@@ -1,7 +1,6 @@
 import * as jspb from 'google-protobuf'
 
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
-import * as product_product_pb from '../product/product_pb'; // proto import: "product/product.proto"
 
 
 export class Supplier extends jspb.Message {
@@ -42,10 +41,8 @@ export class ProductSupplier extends jspb.Message {
   hasPrice(): boolean;
   clearPrice(): ProductSupplier;
 
-  getProduct(): product_product_pb.Product | undefined;
-  setProduct(value?: product_product_pb.Product): ProductSupplier;
-  hasProduct(): boolean;
-  clearProduct(): ProductSupplier;
+  getProductId(): number;
+  setProductId(value: number): ProductSupplier;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ProductSupplier.AsObject;
@@ -58,7 +55,7 @@ export class ProductSupplier extends jspb.Message {
 export namespace ProductSupplier {
   export type AsObject = {
     price?: core_money_pb.Money.AsObject,
-    product?: product_product_pb.Product.AsObject,
+    productId: number,
   }
 }
 
