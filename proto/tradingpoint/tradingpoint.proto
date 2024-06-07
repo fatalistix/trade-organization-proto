@@ -115,10 +115,16 @@ message Tray {
 }
 
 service TradingPointService {
+    // Trading point
     rpc Register(RegisterRequest) returns (RegisterResponse);
     rpc List(ListRequest) returns (ListResponse);
+
+    // Section
     rpc AddSection(AddSectionRequest) returns (AddSectionResponse);
+
+    // Hall
     rpc AddHall(AddHallRequest) returns (AddHallResponse);
+
     rpc DepartmentStore(DepartmentStoreRequest) returns (DepartmentStoreResponse);
     rpc Store(StoreRequest) returns (StoreResponse);
     rpc Kiosk(KioskRequest) returns (KioskResponse);
