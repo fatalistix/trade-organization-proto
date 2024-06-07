@@ -27,7 +27,8 @@ message ProductSupplier {
 service SupplierService {
   rpc Create(CreateRequest) returns (CreateResponse);
   rpc List(ListRequest) returns (ListResponse);
-//  rpc Update(UpdateRequest) returns (UpdateResponse);
+  rpc Supplier(SupplierRequest) returns (SupplierResponse);
+  rpc Update(UpdateRequest) returns (UpdateResponse);
 }
 
 message CreateRequest {
@@ -44,4 +45,23 @@ message ListRequest {
 
 message ListResponse {
   repeated Supplier suppliers = 1;
+}
+
+message SupplierRequest {
+  int32 id = 1;
+}
+
+message SupplierResponse {
+  Supplier supplier = 1;
+}
+
+message UpdateRequest {
+  int32 id = 1;
+  string name = 2;
+  SupplierType type = 3;
+  repeated ProductSupplier products = 4;
+}
+
+message UpdateResponse {
+  int32 id = 1;
 }
