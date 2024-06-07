@@ -56,10 +56,7 @@ message SupplierResponse {
 }
 
 message UpdateRequest {
-  int32 id = 1;
-  string name = 2;
-  SupplierType type = 3;
-  repeated ProductSupplier products = 4;
+  Supplier supplier = 1;
 }
 
 message UpdateResponse {
