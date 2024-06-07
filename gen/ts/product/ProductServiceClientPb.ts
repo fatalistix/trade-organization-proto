@@ -125,6 +125,49 @@ export class ProductServiceClient {
     this.methodDescriptorList);
   }
 
+  methodDescriptorProduct = new grpcWeb.MethodDescriptor(
+    '/product.ProductService/Product',
+    grpcWeb.MethodType.UNARY,
+    product_product_pb.ProductRequest,
+    product_product_pb.ProductResponse,
+    (request: product_product_pb.ProductRequest) => {
+      return request.serializeBinary();
+    },
+    product_product_pb.ProductResponse.deserializeBinary
+  );
+
+  product(
+    request: product_product_pb.ProductRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<product_product_pb.ProductResponse>;
+
+  product(
+    request: product_product_pb.ProductRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: product_product_pb.ProductResponse) => void): grpcWeb.ClientReadableStream<product_product_pb.ProductResponse>;
+
+  product(
+    request: product_product_pb.ProductRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: product_product_pb.ProductResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/product.ProductService/Product',
+        request,
+        metadata || {},
+        this.methodDescriptorProduct,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/product.ProductService/Product',
+    request,
+    metadata || {},
+    this.methodDescriptorProduct);
+  }
+
   methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
     '/product.ProductService/Update',
     grpcWeb.MethodType.UNARY,

@@ -102,15 +102,49 @@ export namespace ListResponse {
   }
 }
 
-export class UpdateRequest extends jspb.Message {
+export class ProductRequest extends jspb.Message {
   getId(): number;
-  setId(value: number): UpdateRequest;
+  setId(value: number): ProductRequest;
 
-  getName(): string;
-  setName(value: string): UpdateRequest;
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ProductRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ProductRequest): ProductRequest.AsObject;
+  static serializeBinaryToWriter(message: ProductRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ProductRequest;
+  static deserializeBinaryFromReader(message: ProductRequest, reader: jspb.BinaryReader): ProductRequest;
+}
 
-  getDescription(): string;
-  setDescription(value: string): UpdateRequest;
+export namespace ProductRequest {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class ProductResponse extends jspb.Message {
+  getProduct(): Product | undefined;
+  setProduct(value?: Product): ProductResponse;
+  hasProduct(): boolean;
+  clearProduct(): ProductResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ProductResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ProductResponse): ProductResponse.AsObject;
+  static serializeBinaryToWriter(message: ProductResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ProductResponse;
+  static deserializeBinaryFromReader(message: ProductResponse, reader: jspb.BinaryReader): ProductResponse;
+}
+
+export namespace ProductResponse {
+  export type AsObject = {
+    product?: Product.AsObject,
+  }
+}
+
+export class UpdateRequest extends jspb.Message {
+  getProduct(): Product | undefined;
+  setProduct(value?: Product): UpdateRequest;
+  hasProduct(): boolean;
+  clearProduct(): UpdateRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateRequest.AsObject;
@@ -122,9 +156,7 @@ export class UpdateRequest extends jspb.Message {
 
 export namespace UpdateRequest {
   export type AsObject = {
-    id: number,
-    name: string,
-    description: string,
+    product?: Product.AsObject,
   }
 }
 

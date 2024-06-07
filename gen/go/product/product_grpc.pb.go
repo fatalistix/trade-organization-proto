@@ -24,6 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 type ProductServiceClient interface {
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
+	Product(ctx context.Context, in *ProductRequest, opts ...grpc.CallOption) (*ProductResponse, error)
 	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 }
 
@@ -53,6 +54,15 @@ func (c *productServiceClient) List(ctx context.Context, in *ListRequest, opts .
 	return out, nil
 }
 
+func (c *productServiceClient) Product(ctx context.Context, in *ProductRequest, opts ...grpc.CallOption) (*ProductResponse, error) {
+	out := new(ProductResponse)
+	err := c.cc.Invoke(ctx, "/product.ProductService/Product", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *productServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
 	out := new(UpdateResponse)
 	err := c.cc.Invoke(ctx, "/product.ProductService/Update", in, out, opts...)
@@ -68,6 +78,7 @@ func (c *productServiceClient) Update(ctx context.Context, in *UpdateRequest, op
 type ProductServiceServer interface {
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
 	List(context.Context, *ListRequest) (*ListResponse, error)
+	Product(context.Context, *ProductRequest) (*ProductResponse, error)
 	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
 	mustEmbedUnimplementedProductServiceServer()
 }
@@ -81,6 +92,9 @@ func (UnimplementedProductServiceServer) Create(context.Context, *CreateRequest)
 }
 func (UnimplementedProductServiceServer) List(context.Context, *ListRequest) (*ListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+}
+func (UnimplementedProductServiceServer) Product(context.Context, *ProductRequest) (*ProductResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Product not implemented")
 }
 func (UnimplementedProductServiceServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
@@ -134,6 +148,24 @@ func _ProductService_List_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProductService_Product_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ProductRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServiceServer).Product(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/product.ProductService/Product",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServiceServer).Product(ctx, req.(*ProductRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ProductService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateRequest)
 	if err := dec(in); err != nil {
@@ -166,6 +198,10 @@ var ProductService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "List",
 			Handler:    _ProductService_List_Handler,
+		},
+		{
+			MethodName: "Product",
+			Handler:    _ProductService_Product_Handler,
 		},
 		{
 			MethodName: "Update",
