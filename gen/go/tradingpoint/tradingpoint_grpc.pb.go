@@ -22,9 +22,12 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TradingPointServiceClient interface {
+	// Trading point
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
+	// Section
 	AddSection(ctx context.Context, in *AddSectionRequest, opts ...grpc.CallOption) (*AddSectionResponse, error)
+	// Hall
 	AddHall(ctx context.Context, in *AddHallRequest, opts ...grpc.CallOption) (*AddHallResponse, error)
 	DepartmentStore(ctx context.Context, in *DepartmentStoreRequest, opts ...grpc.CallOption) (*DepartmentStoreResponse, error)
 	Store(ctx context.Context, in *StoreRequest, opts ...grpc.CallOption) (*StoreResponse, error)
@@ -116,9 +119,12 @@ func (c *tradingPointServiceClient) Tray(ctx context.Context, in *TrayRequest, o
 // All implementations must embed UnimplementedTradingPointServiceServer
 // for forward compatibility
 type TradingPointServiceServer interface {
+	// Trading point
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	List(context.Context, *ListRequest) (*ListResponse, error)
+	// Section
 	AddSection(context.Context, *AddSectionRequest) (*AddSectionResponse, error)
+	// Hall
 	AddHall(context.Context, *AddHallRequest) (*AddHallResponse, error)
 	DepartmentStore(context.Context, *DepartmentStoreRequest) (*DepartmentStoreResponse, error)
 	Store(context.Context, *StoreRequest) (*StoreResponse, error)

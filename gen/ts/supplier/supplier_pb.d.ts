@@ -132,6 +132,94 @@ export namespace ListResponse {
   }
 }
 
+export class SupplierRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): SupplierRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SupplierRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SupplierRequest): SupplierRequest.AsObject;
+  static serializeBinaryToWriter(message: SupplierRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SupplierRequest;
+  static deserializeBinaryFromReader(message: SupplierRequest, reader: jspb.BinaryReader): SupplierRequest;
+}
+
+export namespace SupplierRequest {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class SupplierResponse extends jspb.Message {
+  getSupplier(): Supplier | undefined;
+  setSupplier(value?: Supplier): SupplierResponse;
+  hasSupplier(): boolean;
+  clearSupplier(): SupplierResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SupplierResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: SupplierResponse): SupplierResponse.AsObject;
+  static serializeBinaryToWriter(message: SupplierResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SupplierResponse;
+  static deserializeBinaryFromReader(message: SupplierResponse, reader: jspb.BinaryReader): SupplierResponse;
+}
+
+export namespace SupplierResponse {
+  export type AsObject = {
+    supplier?: Supplier.AsObject,
+  }
+}
+
+export class UpdateRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): UpdateRequest;
+
+  getName(): string;
+  setName(value: string): UpdateRequest;
+
+  getType(): SupplierType;
+  setType(value: SupplierType): UpdateRequest;
+
+  getProductsList(): Array<ProductSupplier>;
+  setProductsList(value: Array<ProductSupplier>): UpdateRequest;
+  clearProductsList(): UpdateRequest;
+  addProducts(value?: ProductSupplier, index?: number): ProductSupplier;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateRequest): UpdateRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateRequest;
+  static deserializeBinaryFromReader(message: UpdateRequest, reader: jspb.BinaryReader): UpdateRequest;
+}
+
+export namespace UpdateRequest {
+  export type AsObject = {
+    id: number,
+    name: string,
+    type: SupplierType,
+    productsList: Array<ProductSupplier.AsObject>,
+  }
+}
+
+export class UpdateResponse extends jspb.Message {
+  getId(): number;
+  setId(value: number): UpdateResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateResponse): UpdateResponse.AsObject;
+  static serializeBinaryToWriter(message: UpdateResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateResponse;
+  static deserializeBinaryFromReader(message: UpdateResponse, reader: jspb.BinaryReader): UpdateResponse;
+}
+
+export namespace UpdateResponse {
+  export type AsObject = {
+    id: number,
+  }
+}
+
 export enum SupplierType { 
   SUPPLIER_TYPE_AVAILABLE = 0,
   SUPPLIER_TYPE_NOT_AVAILABLE = 1,

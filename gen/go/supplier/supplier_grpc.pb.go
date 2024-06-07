@@ -24,6 +24,8 @@ const _ = grpc.SupportPackageIsVersion7
 type SupplierServiceClient interface {
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
+	Supplier(ctx context.Context, in *SupplierRequest, opts ...grpc.CallOption) (*SupplierResponse, error)
+	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 }
 
 type supplierServiceClient struct {
@@ -52,12 +54,32 @@ func (c *supplierServiceClient) List(ctx context.Context, in *ListRequest, opts 
 	return out, nil
 }
 
+func (c *supplierServiceClient) Supplier(ctx context.Context, in *SupplierRequest, opts ...grpc.CallOption) (*SupplierResponse, error) {
+	out := new(SupplierResponse)
+	err := c.cc.Invoke(ctx, "/supplier.SupplierService/Supplier", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *supplierServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
+	out := new(UpdateResponse)
+	err := c.cc.Invoke(ctx, "/supplier.SupplierService/Update", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SupplierServiceServer is the server API for SupplierService service.
 // All implementations must embed UnimplementedSupplierServiceServer
 // for forward compatibility
 type SupplierServiceServer interface {
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
 	List(context.Context, *ListRequest) (*ListResponse, error)
+	Supplier(context.Context, *SupplierRequest) (*SupplierResponse, error)
+	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
 	mustEmbedUnimplementedSupplierServiceServer()
 }
 
@@ -70,6 +92,12 @@ func (UnimplementedSupplierServiceServer) Create(context.Context, *CreateRequest
 }
 func (UnimplementedSupplierServiceServer) List(context.Context, *ListRequest) (*ListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+}
+func (UnimplementedSupplierServiceServer) Supplier(context.Context, *SupplierRequest) (*SupplierResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Supplier not implemented")
+}
+func (UnimplementedSupplierServiceServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
 func (UnimplementedSupplierServiceServer) mustEmbedUnimplementedSupplierServiceServer() {}
 
@@ -120,6 +148,42 @@ func _SupplierService_List_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SupplierService_Supplier_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SupplierRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SupplierServiceServer).Supplier(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/supplier.SupplierService/Supplier",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SupplierServiceServer).Supplier(ctx, req.(*SupplierRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SupplierService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SupplierServiceServer).Update(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/supplier.SupplierService/Update",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SupplierServiceServer).Update(ctx, req.(*UpdateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SupplierService_ServiceDesc is the grpc.ServiceDesc for SupplierService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -134,6 +198,14 @@ var SupplierService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "List",
 			Handler:    _SupplierService_List_Handler,
+		},
+		{
+			MethodName: "Supplier",
+			Handler:    _SupplierService_Supplier_Handler,
+		},
+		{
+			MethodName: "Update",
+			Handler:    _SupplierService_Update_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -125,5 +125,91 @@ export class SupplierServiceClient {
     this.methodDescriptorList);
   }
 
+  methodDescriptorSupplier = new grpcWeb.MethodDescriptor(
+    '/supplier.SupplierService/Supplier',
+    grpcWeb.MethodType.UNARY,
+    supplier_supplier_pb.SupplierRequest,
+    supplier_supplier_pb.SupplierResponse,
+    (request: supplier_supplier_pb.SupplierRequest) => {
+      return request.serializeBinary();
+    },
+    supplier_supplier_pb.SupplierResponse.deserializeBinary
+  );
+
+  supplier(
+    request: supplier_supplier_pb.SupplierRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<supplier_supplier_pb.SupplierResponse>;
+
+  supplier(
+    request: supplier_supplier_pb.SupplierRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: supplier_supplier_pb.SupplierResponse) => void): grpcWeb.ClientReadableStream<supplier_supplier_pb.SupplierResponse>;
+
+  supplier(
+    request: supplier_supplier_pb.SupplierRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: supplier_supplier_pb.SupplierResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/supplier.SupplierService/Supplier',
+        request,
+        metadata || {},
+        this.methodDescriptorSupplier,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/supplier.SupplierService/Supplier',
+    request,
+    metadata || {},
+    this.methodDescriptorSupplier);
+  }
+
+  methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
+    '/supplier.SupplierService/Update',
+    grpcWeb.MethodType.UNARY,
+    supplier_supplier_pb.UpdateRequest,
+    supplier_supplier_pb.UpdateResponse,
+    (request: supplier_supplier_pb.UpdateRequest) => {
+      return request.serializeBinary();
+    },
+    supplier_supplier_pb.UpdateResponse.deserializeBinary
+  );
+
+  update(
+    request: supplier_supplier_pb.UpdateRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<supplier_supplier_pb.UpdateResponse>;
+
+  update(
+    request: supplier_supplier_pb.UpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: supplier_supplier_pb.UpdateResponse) => void): grpcWeb.ClientReadableStream<supplier_supplier_pb.UpdateResponse>;
+
+  update(
+    request: supplier_supplier_pb.UpdateRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: supplier_supplier_pb.UpdateResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/supplier.SupplierService/Update',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/supplier.SupplierService/Update',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdate);
+  }
+
 }
 
