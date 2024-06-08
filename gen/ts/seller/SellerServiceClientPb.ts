@@ -39,47 +39,47 @@ export class SellerServiceClient {
     this.options_ = options;
   }
 
-  methodDescriptorRegister = new grpcWeb.MethodDescriptor(
-    '/seller.SellerService/Register',
+  methodDescriptorCreate = new grpcWeb.MethodDescriptor(
+    '/seller.SellerService/Create',
     grpcWeb.MethodType.UNARY,
-    seller_seller_pb.RegisterRequest,
-    seller_seller_pb.RegisterResponse,
-    (request: seller_seller_pb.RegisterRequest) => {
+    seller_seller_pb.CreateRequest,
+    seller_seller_pb.CreateResponse,
+    (request: seller_seller_pb.CreateRequest) => {
       return request.serializeBinary();
     },
-    seller_seller_pb.RegisterResponse.deserializeBinary
+    seller_seller_pb.CreateResponse.deserializeBinary
   );
 
-  register(
-    request: seller_seller_pb.RegisterRequest,
-    metadata?: grpcWeb.Metadata | null): Promise<seller_seller_pb.RegisterResponse>;
+  create(
+    request: seller_seller_pb.CreateRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<seller_seller_pb.CreateResponse>;
 
-  register(
-    request: seller_seller_pb.RegisterRequest,
+  create(
+    request: seller_seller_pb.CreateRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: seller_seller_pb.RegisterResponse) => void): grpcWeb.ClientReadableStream<seller_seller_pb.RegisterResponse>;
+               response: seller_seller_pb.CreateResponse) => void): grpcWeb.ClientReadableStream<seller_seller_pb.CreateResponse>;
 
-  register(
-    request: seller_seller_pb.RegisterRequest,
+  create(
+    request: seller_seller_pb.CreateRequest,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: seller_seller_pb.RegisterResponse) => void) {
+               response: seller_seller_pb.CreateResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/seller.SellerService/Register',
+          '/seller.SellerService/Create',
         request,
         metadata || {},
-        this.methodDescriptorRegister,
+        this.methodDescriptorCreate,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/seller.SellerService/Register',
+      '/seller.SellerService/Create',
     request,
     metadata || {},
-    this.methodDescriptorRegister);
+    this.methodDescriptorCreate);
   }
 
   methodDescriptorList = new grpcWeb.MethodDescriptor(
@@ -125,47 +125,90 @@ export class SellerServiceClient {
     this.methodDescriptorList);
   }
 
-  methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
-    '/seller.SellerService/Update',
+  methodDescriptorSeller = new grpcWeb.MethodDescriptor(
+    '/seller.SellerService/Seller',
     grpcWeb.MethodType.UNARY,
-    seller_seller_pb.UpdateRequest,
-    seller_seller_pb.UpdateResponse,
-    (request: seller_seller_pb.UpdateRequest) => {
+    seller_seller_pb.SellerRequest,
+    seller_seller_pb.SellerResponse,
+    (request: seller_seller_pb.SellerRequest) => {
       return request.serializeBinary();
     },
-    seller_seller_pb.UpdateResponse.deserializeBinary
+    seller_seller_pb.SellerResponse.deserializeBinary
   );
 
-  update(
-    request: seller_seller_pb.UpdateRequest,
-    metadata?: grpcWeb.Metadata | null): Promise<seller_seller_pb.UpdateResponse>;
+  seller(
+    request: seller_seller_pb.SellerRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<seller_seller_pb.SellerResponse>;
 
-  update(
-    request: seller_seller_pb.UpdateRequest,
+  seller(
+    request: seller_seller_pb.SellerRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: seller_seller_pb.UpdateResponse) => void): grpcWeb.ClientReadableStream<seller_seller_pb.UpdateResponse>;
+               response: seller_seller_pb.SellerResponse) => void): grpcWeb.ClientReadableStream<seller_seller_pb.SellerResponse>;
 
-  update(
-    request: seller_seller_pb.UpdateRequest,
+  seller(
+    request: seller_seller_pb.SellerRequest,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: seller_seller_pb.UpdateResponse) => void) {
+               response: seller_seller_pb.SellerResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/seller.SellerService/Update',
+          '/seller.SellerService/Seller',
         request,
         metadata || {},
-        this.methodDescriptorUpdate,
+        this.methodDescriptorSeller,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/seller.SellerService/Update',
+      '/seller.SellerService/Seller',
     request,
     metadata || {},
-    this.methodDescriptorUpdate);
+    this.methodDescriptorSeller);
+  }
+
+  methodDescriptorPatch = new grpcWeb.MethodDescriptor(
+    '/seller.SellerService/Patch',
+    grpcWeb.MethodType.UNARY,
+    seller_seller_pb.PatchRequest,
+    seller_seller_pb.PatchResponse,
+    (request: seller_seller_pb.PatchRequest) => {
+      return request.serializeBinary();
+    },
+    seller_seller_pb.PatchResponse.deserializeBinary
+  );
+
+  patch(
+    request: seller_seller_pb.PatchRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<seller_seller_pb.PatchResponse>;
+
+  patch(
+    request: seller_seller_pb.PatchRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: seller_seller_pb.PatchResponse) => void): grpcWeb.ClientReadableStream<seller_seller_pb.PatchResponse>;
+
+  patch(
+    request: seller_seller_pb.PatchRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: seller_seller_pb.PatchResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/seller.SellerService/Patch',
+        request,
+        metadata || {},
+        this.methodDescriptorPatch,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/seller.SellerService/Patch',
+    request,
+    metadata || {},
+    this.methodDescriptorPatch);
   }
 
 }

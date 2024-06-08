@@ -22,9 +22,10 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SellerServiceClient interface {
-	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
+	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
-	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
+	Seller(ctx context.Context, in *SellerRequest, opts ...grpc.CallOption) (*SellerResponse, error)
+	Patch(ctx context.Context, in *PatchRequest, opts ...grpc.CallOption) (*PatchResponse, error)
 }
 
 type sellerServiceClient struct {
@@ -35,9 +36,9 @@ func NewSellerServiceClient(cc grpc.ClientConnInterface) SellerServiceClient {
 	return &sellerServiceClient{cc}
 }
 
-func (c *sellerServiceClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
-	out := new(RegisterResponse)
-	err := c.cc.Invoke(ctx, "/seller.SellerService/Register", in, out, opts...)
+func (c *sellerServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
+	out := new(CreateResponse)
+	err := c.cc.Invoke(ctx, "/seller.SellerService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,9 +54,18 @@ func (c *sellerServiceClient) List(ctx context.Context, in *ListRequest, opts ..
 	return out, nil
 }
 
-func (c *sellerServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
-	out := new(UpdateResponse)
-	err := c.cc.Invoke(ctx, "/seller.SellerService/Update", in, out, opts...)
+func (c *sellerServiceClient) Seller(ctx context.Context, in *SellerRequest, opts ...grpc.CallOption) (*SellerResponse, error) {
+	out := new(SellerResponse)
+	err := c.cc.Invoke(ctx, "/seller.SellerService/Seller", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sellerServiceClient) Patch(ctx context.Context, in *PatchRequest, opts ...grpc.CallOption) (*PatchResponse, error) {
+	out := new(PatchResponse)
+	err := c.cc.Invoke(ctx, "/seller.SellerService/Patch", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -66,9 +76,10 @@ func (c *sellerServiceClient) Update(ctx context.Context, in *UpdateRequest, opt
 // All implementations must embed UnimplementedSellerServiceServer
 // for forward compatibility
 type SellerServiceServer interface {
-	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
+	Create(context.Context, *CreateRequest) (*CreateResponse, error)
 	List(context.Context, *ListRequest) (*ListResponse, error)
-	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
+	Seller(context.Context, *SellerRequest) (*SellerResponse, error)
+	Patch(context.Context, *PatchRequest) (*PatchResponse, error)
 	mustEmbedUnimplementedSellerServiceServer()
 }
 
@@ -76,14 +87,17 @@ type SellerServiceServer interface {
 type UnimplementedSellerServiceServer struct {
 }
 
-func (UnimplementedSellerServiceServer) Register(context.Context, *RegisterRequest) (*RegisterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
+func (UnimplementedSellerServiceServer) Create(context.Context, *CreateRequest) (*CreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
 func (UnimplementedSellerServiceServer) List(context.Context, *ListRequest) (*ListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (UnimplementedSellerServiceServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
+func (UnimplementedSellerServiceServer) Seller(context.Context, *SellerRequest) (*SellerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Seller not implemented")
+}
+func (UnimplementedSellerServiceServer) Patch(context.Context, *PatchRequest) (*PatchResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Patch not implemented")
 }
 func (UnimplementedSellerServiceServer) mustEmbedUnimplementedSellerServiceServer() {}
 
@@ -98,20 +112,20 @@ func RegisterSellerServiceServer(s grpc.ServiceRegistrar, srv SellerServiceServe
 	s.RegisterService(&SellerService_ServiceDesc, srv)
 }
 
-func _SellerService_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterRequest)
+func _SellerService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SellerServiceServer).Register(ctx, in)
+		return srv.(SellerServiceServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/seller.SellerService/Register",
+		FullMethod: "/seller.SellerService/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SellerServiceServer).Register(ctx, req.(*RegisterRequest))
+		return srv.(SellerServiceServer).Create(ctx, req.(*CreateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -134,20 +148,38 @@ func _SellerService_List_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SellerService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateRequest)
+func _SellerService_Seller_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SellerRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SellerServiceServer).Update(ctx, in)
+		return srv.(SellerServiceServer).Seller(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/seller.SellerService/Update",
+		FullMethod: "/seller.SellerService/Seller",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SellerServiceServer).Update(ctx, req.(*UpdateRequest))
+		return srv.(SellerServiceServer).Seller(ctx, req.(*SellerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SellerService_Patch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PatchRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SellerServiceServer).Patch(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/seller.SellerService/Patch",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SellerServiceServer).Patch(ctx, req.(*PatchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -160,16 +192,20 @@ var SellerService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*SellerServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Register",
-			Handler:    _SellerService_Register_Handler,
+			MethodName: "Create",
+			Handler:    _SellerService_Create_Handler,
 		},
 		{
 			MethodName: "List",
 			Handler:    _SellerService_List_Handler,
 		},
 		{
-			MethodName: "Update",
-			Handler:    _SellerService_Update_Handler,
+			MethodName: "Seller",
+			Handler:    _SellerService_Seller_Handler,
+		},
+		{
+			MethodName: "Patch",
+			Handler:    _SellerService_Patch_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
