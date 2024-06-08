@@ -11,7 +11,6 @@ import "google/protobuf/empty.proto";
 
 message Seller {
   int32 id = 1;
-  SellerStatus status = 2;
   string first_name = 3;
   string last_name = 4;
   string middle_name = 5;
@@ -19,11 +18,6 @@ message Seller {
   core.Money salary = 7;
   string phone_number = 8;
   optional WorksAt works_at = 9;
-}
-
-enum SellerStatus {
-  SELLER_STATUS_WORKING = 0;
-  SELLER_STATUS_NOT_WORKING = 1;
 }
 
 message WorksAt {
@@ -42,12 +36,13 @@ message TradingPoint {
 }
 
 service SellerService {
-  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Create(CreateRequest) returns (CreateResponse);
   rpc List(ListRequest) returns (ListResponse);
-  rpc Update(UpdateRequest) returns (UpdateResponse);
+  rpc Seller(SellerRequest) returns (SellerResponse);
+  rpc Patch(PatchRequest) returns (PatchResponse);
 }
 
-message RegisterRequest {
+message CreateRequest {
   string first_name = 1;
   string last_name = 2;
   string middle_name = 3;
@@ -57,7 +52,7 @@ message RegisterRequest {
   optional WorksAt works_at = 7;
 }
 
-message RegisterResponse {
+message CreateResponse {
   int32 id = 1;
 }
 
@@ -80,7 +75,19 @@ message ListResponse {
   repeated Seller sellers = 1;
 }
 
-message UpdateRequest {
+message SellerRequest {
+  int32 id = 1;
+}
+
+message SellerResponse {
+  Seller seller = 1;
+}
+
+message NewWorksAt {
+  optional WorksAt works_at = 1;
+}
+
+message PatchRequest {
   int32 id = 1;
   optional string first_name = 2;
   optional string last_name = 3;
@@ -91,10 +98,6 @@ message UpdateRequest {
   optional NewWorksAt works_at = 8;
 }
 
-message NewWorksAt {
-  optional WorksAt works_at = 1;
-}
-
-message UpdateResponse {
+message PatchResponse {
   int32 id = 1;
 }
