@@ -23,8 +23,6 @@ var global =
 
 var core_money_pb = require('../core/money_pb.js');
 goog.object.extend(proto, core_money_pb);
-var product_product_pb = require('../product/product_pb.js');
-goog.object.extend(proto, product_product_pb);
 goog.exportSymbol('proto.tradingpoint.AddHallRequest', null, global);
 goog.exportSymbol('proto.tradingpoint.AddHallResponse', null, global);
 goog.exportSymbol('proto.tradingpoint.AddSectionRequest', null, global);
@@ -1041,7 +1039,7 @@ proto.tradingpoint.ProductTradingPoint.toObject = function(includeInstance, msg)
   var f, obj = {
     quantity: jspb.Message.getFieldWithDefault(msg, 1, 0),
     price: (f = msg.getPrice()) && core_money_pb.Money.toObject(includeInstance, f),
-    product: (f = msg.getProduct()) && product_product_pb.Product.toObject(includeInstance, f)
+    productId: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -1088,9 +1086,8 @@ proto.tradingpoint.ProductTradingPoint.deserializeBinaryFromReader = function(ms
       msg.setPrice(value);
       break;
     case 3:
-      var value = new product_product_pb.Product;
-      reader.readMessage(value,product_product_pb.Product.deserializeBinaryFromReader);
-      msg.setProduct(value);
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setProductId(value);
       break;
     default:
       reader.skipField();
@@ -1136,12 +1133,11 @@ proto.tradingpoint.ProductTradingPoint.serializeBinaryToWriter = function(messag
       core_money_pb.Money.serializeBinaryToWriter
     );
   }
-  f = message.getProduct();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getProductId();
+  if (f !== 0) {
+    writer.writeInt32(
       3,
-      f,
-      product_product_pb.Product.serializeBinaryToWriter
+      f
     );
   }
 };
@@ -1203,39 +1199,20 @@ proto.tradingpoint.ProductTradingPoint.prototype.hasPrice = function() {
 
 
 /**
- * optional product.Product product = 3;
- * @return {?proto.product.Product}
+ * optional int32 product_id = 3;
+ * @return {number}
  */
-proto.tradingpoint.ProductTradingPoint.prototype.getProduct = function() {
-  return /** @type{?proto.product.Product} */ (
-    jspb.Message.getWrapperField(this, product_product_pb.Product, 3));
+proto.tradingpoint.ProductTradingPoint.prototype.getProductId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {?proto.product.Product|undefined} value
- * @return {!proto.tradingpoint.ProductTradingPoint} returns this
-*/
-proto.tradingpoint.ProductTradingPoint.prototype.setProduct = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
+ * @param {number} value
  * @return {!proto.tradingpoint.ProductTradingPoint} returns this
  */
-proto.tradingpoint.ProductTradingPoint.prototype.clearProduct = function() {
-  return this.setProduct(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.tradingpoint.ProductTradingPoint.prototype.hasProduct = function() {
-  return jspb.Message.getField(this, 3) != null;
+proto.tradingpoint.ProductTradingPoint.prototype.setProductId = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
