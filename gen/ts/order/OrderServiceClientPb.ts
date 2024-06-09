@@ -82,5 +82,134 @@ export class OrderServiceClient {
     this.methodDescriptorCreate);
   }
 
+  methodDescriptorList = new grpcWeb.MethodDescriptor(
+    '/order.OrderService/List',
+    grpcWeb.MethodType.UNARY,
+    order_order_pb.ListRequest,
+    order_order_pb.ListResponse,
+    (request: order_order_pb.ListRequest) => {
+      return request.serializeBinary();
+    },
+    order_order_pb.ListResponse.deserializeBinary
+  );
+
+  list(
+    request: order_order_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<order_order_pb.ListResponse>;
+
+  list(
+    request: order_order_pb.ListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: order_order_pb.ListResponse) => void): grpcWeb.ClientReadableStream<order_order_pb.ListResponse>;
+
+  list(
+    request: order_order_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: order_order_pb.ListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/order.OrderService/List',
+        request,
+        metadata || {},
+        this.methodDescriptorList,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/order.OrderService/List',
+    request,
+    metadata || {},
+    this.methodDescriptorList);
+  }
+
+  methodDescriptorOrder = new grpcWeb.MethodDescriptor(
+    '/order.OrderService/Order',
+    grpcWeb.MethodType.UNARY,
+    order_order_pb.OrderRequest,
+    order_order_pb.OrderResponse,
+    (request: order_order_pb.OrderRequest) => {
+      return request.serializeBinary();
+    },
+    order_order_pb.OrderResponse.deserializeBinary
+  );
+
+  order(
+    request: order_order_pb.OrderRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<order_order_pb.OrderResponse>;
+
+  order(
+    request: order_order_pb.OrderRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: order_order_pb.OrderResponse) => void): grpcWeb.ClientReadableStream<order_order_pb.OrderResponse>;
+
+  order(
+    request: order_order_pb.OrderRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: order_order_pb.OrderResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/order.OrderService/Order',
+        request,
+        metadata || {},
+        this.methodDescriptorOrder,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/order.OrderService/Order',
+    request,
+    metadata || {},
+    this.methodDescriptorOrder);
+  }
+
+  methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
+    '/order.OrderService/Update',
+    grpcWeb.MethodType.UNARY,
+    order_order_pb.UpdateRequest,
+    order_order_pb.UpdateResponse,
+    (request: order_order_pb.UpdateRequest) => {
+      return request.serializeBinary();
+    },
+    order_order_pb.UpdateResponse.deserializeBinary
+  );
+
+  update(
+    request: order_order_pb.UpdateRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<order_order_pb.UpdateResponse>;
+
+  update(
+    request: order_order_pb.UpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: order_order_pb.UpdateResponse) => void): grpcWeb.ClientReadableStream<order_order_pb.UpdateResponse>;
+
+  update(
+    request: order_order_pb.UpdateRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: order_order_pb.UpdateResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/order.OrderService/Update',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/order.OrderService/Update',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdate);
+  }
+
 }
 
