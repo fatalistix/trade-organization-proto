@@ -38,7 +38,7 @@ func NewApplicationServiceClient(cc grpc.ClientConnInterface) ApplicationService
 
 func (c *applicationServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
 	out := new(CreateResponse)
-	err := c.cc.Invoke(ctx, "/supplier.ApplicationService/Create", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/application.ApplicationService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (c *applicationServiceClient) Create(ctx context.Context, in *CreateRequest
 
 func (c *applicationServiceClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error) {
 	out := new(ListResponse)
-	err := c.cc.Invoke(ctx, "/supplier.ApplicationService/List", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/application.ApplicationService/List", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (c *applicationServiceClient) List(ctx context.Context, in *ListRequest, op
 
 func (c *applicationServiceClient) Application(ctx context.Context, in *ApplicationRequest, opts ...grpc.CallOption) (*ApplicationResponse, error) {
 	out := new(ApplicationResponse)
-	err := c.cc.Invoke(ctx, "/supplier.ApplicationService/Application", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/application.ApplicationService/Application", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func (c *applicationServiceClient) Application(ctx context.Context, in *Applicat
 
 func (c *applicationServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
 	out := new(UpdateResponse)
-	err := c.cc.Invoke(ctx, "/supplier.ApplicationService/Update", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/application.ApplicationService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -122,7 +122,7 @@ func _ApplicationService_Create_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/supplier.ApplicationService/Create",
+		FullMethod: "/application.ApplicationService/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ApplicationServiceServer).Create(ctx, req.(*CreateRequest))
@@ -140,7 +140,7 @@ func _ApplicationService_List_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/supplier.ApplicationService/List",
+		FullMethod: "/application.ApplicationService/List",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ApplicationServiceServer).List(ctx, req.(*ListRequest))
@@ -158,7 +158,7 @@ func _ApplicationService_Application_Handler(srv interface{}, ctx context.Contex
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/supplier.ApplicationService/Application",
+		FullMethod: "/application.ApplicationService/Application",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ApplicationServiceServer).Application(ctx, req.(*ApplicationRequest))
@@ -176,7 +176,7 @@ func _ApplicationService_Update_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/supplier.ApplicationService/Update",
+		FullMethod: "/application.ApplicationService/Update",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ApplicationServiceServer).Update(ctx, req.(*UpdateRequest))
@@ -188,7 +188,7 @@ func _ApplicationService_Update_Handler(srv interface{}, ctx context.Context, de
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ApplicationService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "supplier.ApplicationService",
+	ServiceName: "application.ApplicationService",
 	HandlerType: (*ApplicationServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

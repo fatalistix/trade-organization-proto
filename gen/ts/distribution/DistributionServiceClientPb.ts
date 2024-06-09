@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for customer
+ * @fileoverview gRPC-Web generated client stub for distribution
  * @enhanceable
  * @public
  */
@@ -40,7 +40,7 @@ export class DistributionServiceClient {
   }
 
   methodDescriptorCreate = new grpcWeb.MethodDescriptor(
-    '/customer.DistributionService/Create',
+    '/distribution.DistributionService/Create',
     grpcWeb.MethodType.UNARY,
     distribution_distribution_pb.CreateRequest,
     distribution_distribution_pb.CreateResponse,
@@ -68,7 +68,7 @@ export class DistributionServiceClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/customer.DistributionService/Create',
+          '/distribution.DistributionService/Create',
         request,
         metadata || {},
         this.methodDescriptorCreate,
@@ -76,7 +76,7 @@ export class DistributionServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/customer.DistributionService/Create',
+      '/distribution.DistributionService/Create',
     request,
     metadata || {},
     this.methodDescriptorCreate);

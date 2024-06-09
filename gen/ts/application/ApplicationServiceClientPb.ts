@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for supplier
+ * @fileoverview gRPC-Web generated client stub for application
  * @enhanceable
  * @public
  */
@@ -40,7 +40,7 @@ export class ApplicationServiceClient {
   }
 
   methodDescriptorCreate = new grpcWeb.MethodDescriptor(
-    '/supplier.ApplicationService/Create',
+    '/application.ApplicationService/Create',
     grpcWeb.MethodType.UNARY,
     application_application_pb.CreateRequest,
     application_application_pb.CreateResponse,
@@ -68,7 +68,7 @@ export class ApplicationServiceClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/supplier.ApplicationService/Create',
+          '/application.ApplicationService/Create',
         request,
         metadata || {},
         this.methodDescriptorCreate,
@@ -76,14 +76,14 @@ export class ApplicationServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/supplier.ApplicationService/Create',
+      '/application.ApplicationService/Create',
     request,
     metadata || {},
     this.methodDescriptorCreate);
   }
 
   methodDescriptorList = new grpcWeb.MethodDescriptor(
-    '/supplier.ApplicationService/List',
+    '/application.ApplicationService/List',
     grpcWeb.MethodType.UNARY,
     application_application_pb.ListRequest,
     application_application_pb.ListResponse,
@@ -111,7 +111,7 @@ export class ApplicationServiceClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/supplier.ApplicationService/List',
+          '/application.ApplicationService/List',
         request,
         metadata || {},
         this.methodDescriptorList,
@@ -119,14 +119,14 @@ export class ApplicationServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/supplier.ApplicationService/List',
+      '/application.ApplicationService/List',
     request,
     metadata || {},
     this.methodDescriptorList);
   }
 
   methodDescriptorApplication = new grpcWeb.MethodDescriptor(
-    '/supplier.ApplicationService/Application',
+    '/application.ApplicationService/Application',
     grpcWeb.MethodType.UNARY,
     application_application_pb.ApplicationRequest,
     application_application_pb.ApplicationResponse,
@@ -154,7 +154,7 @@ export class ApplicationServiceClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/supplier.ApplicationService/Application',
+          '/application.ApplicationService/Application',
         request,
         metadata || {},
         this.methodDescriptorApplication,
@@ -162,14 +162,14 @@ export class ApplicationServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/supplier.ApplicationService/Application',
+      '/application.ApplicationService/Application',
     request,
     metadata || {},
     this.methodDescriptorApplication);
   }
 
   methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
-    '/supplier.ApplicationService/Update',
+    '/application.ApplicationService/Update',
     grpcWeb.MethodType.UNARY,
     application_application_pb.UpdateRequest,
     application_application_pb.UpdateResponse,
@@ -197,7 +197,7 @@ export class ApplicationServiceClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/supplier.ApplicationService/Update',
+          '/application.ApplicationService/Update',
         request,
         metadata || {},
         this.methodDescriptorUpdate,
@@ -205,7 +205,7 @@ export class ApplicationServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/supplier.ApplicationService/Update',
+      '/application.ApplicationService/Update',
     request,
     metadata || {},
     this.methodDescriptorUpdate);

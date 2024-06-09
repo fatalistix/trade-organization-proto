@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for tradingpoint
+ * @fileoverview gRPC-Web generated client stub for transfer
  * @enhanceable
  * @public
  */
@@ -40,7 +40,7 @@ export class TransferServiceClient {
   }
 
   methodDescriptorCreate = new grpcWeb.MethodDescriptor(
-    '/tradingpoint.TransferService/Create',
+    '/transfer.TransferService/Create',
     grpcWeb.MethodType.UNARY,
     transfer_transfer_pb.CreateRequest,
     transfer_transfer_pb.CreateResponse,
@@ -68,7 +68,7 @@ export class TransferServiceClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/tradingpoint.TransferService/Create',
+          '/transfer.TransferService/Create',
         request,
         metadata || {},
         this.methodDescriptorCreate,
@@ -76,7 +76,7 @@ export class TransferServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/tradingpoint.TransferService/Create',
+      '/transfer.TransferService/Create',
     request,
     metadata || {},
     this.methodDescriptorCreate);

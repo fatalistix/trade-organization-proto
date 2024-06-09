@@ -35,7 +35,7 @@ func NewDistributionServiceClient(cc grpc.ClientConnInterface) DistributionServi
 
 func (c *distributionServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
 	out := new(CreateResponse)
-	err := c.cc.Invoke(ctx, "/customer.DistributionService/Create", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/distribution.DistributionService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _DistributionService_Create_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/customer.DistributionService/Create",
+		FullMethod: "/distribution.DistributionService/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DistributionServiceServer).Create(ctx, req.(*CreateRequest))
@@ -92,7 +92,7 @@ func _DistributionService_Create_Handler(srv interface{}, ctx context.Context, d
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var DistributionService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "customer.DistributionService",
+	ServiceName: "distribution.DistributionService",
 	HandlerType: (*DistributionServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

@@ -35,7 +35,7 @@ func NewTransferServiceClient(cc grpc.ClientConnInterface) TransferServiceClient
 
 func (c *transferServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
 	out := new(CreateResponse)
-	err := c.cc.Invoke(ctx, "/tradingpoint.TransferService/Create", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/transfer.TransferService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _TransferService_Create_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/tradingpoint.TransferService/Create",
+		FullMethod: "/transfer.TransferService/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TransferServiceServer).Create(ctx, req.(*CreateRequest))
@@ -92,7 +92,7 @@ func _TransferService_Create_Handler(srv interface{}, ctx context.Context, dec f
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var TransferService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "tradingpoint.TransferService",
+	ServiceName: "transfer.TransferService",
 	HandlerType: (*TransferServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

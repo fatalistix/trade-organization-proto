@@ -35,7 +35,7 @@ func NewOrderServiceClient(cc grpc.ClientConnInterface) OrderServiceClient {
 
 func (c *orderServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
 	out := new(CreateResponse)
-	err := c.cc.Invoke(ctx, "/customer.OrderService/Create", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/order.OrderService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _OrderService_Create_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/customer.OrderService/Create",
+		FullMethod: "/order.OrderService/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(OrderServiceServer).Create(ctx, req.(*CreateRequest))
@@ -92,7 +92,7 @@ func _OrderService_Create_Handler(srv interface{}, ctx context.Context, dec func
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var OrderService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "customer.OrderService",
+	ServiceName: "order.OrderService",
 	HandlerType: (*OrderServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for customer
+ * @fileoverview gRPC-Web generated client stub for order
  * @enhanceable
  * @public
  */
@@ -40,7 +40,7 @@ export class OrderServiceClient {
   }
 
   methodDescriptorCreate = new grpcWeb.MethodDescriptor(
-    '/customer.OrderService/Create',
+    '/order.OrderService/Create',
     grpcWeb.MethodType.UNARY,
     order_order_pb.CreateRequest,
     order_order_pb.CreateResponse,
@@ -68,7 +68,7 @@ export class OrderServiceClient {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/customer.OrderService/Create',
+          '/order.OrderService/Create',
         request,
         metadata || {},
         this.methodDescriptorCreate,
@@ -76,7 +76,7 @@ export class OrderServiceClient {
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/customer.OrderService/Create',
+      '/order.OrderService/Create',
     request,
     metadata || {},
     this.methodDescriptorCreate);
