@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package supplier;
+package application;
 
 option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/application;application";
 
