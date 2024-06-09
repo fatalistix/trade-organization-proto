@@ -7,7 +7,6 @@ option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/order
 import "google/protobuf/timestamp.proto";
 
 import "core/money.proto";
-import "product/product.proto";
 
 message Order {
   int32 id = 1;
@@ -16,6 +15,7 @@ message Order {
   OrderStatus status = 4;
   optional google.protobuf.Timestamp completed_at = 5;
   optional google.protobuf.Timestamp canceled_at = 6;
+  repeated ProductOrder products = 7;
 }
 
 enum OrderStatus {
@@ -27,12 +27,14 @@ enum OrderStatus {
 message ProductOrder {
   int32 quantity = 2;
   core.Money price = 3;
-  product.Product product = 4;
+  int32 product_id = 4;
 }
 
 service OrderService {
   rpc Create(CreateRequest) returns (CreateResponse);
-//  rpc List(ListRequest) returns (ListResponse);
+  rpc List(ListRequest) returns (ListResponse);
+  rpc Order(OrderRequest) returns (OrderResponse);
+  rpc Update(UpdateRequest) returns (UpdateResponse);
 }
 
 message CreateRequest {
@@ -41,5 +43,29 @@ message CreateRequest {
 }
 
 message CreateResponse {
+  int32 id = 1;
+}
+
+message ListRequest {
+
+}
+
+message ListResponse {
+
+}
+
+message OrderRequest {
+  int32 id = 1;
+}
+
+message OrderResponse {
+  Order order = 1;
+}
+
+message UpdateRequest {
+  Order order = 1;
+}
+
+message UpdateResponse {
   int32 id = 1;
 }
