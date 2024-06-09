@@ -49,6 +49,7 @@ service OrderService {
 message CreateRequest {
   int32 supplier_id = 1;
   repeated ProductOrder products = 3;
+  repeated int32 application_ids = 4;
 }
 
 message CreateResponse {
