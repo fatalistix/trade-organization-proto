@@ -152,7 +152,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.order.ListResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.order.ListResponse.repeatedFields_, null);
 };
 goog.inherits(proto.order.ListResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -1282,6 +1282,13 @@ proto.order.ListRequest.serializeBinaryToWriter = function(message, writer) {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.order.ListResponse.repeatedFields_ = [1];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1313,7 +1320,8 @@ proto.order.ListResponse.prototype.toObject = function(opt_includeInstance) {
  */
 proto.order.ListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    ordersList: jspb.Message.toObjectList(msg.getOrdersList(),
+    proto.order.Order.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1350,6 +1358,11 @@ proto.order.ListResponse.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.order.Order;
+      reader.readMessage(value,proto.order.Order.deserializeBinaryFromReader);
+      msg.addOrders(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1379,6 +1392,52 @@ proto.order.ListResponse.prototype.serializeBinary = function() {
  */
 proto.order.ListResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getOrdersList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.order.Order.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated Order orders = 1;
+ * @return {!Array<!proto.order.Order>}
+ */
+proto.order.ListResponse.prototype.getOrdersList = function() {
+  return /** @type{!Array<!proto.order.Order>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.order.Order, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.order.Order>} value
+ * @return {!proto.order.ListResponse} returns this
+*/
+proto.order.ListResponse.prototype.setOrdersList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.order.Order=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.order.Order}
+ */
+proto.order.ListResponse.prototype.addOrders = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.order.Order, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.order.ListResponse} returns this
+ */
+proto.order.ListResponse.prototype.clearOrdersList = function() {
+  return this.setOrdersList([]);
 };
 
 

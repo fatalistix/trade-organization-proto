@@ -149,6 +149,11 @@ export namespace ListRequest {
 }
 
 export class ListResponse extends jspb.Message {
+  getOrdersList(): Array<Order>;
+  setOrdersList(value: Array<Order>): ListResponse;
+  clearOrdersList(): ListResponse;
+  addOrders(value?: Order, index?: number): Order;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListResponse.AsObject;
   static toObject(includeInstance: boolean, msg: ListResponse): ListResponse.AsObject;
@@ -159,6 +164,7 @@ export class ListResponse extends jspb.Message {
 
 export namespace ListResponse {
   export type AsObject = {
+    ordersList: Array<Order.AsObject>,
   }
 }
 
