@@ -5,7 +5,6 @@ package tradingpoint;
 option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/tradingpoint;tradingpoint";
 
 import "core/money.proto";
-import "product/product.proto";
 
 message TradingPoint {
     int32 id = 1;
@@ -27,7 +26,7 @@ enum TradingPointType {
 message ProductTradingPoint {
     int32 quantity = 1;
     core.Money price = 2;
-    product.Product product = 3;
+    int32 product_id = 3;
 }
 
 message PlaceOfWork {
