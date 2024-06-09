@@ -287,6 +287,78 @@ export namespace UpdateResponse {
   }
 }
 
+export class CancelRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): CancelRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CancelRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CancelRequest): CancelRequest.AsObject;
+  static serializeBinaryToWriter(message: CancelRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CancelRequest;
+  static deserializeBinaryFromReader(message: CancelRequest, reader: jspb.BinaryReader): CancelRequest;
+}
+
+export namespace CancelRequest {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class CancelResponse extends jspb.Message {
+  getId(): number;
+  setId(value: number): CancelResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CancelResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CancelResponse): CancelResponse.AsObject;
+  static serializeBinaryToWriter(message: CancelResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CancelResponse;
+  static deserializeBinaryFromReader(message: CancelResponse, reader: jspb.BinaryReader): CancelResponse;
+}
+
+export namespace CancelResponse {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class CompleteRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): CompleteRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CompleteRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CompleteRequest): CompleteRequest.AsObject;
+  static serializeBinaryToWriter(message: CompleteRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CompleteRequest;
+  static deserializeBinaryFromReader(message: CompleteRequest, reader: jspb.BinaryReader): CompleteRequest;
+}
+
+export namespace CompleteRequest {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class CompleteResponse extends jspb.Message {
+  getId(): number;
+  setId(value: number): CompleteResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CompleteResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CompleteResponse): CompleteResponse.AsObject;
+  static serializeBinaryToWriter(message: CompleteResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CompleteResponse;
+  static deserializeBinaryFromReader(message: CompleteResponse, reader: jspb.BinaryReader): CompleteResponse;
+}
+
+export namespace CompleteResponse {
+  export type AsObject = {
+    id: number,
+  }
+}
+
 export enum OrderStatus { 
   ORDER_STATUS_COMPLETED = 0,
   ORDER_STATUS_CANCELLED = 1,

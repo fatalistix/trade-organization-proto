@@ -211,5 +211,91 @@ export class OrderServiceClient {
     this.methodDescriptorUpdate);
   }
 
+  methodDescriptorCancel = new grpcWeb.MethodDescriptor(
+    '/order.OrderService/Cancel',
+    grpcWeb.MethodType.UNARY,
+    order_order_pb.CancelRequest,
+    order_order_pb.CancelResponse,
+    (request: order_order_pb.CancelRequest) => {
+      return request.serializeBinary();
+    },
+    order_order_pb.CancelResponse.deserializeBinary
+  );
+
+  cancel(
+    request: order_order_pb.CancelRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<order_order_pb.CancelResponse>;
+
+  cancel(
+    request: order_order_pb.CancelRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: order_order_pb.CancelResponse) => void): grpcWeb.ClientReadableStream<order_order_pb.CancelResponse>;
+
+  cancel(
+    request: order_order_pb.CancelRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: order_order_pb.CancelResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/order.OrderService/Cancel',
+        request,
+        metadata || {},
+        this.methodDescriptorCancel,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/order.OrderService/Cancel',
+    request,
+    metadata || {},
+    this.methodDescriptorCancel);
+  }
+
+  methodDescriptorComplete = new grpcWeb.MethodDescriptor(
+    '/order.OrderService/Complete',
+    grpcWeb.MethodType.UNARY,
+    order_order_pb.CompleteRequest,
+    order_order_pb.CompleteResponse,
+    (request: order_order_pb.CompleteRequest) => {
+      return request.serializeBinary();
+    },
+    order_order_pb.CompleteResponse.deserializeBinary
+  );
+
+  complete(
+    request: order_order_pb.CompleteRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<order_order_pb.CompleteResponse>;
+
+  complete(
+    request: order_order_pb.CompleteRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: order_order_pb.CompleteResponse) => void): grpcWeb.ClientReadableStream<order_order_pb.CompleteResponse>;
+
+  complete(
+    request: order_order_pb.CompleteRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: order_order_pb.CompleteResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/order.OrderService/Complete',
+        request,
+        metadata || {},
+        this.methodDescriptorComplete,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/order.OrderService/Complete',
+    request,
+    metadata || {},
+    this.methodDescriptorComplete);
+  }
+
 }
 
