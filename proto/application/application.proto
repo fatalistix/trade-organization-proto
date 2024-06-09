@@ -13,7 +13,8 @@ message Application {
   int32 trading_point_id = 2;
   tradingpoint.TradingPointType trading_point_type = 3;
   google.protobuf.Timestamp created_at = 4;
-  repeated ProductApplication products = 5;
+  optional int32 order_id = 5;
+  repeated ProductApplication products = 6;
 }
 
 message ProductApplication {
