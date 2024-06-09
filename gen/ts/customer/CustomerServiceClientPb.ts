@@ -82,5 +82,177 @@ export class CustomerServiceClient {
     this.methodDescriptorCreate);
   }
 
+  methodDescriptorList = new grpcWeb.MethodDescriptor(
+    '/customer.CustomerService/List',
+    grpcWeb.MethodType.UNARY,
+    customer_customer_pb.ListRequest,
+    customer_customer_pb.ListResponse,
+    (request: customer_customer_pb.ListRequest) => {
+      return request.serializeBinary();
+    },
+    customer_customer_pb.ListResponse.deserializeBinary
+  );
+
+  list(
+    request: customer_customer_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<customer_customer_pb.ListResponse>;
+
+  list(
+    request: customer_customer_pb.ListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: customer_customer_pb.ListResponse) => void): grpcWeb.ClientReadableStream<customer_customer_pb.ListResponse>;
+
+  list(
+    request: customer_customer_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: customer_customer_pb.ListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/customer.CustomerService/List',
+        request,
+        metadata || {},
+        this.methodDescriptorList,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/customer.CustomerService/List',
+    request,
+    metadata || {},
+    this.methodDescriptorList);
+  }
+
+  methodDescriptorCustomer = new grpcWeb.MethodDescriptor(
+    '/customer.CustomerService/Customer',
+    grpcWeb.MethodType.UNARY,
+    customer_customer_pb.CustomerRequest,
+    customer_customer_pb.CustomerResponse,
+    (request: customer_customer_pb.CustomerRequest) => {
+      return request.serializeBinary();
+    },
+    customer_customer_pb.CustomerResponse.deserializeBinary
+  );
+
+  customer(
+    request: customer_customer_pb.CustomerRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<customer_customer_pb.CustomerResponse>;
+
+  customer(
+    request: customer_customer_pb.CustomerRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: customer_customer_pb.CustomerResponse) => void): grpcWeb.ClientReadableStream<customer_customer_pb.CustomerResponse>;
+
+  customer(
+    request: customer_customer_pb.CustomerRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: customer_customer_pb.CustomerResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/customer.CustomerService/Customer',
+        request,
+        metadata || {},
+        this.methodDescriptorCustomer,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/customer.CustomerService/Customer',
+    request,
+    metadata || {},
+    this.methodDescriptorCustomer);
+  }
+
+  methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
+    '/customer.CustomerService/Update',
+    grpcWeb.MethodType.UNARY,
+    customer_customer_pb.UpdateRequest,
+    customer_customer_pb.UpdateResponse,
+    (request: customer_customer_pb.UpdateRequest) => {
+      return request.serializeBinary();
+    },
+    customer_customer_pb.UpdateResponse.deserializeBinary
+  );
+
+  update(
+    request: customer_customer_pb.UpdateRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<customer_customer_pb.UpdateResponse>;
+
+  update(
+    request: customer_customer_pb.UpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: customer_customer_pb.UpdateResponse) => void): grpcWeb.ClientReadableStream<customer_customer_pb.UpdateResponse>;
+
+  update(
+    request: customer_customer_pb.UpdateRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: customer_customer_pb.UpdateResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/customer.CustomerService/Update',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/customer.CustomerService/Update',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdate);
+  }
+
+  methodDescriptorDelete = new grpcWeb.MethodDescriptor(
+    '/customer.CustomerService/Delete',
+    grpcWeb.MethodType.UNARY,
+    customer_customer_pb.DeleteRequest,
+    customer_customer_pb.DeleteResponse,
+    (request: customer_customer_pb.DeleteRequest) => {
+      return request.serializeBinary();
+    },
+    customer_customer_pb.DeleteResponse.deserializeBinary
+  );
+
+  delete(
+    request: customer_customer_pb.DeleteRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<customer_customer_pb.DeleteResponse>;
+
+  delete(
+    request: customer_customer_pb.DeleteRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: customer_customer_pb.DeleteResponse) => void): grpcWeb.ClientReadableStream<customer_customer_pb.DeleteResponse>;
+
+  delete(
+    request: customer_customer_pb.DeleteRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: customer_customer_pb.DeleteResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/customer.CustomerService/Delete',
+        request,
+        metadata || {},
+        this.methodDescriptorDelete,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/customer.CustomerService/Delete',
+    request,
+    metadata || {},
+    this.methodDescriptorDelete);
+  }
+
 }
 

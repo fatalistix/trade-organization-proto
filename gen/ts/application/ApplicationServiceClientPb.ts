@@ -82,5 +82,134 @@ export class ApplicationServiceClient {
     this.methodDescriptorCreate);
   }
 
+  methodDescriptorList = new grpcWeb.MethodDescriptor(
+    '/supplier.ApplicationService/List',
+    grpcWeb.MethodType.UNARY,
+    application_application_pb.ListRequest,
+    application_application_pb.ListResponse,
+    (request: application_application_pb.ListRequest) => {
+      return request.serializeBinary();
+    },
+    application_application_pb.ListResponse.deserializeBinary
+  );
+
+  list(
+    request: application_application_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<application_application_pb.ListResponse>;
+
+  list(
+    request: application_application_pb.ListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: application_application_pb.ListResponse) => void): grpcWeb.ClientReadableStream<application_application_pb.ListResponse>;
+
+  list(
+    request: application_application_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: application_application_pb.ListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/supplier.ApplicationService/List',
+        request,
+        metadata || {},
+        this.methodDescriptorList,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/supplier.ApplicationService/List',
+    request,
+    metadata || {},
+    this.methodDescriptorList);
+  }
+
+  methodDescriptorApplication = new grpcWeb.MethodDescriptor(
+    '/supplier.ApplicationService/Application',
+    grpcWeb.MethodType.UNARY,
+    application_application_pb.ApplicationRequest,
+    application_application_pb.ApplicationResponse,
+    (request: application_application_pb.ApplicationRequest) => {
+      return request.serializeBinary();
+    },
+    application_application_pb.ApplicationResponse.deserializeBinary
+  );
+
+  application(
+    request: application_application_pb.ApplicationRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<application_application_pb.ApplicationResponse>;
+
+  application(
+    request: application_application_pb.ApplicationRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: application_application_pb.ApplicationResponse) => void): grpcWeb.ClientReadableStream<application_application_pb.ApplicationResponse>;
+
+  application(
+    request: application_application_pb.ApplicationRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: application_application_pb.ApplicationResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/supplier.ApplicationService/Application',
+        request,
+        metadata || {},
+        this.methodDescriptorApplication,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/supplier.ApplicationService/Application',
+    request,
+    metadata || {},
+    this.methodDescriptorApplication);
+  }
+
+  methodDescriptorUpdate = new grpcWeb.MethodDescriptor(
+    '/supplier.ApplicationService/Update',
+    grpcWeb.MethodType.UNARY,
+    application_application_pb.UpdateRequest,
+    application_application_pb.UpdateResponse,
+    (request: application_application_pb.UpdateRequest) => {
+      return request.serializeBinary();
+    },
+    application_application_pb.UpdateResponse.deserializeBinary
+  );
+
+  update(
+    request: application_application_pb.UpdateRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<application_application_pb.UpdateResponse>;
+
+  update(
+    request: application_application_pb.UpdateRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: application_application_pb.UpdateResponse) => void): grpcWeb.ClientReadableStream<application_application_pb.UpdateResponse>;
+
+  update(
+    request: application_application_pb.UpdateRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: application_application_pb.UpdateResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/supplier.ApplicationService/Update',
+        request,
+        metadata || {},
+        this.methodDescriptorUpdate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/supplier.ApplicationService/Update',
+    request,
+    metadata || {},
+    this.methodDescriptorUpdate);
+  }
+
 }
 
