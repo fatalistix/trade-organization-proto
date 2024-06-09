@@ -7,6 +7,7 @@ option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/order
 import "google/protobuf/timestamp.proto";
 
 import "core/money.proto";
+import "tradingpoint/tradingpoint.proto";
 
 message Order {
   int32 id = 1;
@@ -16,6 +17,7 @@ message Order {
   optional google.protobuf.Timestamp completed_at = 5;
   optional google.protobuf.Timestamp canceled_at = 6;
   repeated ProductOrder products = 7;
+  repeated Distribution distributions = 8;
 }
 
 enum OrderStatus {
@@ -28,6 +30,13 @@ message ProductOrder {
   int32 quantity = 2;
   core.Money price = 3;
   int32 product_id = 4;
+}
+
+message Distribution {
+  int32 trading_point_id = 1;
+  tradingpoint.TradingPointType trading_point_type = 2;
+  int32 product_id = 3;
+  int32 quantity = 4;
 }
 
 service OrderService {
