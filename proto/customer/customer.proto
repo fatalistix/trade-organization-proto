@@ -16,8 +16,10 @@ message Customer {
 
 service CustomerService {
   rpc Create(CreateRequest) returns (CreateResponse);
-//  rpc Update(UpdateRequest) returns (UpdateResponse);
-//  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  rpc List(ListRequest) returns (ListResponse);
+  rpc Customer(CustomerRequest) returns (CustomerResponse);
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
 }
 
 message CreateRequest {
@@ -28,5 +30,37 @@ message CreateRequest {
 }
 
 message CreateResponse {
+  int32 id = 1;
+}
+
+message ListRequest {
+
+}
+
+message ListResponse {
+  repeated Customer customers = 1;
+}
+
+message CustomerRequest {
+  int32 id = 1;
+}
+
+message CustomerResponse {
+  Customer customer = 1;
+}
+
+message UpdateRequest {
+  Customer customer = 1;
+}
+
+message UpdateResponse {
+  int32 id = 1;
+}
+
+message DeleteRequest {
+  int32 id = 1;
+}
+
+message DeleteResponse {
   int32 id = 1;
 }
