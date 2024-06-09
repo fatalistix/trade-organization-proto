@@ -44,6 +44,8 @@ service OrderService {
   rpc List(ListRequest) returns (ListResponse);
   rpc Order(OrderRequest) returns (OrderResponse);
   rpc Update(UpdateRequest) returns (UpdateResponse);
+  rpc Cancel(CancelRequest) returns (CancelResponse);
+  rpc Complete(CompleteRequest) returns (CompleteResponse);
 }
 
 message CreateRequest {
@@ -77,5 +79,21 @@ message UpdateRequest {
 }
 
 message UpdateResponse {
+  int32 id = 1;
+}
+
+message CancelRequest {
+  int32 id = 1;
+}
+
+message CancelResponse {
+  int32 id = 1;
+}
+
+message CompleteRequest {
+  int32 id = 1;
+}
+
+message CompleteResponse {
   int32 id = 1;
 }
