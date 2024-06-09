@@ -6,7 +6,6 @@ option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/appli
 
 import "google/protobuf/timestamp.proto";
 
-import "product/product.proto";
 import "tradingpoint/tradingpoint.proto";
 
 message Application {
@@ -19,12 +18,14 @@ message Application {
 
 message ProductApplication {
   int32 quantity = 1;
-  product.Product product = 2;
+  int32 product_id = 2;
 }
 
 service ApplicationService {
   rpc Create(CreateRequest) returns (CreateResponse);
-//  rpc List(ListRequest) returns (ListResponse);
+  rpc List(ListRequest) returns (ListResponse);
+  rpc Application(ApplicationRequest) returns (ApplicationResponse);
+  rpc Update(UpdateRequest) returns (UpdateResponse);
 }
 
 message CreateRequest {
@@ -34,5 +35,29 @@ message CreateRequest {
 }
 
 message CreateResponse {
+  int32 id = 1;
+}
+
+message ListRequest {
+
+}
+
+message ListResponse {
+  repeated Application applications = 1;
+}
+
+message ApplicationRequest {
+  int32 id = 1;
+}
+
+message ApplicationResponse {
+  Application application = 1;
+}
+
+message UpdateRequest {
+  Application application = 1;
+}
+
+message UpdateResponse {
   int32 id = 1;
 }
