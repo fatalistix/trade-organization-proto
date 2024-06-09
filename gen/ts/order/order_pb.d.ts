@@ -138,6 +138,11 @@ export class CreateRequest extends jspb.Message {
   clearProductsList(): CreateRequest;
   addProducts(value?: ProductOrder, index?: number): ProductOrder;
 
+  getApplicationIdsList(): Array<number>;
+  setApplicationIdsList(value: Array<number>): CreateRequest;
+  clearApplicationIdsList(): CreateRequest;
+  addApplicationIds(value: number, index?: number): CreateRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreateRequest.AsObject;
   static toObject(includeInstance: boolean, msg: CreateRequest): CreateRequest.AsObject;
@@ -150,6 +155,7 @@ export namespace CreateRequest {
   export type AsObject = {
     supplierId: number,
     productsList: Array<ProductOrder.AsObject>,
+    applicationIdsList: Array<number>,
   }
 }
 

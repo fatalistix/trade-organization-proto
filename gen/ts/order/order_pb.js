@@ -1163,7 +1163,7 @@ proto.order.Distribution.prototype.setQuantity = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.order.CreateRequest.repeatedFields_ = [3];
+proto.order.CreateRequest.repeatedFields_ = [3,4];
 
 
 
@@ -1198,7 +1198,8 @@ proto.order.CreateRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     supplierId: jspb.Message.getFieldWithDefault(msg, 1, 0),
     productsList: jspb.Message.toObjectList(msg.getProductsList(),
-    proto.order.ProductOrder.toObject, includeInstance)
+    proto.order.ProductOrder.toObject, includeInstance),
+    applicationIdsList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1244,6 +1245,12 @@ proto.order.CreateRequest.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value,proto.order.ProductOrder.deserializeBinaryFromReader);
       msg.addProducts(value);
       break;
+    case 4:
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedInt32() : [reader.readInt32()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addApplicationIds(values[i]);
+      }
+      break;
     default:
       reader.skipField();
       break;
@@ -1286,6 +1293,13 @@ proto.order.CreateRequest.serializeBinaryToWriter = function(message, writer) {
       3,
       f,
       proto.order.ProductOrder.serializeBinaryToWriter
+    );
+  }
+  f = message.getApplicationIdsList();
+  if (f.length > 0) {
+    writer.writePackedInt32(
+      4,
+      f
     );
   }
 };
@@ -1344,6 +1358,43 @@ proto.order.CreateRequest.prototype.addProducts = function(opt_value, opt_index)
  */
 proto.order.CreateRequest.prototype.clearProductsList = function() {
   return this.setProductsList([]);
+};
+
+
+/**
+ * repeated int32 application_ids = 4;
+ * @return {!Array<number>}
+ */
+proto.order.CreateRequest.prototype.getApplicationIdsList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 4));
+};
+
+
+/**
+ * @param {!Array<number>} value
+ * @return {!proto.order.CreateRequest} returns this
+ */
+proto.order.CreateRequest.prototype.setApplicationIdsList = function(value) {
+  return jspb.Message.setField(this, 4, value || []);
+};
+
+
+/**
+ * @param {number} value
+ * @param {number=} opt_index
+ * @return {!proto.order.CreateRequest} returns this
+ */
+proto.order.CreateRequest.prototype.addApplicationIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 4, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.order.CreateRequest} returns this
+ */
+proto.order.CreateRequest.prototype.clearApplicationIdsList = function() {
+  return this.setApplicationIdsList([]);
 };
 
 
