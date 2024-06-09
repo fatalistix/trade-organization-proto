@@ -51,7 +51,7 @@ message ListRequest {
 }
 
 message ListResponse {
-
+  repeated Order orders = 1;
 }
 
 message OrderRequest {
