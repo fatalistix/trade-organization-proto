@@ -7,7 +7,6 @@ option go_package = "github.com/fatalistix/trade-organization-proto/gen/go/recei
 import "google/protobuf/timestamp.proto";
 
 import "core/money.proto";
-import "product/product.proto";
 import "tradingpoint/tradingpoint.proto";
 
 message Receipt {
@@ -15,7 +14,7 @@ message Receipt {
   ReceiptType type = 2;
   google.protobuf.Timestamp created_at = 3;
   int32 seller_id = 4;
-  repeated ReceiptProduct products = 5;
+  repeated ProductReceipt products = 5;
 }
 
 enum ReceiptType {
@@ -23,10 +22,10 @@ enum ReceiptType {
   RECEIPT_TYPE_RECEIPT_WITHOUT_ACCOUNTING = 1;
 }
 
-message ReceiptProduct {
+message ProductReceipt {
   int32 quantity = 2;
   core.Money price = 3;
-  product.Product product = 4;
+  int32 product_id = 4;
 }
 
 message ReceiptWithAccounting {
@@ -45,11 +44,14 @@ message ReceiptWithoutAccounting {
 service ReceiptService {
   rpc CreateWithAccounting(CreateWithAccountingRequest) returns (CreateWithAccountingResponse);
   rpc CreateWithoutAccounting(CreateWithoutAccountingRequest) returns (CreateWithoutAccountingResponse);
+  rpc List(ListRequest) returns (ListResponse);
+  rpc ReceiptWithAccounting(ReceiptWithAccountingRequest) returns (ReceiptWithAccountingResponse);
+  rpc ReceiptWithoutAccounting(ReceiptWithoutAccountingRequest) returns (ReceiptWithoutAccountingResponse);
 }
 
 message CreateWithAccountingRequest {
   int32 seller_id = 1;
-  repeated ReceiptProduct products = 2;
+  repeated ProductReceipt products = 2;
   int32 customer_id = 3;
   int32 receipting_point_with_accounting_id = 4;
   tradingpoint.ReceiptingPointWithAccountingType receipting_point_with_accounting_type = 5;
@@ -61,11 +63,35 @@ message CreateWithAccountingResponse {
 
 message CreateWithoutAccountingRequest {
   int32 seller_id = 1;
-  repeated ReceiptProduct products = 2;
+  repeated ProductReceipt products = 2;
   int32 receipting_point_without_accounting_id = 3;
   tradingpoint.ReceiptingPointWithoutAccountingType receipting_point_without_accounting_type = 4;
 }
 
 message CreateWithoutAccountingResponse {
   int32 id = 1;
+}
+
+message ListRequest {
+
+}
+
+message ListResponse {
+  repeated Receipt receipts = 1;
+}
+
+message ReceiptWithAccountingRequest {
+  int32 id = 1;
+}
+
+message ReceiptWithAccountingResponse {
+  ReceiptWithAccounting receipt = 1;
+}
+
+message ReceiptWithoutAccountingRequest {
+  int32 id = 1;
+}
+
+message ReceiptWithoutAccountingResponse {
+  ReceiptWithoutAccounting receipt = 1;
 }
