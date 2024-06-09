@@ -19,6 +19,11 @@ export class Application extends jspb.Message {
   hasCreatedAt(): boolean;
   clearCreatedAt(): Application;
 
+  getOrderId(): number;
+  setOrderId(value: number): Application;
+  hasOrderId(): boolean;
+  clearOrderId(): Application;
+
   getProductsList(): Array<ProductApplication>;
   setProductsList(value: Array<ProductApplication>): Application;
   clearProductsList(): Application;
@@ -38,7 +43,13 @@ export namespace Application {
     tradingPointId: number,
     tradingPointType: tradingpoint_tradingpoint_pb.TradingPointType,
     createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    orderId?: number,
     productsList: Array<ProductApplication.AsObject>,
+  }
+
+  export enum OrderIdCase { 
+    _ORDER_ID_NOT_SET = 0,
+    ORDER_ID = 5,
   }
 }
 

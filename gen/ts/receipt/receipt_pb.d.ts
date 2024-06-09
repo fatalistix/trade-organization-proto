@@ -2,7 +2,6 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
-import * as product_product_pb from '../product/product_pb'; // proto import: "product/product.proto"
 import * as tradingpoint_tradingpoint_pb from '../tradingpoint/tradingpoint_pb'; // proto import: "tradingpoint/tradingpoint.proto"
 
 
@@ -21,10 +20,10 @@ export class Receipt extends jspb.Message {
   getSellerId(): number;
   setSellerId(value: number): Receipt;
 
-  getProductsList(): Array<ReceiptProduct>;
-  setProductsList(value: Array<ReceiptProduct>): Receipt;
+  getProductsList(): Array<ProductReceipt>;
+  setProductsList(value: Array<ProductReceipt>): Receipt;
   clearProductsList(): Receipt;
-  addProducts(value?: ReceiptProduct, index?: number): ReceiptProduct;
+  addProducts(value?: ProductReceipt, index?: number): ProductReceipt;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Receipt.AsObject;
@@ -40,37 +39,35 @@ export namespace Receipt {
     type: ReceiptType,
     createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     sellerId: number,
-    productsList: Array<ReceiptProduct.AsObject>,
+    productsList: Array<ProductReceipt.AsObject>,
   }
 }
 
-export class ReceiptProduct extends jspb.Message {
+export class ProductReceipt extends jspb.Message {
   getQuantity(): number;
-  setQuantity(value: number): ReceiptProduct;
+  setQuantity(value: number): ProductReceipt;
 
   getPrice(): core_money_pb.Money | undefined;
-  setPrice(value?: core_money_pb.Money): ReceiptProduct;
+  setPrice(value?: core_money_pb.Money): ProductReceipt;
   hasPrice(): boolean;
-  clearPrice(): ReceiptProduct;
+  clearPrice(): ProductReceipt;
 
-  getProduct(): product_product_pb.Product | undefined;
-  setProduct(value?: product_product_pb.Product): ReceiptProduct;
-  hasProduct(): boolean;
-  clearProduct(): ReceiptProduct;
+  getProductId(): number;
+  setProductId(value: number): ProductReceipt;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ReceiptProduct.AsObject;
-  static toObject(includeInstance: boolean, msg: ReceiptProduct): ReceiptProduct.AsObject;
-  static serializeBinaryToWriter(message: ReceiptProduct, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ReceiptProduct;
-  static deserializeBinaryFromReader(message: ReceiptProduct, reader: jspb.BinaryReader): ReceiptProduct;
+  toObject(includeInstance?: boolean): ProductReceipt.AsObject;
+  static toObject(includeInstance: boolean, msg: ProductReceipt): ProductReceipt.AsObject;
+  static serializeBinaryToWriter(message: ProductReceipt, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ProductReceipt;
+  static deserializeBinaryFromReader(message: ProductReceipt, reader: jspb.BinaryReader): ProductReceipt;
 }
 
-export namespace ReceiptProduct {
+export namespace ProductReceipt {
   export type AsObject = {
     quantity: number,
     price?: core_money_pb.Money.AsObject,
-    product?: product_product_pb.Product.AsObject,
+    productId: number,
   }
 }
 
@@ -134,10 +131,10 @@ export class CreateWithAccountingRequest extends jspb.Message {
   getSellerId(): number;
   setSellerId(value: number): CreateWithAccountingRequest;
 
-  getProductsList(): Array<ReceiptProduct>;
-  setProductsList(value: Array<ReceiptProduct>): CreateWithAccountingRequest;
+  getProductsList(): Array<ProductReceipt>;
+  setProductsList(value: Array<ProductReceipt>): CreateWithAccountingRequest;
   clearProductsList(): CreateWithAccountingRequest;
-  addProducts(value?: ReceiptProduct, index?: number): ReceiptProduct;
+  addProducts(value?: ProductReceipt, index?: number): ProductReceipt;
 
   getCustomerId(): number;
   setCustomerId(value: number): CreateWithAccountingRequest;
@@ -159,7 +156,7 @@ export class CreateWithAccountingRequest extends jspb.Message {
 export namespace CreateWithAccountingRequest {
   export type AsObject = {
     sellerId: number,
-    productsList: Array<ReceiptProduct.AsObject>,
+    productsList: Array<ProductReceipt.AsObject>,
     customerId: number,
     receiptingPointWithAccountingId: number,
     receiptingPointWithAccountingType: tradingpoint_tradingpoint_pb.ReceiptingPointWithAccountingType,
@@ -188,10 +185,10 @@ export class CreateWithoutAccountingRequest extends jspb.Message {
   getSellerId(): number;
   setSellerId(value: number): CreateWithoutAccountingRequest;
 
-  getProductsList(): Array<ReceiptProduct>;
-  setProductsList(value: Array<ReceiptProduct>): CreateWithoutAccountingRequest;
+  getProductsList(): Array<ProductReceipt>;
+  setProductsList(value: Array<ProductReceipt>): CreateWithoutAccountingRequest;
   clearProductsList(): CreateWithoutAccountingRequest;
-  addProducts(value?: ReceiptProduct, index?: number): ReceiptProduct;
+  addProducts(value?: ProductReceipt, index?: number): ProductReceipt;
 
   getReceiptingPointWithoutAccountingId(): number;
   setReceiptingPointWithoutAccountingId(value: number): CreateWithoutAccountingRequest;
@@ -210,7 +207,7 @@ export class CreateWithoutAccountingRequest extends jspb.Message {
 export namespace CreateWithoutAccountingRequest {
   export type AsObject = {
     sellerId: number,
-    productsList: Array<ReceiptProduct.AsObject>,
+    productsList: Array<ProductReceipt.AsObject>,
     receiptingPointWithoutAccountingId: number,
     receiptingPointWithoutAccountingType: tradingpoint_tradingpoint_pb.ReceiptingPointWithoutAccountingType,
   }
@@ -231,6 +228,116 @@ export class CreateWithoutAccountingResponse extends jspb.Message {
 export namespace CreateWithoutAccountingResponse {
   export type AsObject = {
     id: number,
+  }
+}
+
+export class ListRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ListRequest): ListRequest.AsObject;
+  static serializeBinaryToWriter(message: ListRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListRequest;
+  static deserializeBinaryFromReader(message: ListRequest, reader: jspb.BinaryReader): ListRequest;
+}
+
+export namespace ListRequest {
+  export type AsObject = {
+  }
+}
+
+export class ListResponse extends jspb.Message {
+  getReceiptsList(): Array<Receipt>;
+  setReceiptsList(value: Array<Receipt>): ListResponse;
+  clearReceiptsList(): ListResponse;
+  addReceipts(value?: Receipt, index?: number): Receipt;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ListResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ListResponse): ListResponse.AsObject;
+  static serializeBinaryToWriter(message: ListResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ListResponse;
+  static deserializeBinaryFromReader(message: ListResponse, reader: jspb.BinaryReader): ListResponse;
+}
+
+export namespace ListResponse {
+  export type AsObject = {
+    receiptsList: Array<Receipt.AsObject>,
+  }
+}
+
+export class ReceiptWithAccountingRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): ReceiptWithAccountingRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ReceiptWithAccountingRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ReceiptWithAccountingRequest): ReceiptWithAccountingRequest.AsObject;
+  static serializeBinaryToWriter(message: ReceiptWithAccountingRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ReceiptWithAccountingRequest;
+  static deserializeBinaryFromReader(message: ReceiptWithAccountingRequest, reader: jspb.BinaryReader): ReceiptWithAccountingRequest;
+}
+
+export namespace ReceiptWithAccountingRequest {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class ReceiptWithAccountingResponse extends jspb.Message {
+  getReceipt(): ReceiptWithAccounting | undefined;
+  setReceipt(value?: ReceiptWithAccounting): ReceiptWithAccountingResponse;
+  hasReceipt(): boolean;
+  clearReceipt(): ReceiptWithAccountingResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ReceiptWithAccountingResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ReceiptWithAccountingResponse): ReceiptWithAccountingResponse.AsObject;
+  static serializeBinaryToWriter(message: ReceiptWithAccountingResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ReceiptWithAccountingResponse;
+  static deserializeBinaryFromReader(message: ReceiptWithAccountingResponse, reader: jspb.BinaryReader): ReceiptWithAccountingResponse;
+}
+
+export namespace ReceiptWithAccountingResponse {
+  export type AsObject = {
+    receipt?: ReceiptWithAccounting.AsObject,
+  }
+}
+
+export class ReceiptWithoutAccountingRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): ReceiptWithoutAccountingRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ReceiptWithoutAccountingRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ReceiptWithoutAccountingRequest): ReceiptWithoutAccountingRequest.AsObject;
+  static serializeBinaryToWriter(message: ReceiptWithoutAccountingRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ReceiptWithoutAccountingRequest;
+  static deserializeBinaryFromReader(message: ReceiptWithoutAccountingRequest, reader: jspb.BinaryReader): ReceiptWithoutAccountingRequest;
+}
+
+export namespace ReceiptWithoutAccountingRequest {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class ReceiptWithoutAccountingResponse extends jspb.Message {
+  getReceipt(): ReceiptWithoutAccounting | undefined;
+  setReceipt(value?: ReceiptWithoutAccounting): ReceiptWithoutAccountingResponse;
+  hasReceipt(): boolean;
+  clearReceipt(): ReceiptWithoutAccountingResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ReceiptWithoutAccountingResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ReceiptWithoutAccountingResponse): ReceiptWithoutAccountingResponse.AsObject;
+  static serializeBinaryToWriter(message: ReceiptWithoutAccountingResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ReceiptWithoutAccountingResponse;
+  static deserializeBinaryFromReader(message: ReceiptWithoutAccountingResponse, reader: jspb.BinaryReader): ReceiptWithoutAccountingResponse;
+}
+
+export namespace ReceiptWithoutAccountingResponse {
+  export type AsObject = {
+    receipt?: ReceiptWithoutAccounting.AsObject,
   }
 }
 

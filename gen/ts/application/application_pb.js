@@ -251,7 +251,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.application.Application.repeatedFields_ = [5];
+proto.application.Application.repeatedFields_ = [6];
 
 
 
@@ -288,6 +288,7 @@ proto.application.Application.toObject = function(includeInstance, msg) {
     tradingPointId: jspb.Message.getFieldWithDefault(msg, 2, 0),
     tradingPointType: jspb.Message.getFieldWithDefault(msg, 3, 0),
     createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    orderId: jspb.Message.getFieldWithDefault(msg, 5, 0),
     productsList: jspb.Message.toObjectList(msg.getProductsList(),
     proto.application.ProductApplication.toObject, includeInstance)
   };
@@ -344,6 +345,10 @@ proto.application.Application.deserializeBinaryFromReader = function(msg, reader
       msg.setCreatedAt(value);
       break;
     case 5:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setOrderId(value);
+      break;
+    case 6:
       var value = new proto.application.ProductApplication;
       reader.readMessage(value,proto.application.ProductApplication.deserializeBinaryFromReader);
       msg.addProducts(value);
@@ -406,10 +411,17 @@ proto.application.Application.serializeBinaryToWriter = function(message, writer
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
+  f = /** @type {number} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeInt32(
+      5,
+      f
+    );
+  }
   f = message.getProductsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      5,
+      6,
       f,
       proto.application.ProductApplication.serializeBinaryToWriter
     );
@@ -509,12 +521,48 @@ proto.application.Application.prototype.hasCreatedAt = function() {
 
 
 /**
- * repeated ProductApplication products = 5;
+ * optional int32 order_id = 5;
+ * @return {number}
+ */
+proto.application.Application.prototype.getOrderId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.application.Application} returns this
+ */
+proto.application.Application.prototype.setOrderId = function(value) {
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.application.Application} returns this
+ */
+proto.application.Application.prototype.clearOrderId = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.application.Application.prototype.hasOrderId = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * repeated ProductApplication products = 6;
  * @return {!Array<!proto.application.ProductApplication>}
  */
 proto.application.Application.prototype.getProductsList = function() {
   return /** @type{!Array<!proto.application.ProductApplication>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.application.ProductApplication, 5));
+    jspb.Message.getRepeatedWrapperField(this, proto.application.ProductApplication, 6));
 };
 
 
@@ -523,7 +571,7 @@ proto.application.Application.prototype.getProductsList = function() {
  * @return {!proto.application.Application} returns this
 */
 proto.application.Application.prototype.setProductsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 5, value);
+  return jspb.Message.setRepeatedWrapperField(this, 6, value);
 };
 
 
@@ -533,7 +581,7 @@ proto.application.Application.prototype.setProductsList = function(value) {
  * @return {!proto.application.ProductApplication}
  */
 proto.application.Application.prototype.addProducts = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.application.ProductApplication, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.application.ProductApplication, opt_index);
 };
 
 

@@ -2,6 +2,7 @@ import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
 import * as core_money_pb from '../core/money_pb'; // proto import: "core/money.proto"
+import * as tradingpoint_tradingpoint_pb from '../tradingpoint/tradingpoint_pb'; // proto import: "tradingpoint/tradingpoint.proto"
 
 
 export class Order extends jspb.Message {
@@ -34,6 +35,11 @@ export class Order extends jspb.Message {
   clearProductsList(): Order;
   addProducts(value?: ProductOrder, index?: number): ProductOrder;
 
+  getDistributionsList(): Array<Distribution>;
+  setDistributionsList(value: Array<Distribution>): Order;
+  clearDistributionsList(): Order;
+  addDistributions(value?: Distribution, index?: number): Distribution;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Order.AsObject;
   static toObject(includeInstance: boolean, msg: Order): Order.AsObject;
@@ -51,6 +57,7 @@ export namespace Order {
     completedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     canceledAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     productsList: Array<ProductOrder.AsObject>,
+    distributionsList: Array<Distribution.AsObject>,
   }
 
   export enum CompletedAtCase { 
@@ -89,6 +96,36 @@ export namespace ProductOrder {
     quantity: number,
     price?: core_money_pb.Money.AsObject,
     productId: number,
+  }
+}
+
+export class Distribution extends jspb.Message {
+  getTradingPointId(): number;
+  setTradingPointId(value: number): Distribution;
+
+  getTradingPointType(): tradingpoint_tradingpoint_pb.TradingPointType;
+  setTradingPointType(value: tradingpoint_tradingpoint_pb.TradingPointType): Distribution;
+
+  getProductId(): number;
+  setProductId(value: number): Distribution;
+
+  getQuantity(): number;
+  setQuantity(value: number): Distribution;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Distribution.AsObject;
+  static toObject(includeInstance: boolean, msg: Distribution): Distribution.AsObject;
+  static serializeBinaryToWriter(message: Distribution, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Distribution;
+  static deserializeBinaryFromReader(message: Distribution, reader: jspb.BinaryReader): Distribution;
+}
+
+export namespace Distribution {
+  export type AsObject = {
+    tradingPointId: number,
+    tradingPointType: tradingpoint_tradingpoint_pb.TradingPointType,
+    productId: number,
+    quantity: number,
   }
 }
 

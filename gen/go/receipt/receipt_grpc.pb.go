@@ -24,6 +24,9 @@ const _ = grpc.SupportPackageIsVersion7
 type ReceiptServiceClient interface {
 	CreateWithAccounting(ctx context.Context, in *CreateWithAccountingRequest, opts ...grpc.CallOption) (*CreateWithAccountingResponse, error)
 	CreateWithoutAccounting(ctx context.Context, in *CreateWithoutAccountingRequest, opts ...grpc.CallOption) (*CreateWithoutAccountingResponse, error)
+	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
+	ReceiptWithAccounting(ctx context.Context, in *ReceiptWithAccountingRequest, opts ...grpc.CallOption) (*ReceiptWithAccountingResponse, error)
+	ReceiptWithoutAccounting(ctx context.Context, in *ReceiptWithoutAccountingRequest, opts ...grpc.CallOption) (*ReceiptWithoutAccountingResponse, error)
 }
 
 type receiptServiceClient struct {
@@ -52,12 +55,42 @@ func (c *receiptServiceClient) CreateWithoutAccounting(ctx context.Context, in *
 	return out, nil
 }
 
+func (c *receiptServiceClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error) {
+	out := new(ListResponse)
+	err := c.cc.Invoke(ctx, "/receipt.ReceiptService/List", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *receiptServiceClient) ReceiptWithAccounting(ctx context.Context, in *ReceiptWithAccountingRequest, opts ...grpc.CallOption) (*ReceiptWithAccountingResponse, error) {
+	out := new(ReceiptWithAccountingResponse)
+	err := c.cc.Invoke(ctx, "/receipt.ReceiptService/ReceiptWithAccounting", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *receiptServiceClient) ReceiptWithoutAccounting(ctx context.Context, in *ReceiptWithoutAccountingRequest, opts ...grpc.CallOption) (*ReceiptWithoutAccountingResponse, error) {
+	out := new(ReceiptWithoutAccountingResponse)
+	err := c.cc.Invoke(ctx, "/receipt.ReceiptService/ReceiptWithoutAccounting", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ReceiptServiceServer is the server API for ReceiptService service.
 // All implementations must embed UnimplementedReceiptServiceServer
 // for forward compatibility
 type ReceiptServiceServer interface {
 	CreateWithAccounting(context.Context, *CreateWithAccountingRequest) (*CreateWithAccountingResponse, error)
 	CreateWithoutAccounting(context.Context, *CreateWithoutAccountingRequest) (*CreateWithoutAccountingResponse, error)
+	List(context.Context, *ListRequest) (*ListResponse, error)
+	ReceiptWithAccounting(context.Context, *ReceiptWithAccountingRequest) (*ReceiptWithAccountingResponse, error)
+	ReceiptWithoutAccounting(context.Context, *ReceiptWithoutAccountingRequest) (*ReceiptWithoutAccountingResponse, error)
 	mustEmbedUnimplementedReceiptServiceServer()
 }
 
@@ -70,6 +103,15 @@ func (UnimplementedReceiptServiceServer) CreateWithAccounting(context.Context, *
 }
 func (UnimplementedReceiptServiceServer) CreateWithoutAccounting(context.Context, *CreateWithoutAccountingRequest) (*CreateWithoutAccountingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateWithoutAccounting not implemented")
+}
+func (UnimplementedReceiptServiceServer) List(context.Context, *ListRequest) (*ListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+}
+func (UnimplementedReceiptServiceServer) ReceiptWithAccounting(context.Context, *ReceiptWithAccountingRequest) (*ReceiptWithAccountingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReceiptWithAccounting not implemented")
+}
+func (UnimplementedReceiptServiceServer) ReceiptWithoutAccounting(context.Context, *ReceiptWithoutAccountingRequest) (*ReceiptWithoutAccountingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReceiptWithoutAccounting not implemented")
 }
 func (UnimplementedReceiptServiceServer) mustEmbedUnimplementedReceiptServiceServer() {}
 
@@ -120,6 +162,60 @@ func _ReceiptService_CreateWithoutAccounting_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ReceiptService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReceiptServiceServer).List(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/receipt.ReceiptService/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReceiptServiceServer).List(ctx, req.(*ListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReceiptService_ReceiptWithAccounting_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReceiptWithAccountingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReceiptServiceServer).ReceiptWithAccounting(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/receipt.ReceiptService/ReceiptWithAccounting",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReceiptServiceServer).ReceiptWithAccounting(ctx, req.(*ReceiptWithAccountingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReceiptService_ReceiptWithoutAccounting_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReceiptWithoutAccountingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReceiptServiceServer).ReceiptWithoutAccounting(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/receipt.ReceiptService/ReceiptWithoutAccounting",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReceiptServiceServer).ReceiptWithoutAccounting(ctx, req.(*ReceiptWithoutAccountingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ReceiptService_ServiceDesc is the grpc.ServiceDesc for ReceiptService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -134,6 +230,18 @@ var ReceiptService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateWithoutAccounting",
 			Handler:    _ReceiptService_CreateWithoutAccounting_Handler,
+		},
+		{
+			MethodName: "List",
+			Handler:    _ReceiptService_List_Handler,
+		},
+		{
+			MethodName: "ReceiptWithAccounting",
+			Handler:    _ReceiptService_ReceiptWithAccounting_Handler,
+		},
+		{
+			MethodName: "ReceiptWithoutAccounting",
+			Handler:    _ReceiptService_ReceiptWithoutAccounting_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

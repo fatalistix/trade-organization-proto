@@ -125,5 +125,134 @@ export class ReceiptServiceClient {
     this.methodDescriptorCreateWithoutAccounting);
   }
 
+  methodDescriptorList = new grpcWeb.MethodDescriptor(
+    '/receipt.ReceiptService/List',
+    grpcWeb.MethodType.UNARY,
+    receipt_receipt_pb.ListRequest,
+    receipt_receipt_pb.ListResponse,
+    (request: receipt_receipt_pb.ListRequest) => {
+      return request.serializeBinary();
+    },
+    receipt_receipt_pb.ListResponse.deserializeBinary
+  );
+
+  list(
+    request: receipt_receipt_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<receipt_receipt_pb.ListResponse>;
+
+  list(
+    request: receipt_receipt_pb.ListRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: receipt_receipt_pb.ListResponse) => void): grpcWeb.ClientReadableStream<receipt_receipt_pb.ListResponse>;
+
+  list(
+    request: receipt_receipt_pb.ListRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: receipt_receipt_pb.ListResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/receipt.ReceiptService/List',
+        request,
+        metadata || {},
+        this.methodDescriptorList,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/receipt.ReceiptService/List',
+    request,
+    metadata || {},
+    this.methodDescriptorList);
+  }
+
+  methodDescriptorReceiptWithAccounting = new grpcWeb.MethodDescriptor(
+    '/receipt.ReceiptService/ReceiptWithAccounting',
+    grpcWeb.MethodType.UNARY,
+    receipt_receipt_pb.ReceiptWithAccountingRequest,
+    receipt_receipt_pb.ReceiptWithAccountingResponse,
+    (request: receipt_receipt_pb.ReceiptWithAccountingRequest) => {
+      return request.serializeBinary();
+    },
+    receipt_receipt_pb.ReceiptWithAccountingResponse.deserializeBinary
+  );
+
+  receiptWithAccounting(
+    request: receipt_receipt_pb.ReceiptWithAccountingRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<receipt_receipt_pb.ReceiptWithAccountingResponse>;
+
+  receiptWithAccounting(
+    request: receipt_receipt_pb.ReceiptWithAccountingRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: receipt_receipt_pb.ReceiptWithAccountingResponse) => void): grpcWeb.ClientReadableStream<receipt_receipt_pb.ReceiptWithAccountingResponse>;
+
+  receiptWithAccounting(
+    request: receipt_receipt_pb.ReceiptWithAccountingRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: receipt_receipt_pb.ReceiptWithAccountingResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/receipt.ReceiptService/ReceiptWithAccounting',
+        request,
+        metadata || {},
+        this.methodDescriptorReceiptWithAccounting,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/receipt.ReceiptService/ReceiptWithAccounting',
+    request,
+    metadata || {},
+    this.methodDescriptorReceiptWithAccounting);
+  }
+
+  methodDescriptorReceiptWithoutAccounting = new grpcWeb.MethodDescriptor(
+    '/receipt.ReceiptService/ReceiptWithoutAccounting',
+    grpcWeb.MethodType.UNARY,
+    receipt_receipt_pb.ReceiptWithoutAccountingRequest,
+    receipt_receipt_pb.ReceiptWithoutAccountingResponse,
+    (request: receipt_receipt_pb.ReceiptWithoutAccountingRequest) => {
+      return request.serializeBinary();
+    },
+    receipt_receipt_pb.ReceiptWithoutAccountingResponse.deserializeBinary
+  );
+
+  receiptWithoutAccounting(
+    request: receipt_receipt_pb.ReceiptWithoutAccountingRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<receipt_receipt_pb.ReceiptWithoutAccountingResponse>;
+
+  receiptWithoutAccounting(
+    request: receipt_receipt_pb.ReceiptWithoutAccountingRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: receipt_receipt_pb.ReceiptWithoutAccountingResponse) => void): grpcWeb.ClientReadableStream<receipt_receipt_pb.ReceiptWithoutAccountingResponse>;
+
+  receiptWithoutAccounting(
+    request: receipt_receipt_pb.ReceiptWithoutAccountingRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: receipt_receipt_pb.ReceiptWithoutAccountingResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/receipt.ReceiptService/ReceiptWithoutAccounting',
+        request,
+        metadata || {},
+        this.methodDescriptorReceiptWithoutAccounting,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/receipt.ReceiptService/ReceiptWithoutAccounting',
+    request,
+    metadata || {},
+    this.methodDescriptorReceiptWithoutAccounting);
+  }
+
 }
 
