@@ -117,6 +117,7 @@ service TradingPointService {
     // Trading point
     rpc Register(RegisterRequest) returns (RegisterResponse);
     rpc List(ListRequest) returns (ListResponse);
+    rpc TradingPoint(TradingPointRequest) returns (TradingPointResponse);
 
     // Section
     rpc AddSection(AddSectionRequest) returns (AddSectionResponse);
@@ -150,6 +151,15 @@ message ListRequest {
 
 message ListResponse {
     repeated TradingPoint trading_points = 1;
+}
+
+message TradingPointRequest {
+    int32 id = 1;
+    TradingPointType type = 2;
+}
+
+message TradingPointResponse {
+    TradingPoint trading_point = 1;
 }
 
 message AddSectionRequest {
