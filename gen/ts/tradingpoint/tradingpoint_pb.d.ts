@@ -465,6 +465,48 @@ export namespace ListResponse {
   }
 }
 
+export class TradingPointRequest extends jspb.Message {
+  getId(): number;
+  setId(value: number): TradingPointRequest;
+
+  getType(): TradingPointType;
+  setType(value: TradingPointType): TradingPointRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TradingPointRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: TradingPointRequest): TradingPointRequest.AsObject;
+  static serializeBinaryToWriter(message: TradingPointRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TradingPointRequest;
+  static deserializeBinaryFromReader(message: TradingPointRequest, reader: jspb.BinaryReader): TradingPointRequest;
+}
+
+export namespace TradingPointRequest {
+  export type AsObject = {
+    id: number,
+    type: TradingPointType,
+  }
+}
+
+export class TradingPointResponse extends jspb.Message {
+  getTradingPoint(): TradingPoint | undefined;
+  setTradingPoint(value?: TradingPoint): TradingPointResponse;
+  hasTradingPoint(): boolean;
+  clearTradingPoint(): TradingPointResponse;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): TradingPointResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: TradingPointResponse): TradingPointResponse.AsObject;
+  static serializeBinaryToWriter(message: TradingPointResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TradingPointResponse;
+  static deserializeBinaryFromReader(message: TradingPointResponse, reader: jspb.BinaryReader): TradingPointResponse;
+}
+
+export namespace TradingPointResponse {
+  export type AsObject = {
+    tradingPoint?: TradingPoint.AsObject,
+  }
+}
+
 export class AddSectionRequest extends jspb.Message {
   getDepartmentStoreId(): number;
   setDepartmentStoreId(value: number): AddSectionRequest;

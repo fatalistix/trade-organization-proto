@@ -125,6 +125,49 @@ export class TradingPointServiceClient {
     this.methodDescriptorList);
   }
 
+  methodDescriptorTradingPoint = new grpcWeb.MethodDescriptor(
+    '/tradingpoint.TradingPointService/TradingPoint',
+    grpcWeb.MethodType.UNARY,
+    tradingpoint_tradingpoint_pb.TradingPointRequest,
+    tradingpoint_tradingpoint_pb.TradingPointResponse,
+    (request: tradingpoint_tradingpoint_pb.TradingPointRequest) => {
+      return request.serializeBinary();
+    },
+    tradingpoint_tradingpoint_pb.TradingPointResponse.deserializeBinary
+  );
+
+  tradingPoint(
+    request: tradingpoint_tradingpoint_pb.TradingPointRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<tradingpoint_tradingpoint_pb.TradingPointResponse>;
+
+  tradingPoint(
+    request: tradingpoint_tradingpoint_pb.TradingPointRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: tradingpoint_tradingpoint_pb.TradingPointResponse) => void): grpcWeb.ClientReadableStream<tradingpoint_tradingpoint_pb.TradingPointResponse>;
+
+  tradingPoint(
+    request: tradingpoint_tradingpoint_pb.TradingPointRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: tradingpoint_tradingpoint_pb.TradingPointResponse) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/tradingpoint.TradingPointService/TradingPoint',
+        request,
+        metadata || {},
+        this.methodDescriptorTradingPoint,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/tradingpoint.TradingPointService/TradingPoint',
+    request,
+    metadata || {},
+    this.methodDescriptorTradingPoint);
+  }
+
   methodDescriptorAddSection = new grpcWeb.MethodDescriptor(
     '/tradingpoint.TradingPointService/AddSection',
     grpcWeb.MethodType.UNARY,

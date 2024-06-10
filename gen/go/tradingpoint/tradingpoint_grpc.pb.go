@@ -25,6 +25,7 @@ type TradingPointServiceClient interface {
 	// Trading point
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
+	TradingPoint(ctx context.Context, in *TradingPointRequest, opts ...grpc.CallOption) (*TradingPointResponse, error)
 	// Section
 	AddSection(ctx context.Context, in *AddSectionRequest, opts ...grpc.CallOption) (*AddSectionResponse, error)
 	// Hall
@@ -55,6 +56,15 @@ func (c *tradingPointServiceClient) Register(ctx context.Context, in *RegisterRe
 func (c *tradingPointServiceClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error) {
 	out := new(ListResponse)
 	err := c.cc.Invoke(ctx, "/tradingpoint.TradingPointService/List", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tradingPointServiceClient) TradingPoint(ctx context.Context, in *TradingPointRequest, opts ...grpc.CallOption) (*TradingPointResponse, error) {
+	out := new(TradingPointResponse)
+	err := c.cc.Invoke(ctx, "/tradingpoint.TradingPointService/TradingPoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -122,6 +132,7 @@ type TradingPointServiceServer interface {
 	// Trading point
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	List(context.Context, *ListRequest) (*ListResponse, error)
+	TradingPoint(context.Context, *TradingPointRequest) (*TradingPointResponse, error)
 	// Section
 	AddSection(context.Context, *AddSectionRequest) (*AddSectionResponse, error)
 	// Hall
@@ -142,6 +153,9 @@ func (UnimplementedTradingPointServiceServer) Register(context.Context, *Registe
 }
 func (UnimplementedTradingPointServiceServer) List(context.Context, *ListRequest) (*ListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+}
+func (UnimplementedTradingPointServiceServer) TradingPoint(context.Context, *TradingPointRequest) (*TradingPointResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TradingPoint not implemented")
 }
 func (UnimplementedTradingPointServiceServer) AddSection(context.Context, *AddSectionRequest) (*AddSectionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddSection not implemented")
@@ -206,6 +220,24 @@ func _TradingPointService_List_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TradingPointServiceServer).List(ctx, req.(*ListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TradingPointService_TradingPoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TradingPointRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TradingPointServiceServer).TradingPoint(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tradingpoint.TradingPointService/TradingPoint",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TradingPointServiceServer).TradingPoint(ctx, req.(*TradingPointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -332,6 +364,10 @@ var TradingPointService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "List",
 			Handler:    _TradingPointService_List_Handler,
+		},
+		{
+			MethodName: "TradingPoint",
+			Handler:    _TradingPointService_TradingPoint_Handler,
 		},
 		{
 			MethodName: "AddSection",
